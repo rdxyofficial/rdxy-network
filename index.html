@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RDXY — Minecraft Sunucusu</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg: #0c100c;
+  --bg2: #121812;
+  --bg3: #1a211a;
+  --border: rgba(84, 201, 91, 0.10);
+  --border2: rgba(84, 201, 91, 0.20);
+  --text: #d4d8d4;
+  --muted: #6b7268;
+  --green: #54c95b;
+  --green2: #3fb950;
+  --grass: #7ddb6a;
+  --dirt: #8b6f4a;
+  --diamond: #4ee2d6;
+  --gold: #f5b81b;
+  --red: #ef4444;
+  --purple: #a855f7;
+}
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(84, 201, 91, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 70%, rgba(78, 226, 214, 0.04) 0%, transparent 55%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.008) 0px, rgba(255,255,255,0.008) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.008) 0px, rgba(255,255,255,0.008) 1px, transparent 1px, transparent 32px); }
+
+/* Modal giriş */
+#girisModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.94); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; z-index: 99999; flex-direction: column; gap: 20px; display: none; }
+#girisModal.open { display: flex; }
+#girisModal .giris-kutu { background: rgba(18, 24, 18, 0.95); border: 1px solid var(--border2); border-radius: 20px; padding: 32px 28px; max-width: 420px; width: 92%; text-align: center; box-shadow: 0 24px 80px rgba(84, 201, 91, 0.08); }
+#girisModal h1 { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, var(--grass), var(--green2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+#girisModal h1 .mini-logo { width: 32px; height: 32px; }
+#girisModal p { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
+#girisModal input { width: 100%; padding: 10px 14px; background: rgba(0, 0, 0, 0.5); border: 1px solid var(--border); color: var(--text); border-radius: 100px; font-size: 13px; outline: none; margin-bottom: 10px; }
+#girisModal input:focus { border-color: var(--green); background: rgba(0, 0, 0, 0.7); }
+#girisModal .btn-giris { background: var(--green); color: #08130a; border: none; padding: 11px 20px; border-radius: 100px; font-weight: 700; font-size: 14px; cursor: pointer; width: 100%; margin-bottom: 6px; transition: 0.2s; }
+#girisModal .btn-giris:hover { background: var(--grass); transform: scale(1.02); box-shadow: 0 8px 30px rgba(84, 201, 91, 0.25); }
+#girisModal .btn-kayit { background: #2a352a; color: #d4d8d4; }
+#girisModal .btn-kayit:hover { background: #354235; }
+#girisModal .hata { color: var(--red); font-size: 12px; margin-top: 4px; display: none; }
+#girisModal .captcha { display: flex; align-items: center; gap: 10px; justify-content: center; margin-bottom: 10px; flex-wrap: wrap; }
+#girisModal .captcha .kod { background: rgba(0,0,0,0.5); padding: 6px 14px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 20px; font-weight: bold; letter-spacing: 3px; color: var(--grass); border: 1px dashed var(--border2); user-select: none; }
+#girisModal .captcha input { width: 120px; margin: 0; }
+#girisModal .captcha .yenile { background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 18px; padding: 0 4px; }
+#girisModal .gecis-link { display: block; margin-top: 10px; font-size: 13px; color: var(--muted); cursor: pointer; }
+#girisModal .gecis-link:hover { color: var(--green); text-decoration: underline; }
+
+/* Topbar */
+.topbar { background: rgba(12, 16, 12, 0.94); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; position: sticky; top: 0; z-index: 100; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand-logo { width: 42px; height: 42px; filter: drop-shadow(0 2px 8px rgba(84, 201, 91, 0.25)); transition: 0.3s; }
+.brand:hover .brand-logo { transform: rotate(-5deg) scale(1.06); }
+.brand .bname { font-size: 22px; font-weight: 800; letter-spacing: 1px; background: linear-gradient(90deg, var(--grass), var(--green2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+.brand .btag { font-size: 9px; letter-spacing: 2.5px; color: var(--muted); text-transform: uppercase; display: block; margin-top: 2px; }
+
+nav { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+.nav-btn { background: transparent; color: var(--muted); border: none; padding: 8px 16px; border-radius: 100px; cursor: pointer; font-size: 13px; font-weight: 500; transition: 0.2s; font-family: inherit; }
+.nav-btn:hover { color: var(--green); background: rgba(84, 201, 91, 0.06); }
+.nav-btn.active { color: #08130a; background: var(--green); font-weight: 700; }
+
+.avatar { background: linear-gradient(135deg, #2a352a, #0c100c); color: var(--text); border: 1px solid var(--border); width: 42px; height: 42px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: 0.2s; font-family: inherit; }
+.avatar:hover { border-color: var(--green); transform: scale(1.05); color: var(--green); }
+
+/* Layout */
+#anaIcerik { display: none; }
+.page { display: none; padding: 40px 32px 60px; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.4s ease; }
+.page.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Hero */
+.hero { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: space-between; padding: 20px 0 40px; border-bottom: 1px solid var(--border); }
+.hero h1 { font-size: 46px; font-weight: 800; line-height: 1.15; color: #eafbe8; }
+.hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--grass), var(--green2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hero p { color: var(--muted); font-size: 16px; max-width: 500px; margin: 16px 0 24px; line-height: 1.7; }
+.eyebrow { color: var(--green); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; display: inline-block; margin-bottom: 8px; font-weight: 700; }
+
+/* Server IP box */
+.ip-box { background: linear-gradient(135deg, rgba(84, 201, 91, 0.10), rgba(78, 226, 214, 0.05)); border: 1px solid var(--border2); border-radius: 16px; padding: 20px 24px; margin: 24px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.ip-box .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+.ip-box .ip { color: var(--grass); font-family: 'Courier New', monospace; font-size: 22px; font-weight: 800; letter-spacing: 1px; margin-top: 4px; }
+.ip-box button { background: var(--green); color: #08130a; border: none; padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s; font-family: inherit; }
+.ip-box button:hover { background: var(--grass); }
+
+.hero-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); padding: 28px; border-radius: 20px; min-width: 240px; transition: 0.3s; }
+.hero-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+.hero-card .big-logo { width: 64px; height: 64px; margin-bottom: 12px; filter: drop-shadow(0 4px 12px rgba(84, 201, 91, 0.35)); }
+.hero-card b { color: #eafbe8; font-size: 17px; display: block; margin-bottom: 4px; }
+.hero-card span { color: var(--muted); font-size: 13px; display: block; }
+
+/* Buttons */
+button { cursor: pointer; font-family: inherit; }
+.btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+.primary { background: var(--green); color: #08130a; border: none; padding: 12px 28px; border-radius: 100px; font-weight: 700; font-size: 14px; transition: 0.2s; }
+.primary:hover { background: var(--grass); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(84, 201, 91, 0.25); }
+.discord-btn { background: rgba(88,101,242,0.15); color: #7c89ff; border: 1px solid rgba(88,101,242,0.3); padding: 12px 28px; border-radius: 100px; font-weight: 600; font-size: 14px; transition: 0.2s; }
+.discord-btn:hover { background: rgba(88,101,242,0.25); color: #fff; }
+.ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); padding: 12px 28px; border-radius: 100px; font-weight: 600; font-size: 14px; transition: 0.2s; }
+.ghost:hover { background: rgba(84, 201, 91, 0.04); color: var(--green); border-color: var(--border2); }
+.danger { background: rgba(239, 68, 68, 0.10); color: #ff7a7a; border: 1px solid rgba(239, 68, 68, 0.20); padding: 10px 24px; border-radius: 100px; font-weight: 600; transition: 0.2s; font-family: inherit; }
+.danger:hover { background: rgba(239, 68, 68, 0.18); }
+
+/* Stats */
+.stats { display: flex; gap: 48px; padding: 32px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.stats div b { font-size: 32px; font-weight: 800; color: var(--grass); display: block; line-height: 1; }
+.stats div span { color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; display: block; margin-top: 6px; }
+
+/* Section */
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin: 48px 0 24px; }
+.section-head h2 { font-size: 26px; font-weight: 800; color: #eafbe8; }
+.section-head p { color: var(--muted); font-size: 14px; }
+.text-btn { background: transparent; border: none; color: var(--green); font-weight: 600; font-size: 13px; cursor: pointer; font-family: inherit; }
+.text-btn:hover { color: var(--grass); text-decoration: underline; }
+
+/* Filters */
+.filters { display: flex; flex-wrap: wrap; gap: 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 16px; padding: 16px 20px; margin-bottom: 24px; }
+.filters input, .filters select { padding: 10px 18px; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); color: var(--text); border-radius: 100px; font-size: 13px; outline: none; min-width: 140px; font-family: inherit; }
+.filters input { flex: 1; min-width: 180px; }
+.filters input:focus, .filters select:focus { border-color: var(--green); }
+.filters select option { background: #1a211a; }
+
+/* Grid & cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+.cards .card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; padding: 24px; transition: 0.3s; position: relative; overflow: hidden; }
+.cards .card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(84, 201, 91, 0.06), transparent 60%); opacity: 0; transition: 0.3s; pointer-events: none; }
+.cards .card:hover { border-color: var(--border2); transform: translateY(-6px); }
+.cards .card:hover::before { opacity: 1; }
+.cards .card h3 { color: #eafbe8; font-size: 17px; font-weight: 700; }
+.cards .card p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+/* Rules */
+.rules-list { display: flex; flex-direction: column; gap: 10px; }
+.rule-item { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 14px; padding: 16px 22px; display: flex; align-items: flex-start; gap: 14px; }
+.rule-item .num { flex: 0 0 32px; height: 32px; background: rgba(84, 201, 91, 0.12); border: 1px solid var(--border2); color: var(--grass); border-radius: 8px; font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+.rule-item .txt { color: var(--text); font-size: 14px; line-height: 1.6; }
+.rule-item .txt b { color: var(--green); }
+
+/* Feed */
+.channel-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+.channel-tabs button { background: transparent; color: var(--muted); border: 1px solid var(--border); padding: 8px 20px; border-radius: 100px; font-size: 13px; font-family: inherit; }
+.channel-tabs button.active { background: var(--green); color: #08130a; border-color: var(--green); font-weight: 700; }
+.feed { display: flex; flex-direction: column; gap: 10px; }
+.feed-item { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px; }
+.feed-item h4 { color: #eafbe8; font-size: 15px; }
+.feed-item p { color: var(--muted); font-size: 13px; }
+.feed-item small { color: #444; font-size: 11px; }
+
+/* Admin */
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.panel { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+.panel h3 { color: #eafbe8; font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+.panel input, .panel textarea { width: 100%; padding: 10px 16px; margin: 4px 0; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border); color: var(--text); border-radius: 10px; font-size: 13px; outline: none; font-family: inherit; }
+.panel input:focus, .panel textarea:focus { border-color: var(--green); }
+
+.playerdata-panel { grid-column: 1 / -1; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border2); border-radius: 16px; padding: 24px; margin-top: 8px; }
+.playerdata-panel h3 { color: var(--green); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.playerdata-panel .aciklama { color: var(--muted); font-size: 12px; margin-bottom: 16px; }
+.playerdata-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.playerdata-table thead th { text-align: left; padding: 10px 12px; color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+.playerdata-table tbody td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.03); color: #ccc; vertical-align: middle; }
+.playerdata-table tbody tr:hover { background: rgba(84, 201, 91, 0.03); }
+.playerdata-table .uname { color: #eafbe8; font-weight: 600; }
+.playerdata-table .upass { font-family: 'Courier New', monospace; color: var(--gold); letter-spacing: 1px; }
+.playerdata-table .uemail { color: var(--diamond); font-size: 12px; }
+.playerdata-table .urole { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; background: rgba(148,163,184,0.15); color: #94a3b8; }
+.playerdata-table .urole.kurucu { background: rgba(245,184,27,0.2); color: var(--gold); border: 1px solid rgba(245,184,27,0.35); }
+.playerdata-table .urole.admin { background: rgba(239,68,68,0.2); color: #ff7a7a; border: 1px solid rgba(239,68,68,0.3); }
+.playerdata-table .urole.moderator { background: rgba(78,226,214,0.2); color: var(--diamond); border: 1px solid rgba(78,226,214,0.3); }
+.playerdata-empty { color: var(--muted); text-align: center; padding: 24px; font-size: 13px; }
+.pd-btn { padding: 4px 12px; border-radius: 8px; border: none; font-size: 11px; font-weight: 600; cursor: pointer; margin-right: 4px; font-family: inherit; }
+.pd-btn.give { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+.pd-btn.take { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+.pd-btn.sel { background: rgba(84,201,91,0.15); color: var(--grass); border: 1px solid rgba(84,201,91,0.3); }
+
+/* Modals */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); display: none; align-items: center; justify-content: center; z-index: 9999; }
+.modal.open { display: flex; }
+.modal-box { background: rgba(14, 18, 14, 0.98); border: 1px solid var(--border2); border-radius: 20px; padding: 32px; max-width: 460px; width: 92%; }
+.modal-box h2 { font-size: 22px; font-weight: 800; color: #eafbe8; margin-bottom: 16px; }
+.modal-box label { color: var(--muted); font-size: 13px; font-weight: 500; display: block; margin-top: 12px; }
+.modal-box input, .modal-box textarea, .modal-box select { width: 100%; padding: 10px 16px; margin-top: 4px; background: rgba(0, 0, 0, 0.35); border: 1px solid var(--border); color: var(--text); border-radius: 10px; font-size: 13px; outline: none; font-family: inherit; }
+.modal-box input:focus, .modal-box textarea:focus { border-color: var(--green); }
+.modal-box select option { background: #1a211a; }
+.close { float: right; background: transparent; color: var(--muted); border: none; font-size: 26px; cursor: pointer; line-height: 1; font-family: inherit; }
+.close:hover { color: var(--green); }
+
+/* Toast */
+#toast { position: fixed; bottom: 24px; right: 24px; background: rgba(14, 18, 14, 0.98); border: 1px solid var(--border2); color: var(--text); padding: 14px 28px; border-radius: 14px; display: none; z-index: 999; font-size: 14px; box-shadow: 0 12px 40px rgba(0,0,0,0.6); }
+
+/* Discord banner */
+.discord-banner { background: linear-gradient(90deg, rgba(88,101,242,0.10), rgba(88,101,242,0.03)); border: 1px solid rgba(88,101,242,0.25); border-radius: 14px; padding: 16px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: space-between; margin-bottom: 24px; }
+.discord-banner b { color: #eafbe8; font-size: 15px; }
+.discord-banner span { color: var(--muted); font-size: 13px; flex: 1; }
+.discord-banner button { background: rgba(88,101,242,0.20); color: #7c89ff; border: 1px solid rgba(88,101,242,0.4); padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 700; font-family: inherit; transition: 0.2s; }
+.discord-banner button:hover { background: rgba(88,101,242,0.35); color: #fff; }
+
+.live-dot { display: inline-block; width: 8px; height: 8px; background: var(--green); border-radius: 50%; margin-right: 6px; animation: pulse 1.5s infinite; box-shadow: 0 0 8px var(--green); }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* Server info cards */
+.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 24px; }
+.info-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+.info-card .ic-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+.info-card .ic-value { color: var(--grass); font-size: 18px; font-weight: 800; margin-top: 6px; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .topbar { padding: 12px 16px; gap: 12px; }
+  nav { order: 5; justify-content: center; width: 100%; }
+  .hero h1 { font-size: 30px; }
+  .stats { gap: 20px; }
+  .stats div b { font-size: 24px; }
+  .page { padding: 24px 16px 40px; }
+  .modal-box { padding: 24px; }
+  .discord-banner { flex-direction: column; text-align: center; }
+  .filters { flex-direction: column; align-items: stretch; }
+  .playerdata-table { font-size: 11px; }
+  .playerdata-table thead th, .playerdata-table tbody td { padding: 6px 8px; }
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #2a352a, #54c95b); border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<!-- GİRİŞ MODAL -->
+<div id="girisModal">
+  <div class="giris-kutu">
+    <h1>
+      <svg class="mini-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="32,4 60,20 32,36 4,20" fill="#7ddb6a"/>
+        <polygon points="4,20 32,36 32,60 4,44" fill="#8b6f4a"/>
+        <polygon points="60,20 32,36 32,60 60,44" fill="#5a4428"/>
+      </svg>
+      RDXY
+    </h1>
+    <p id="modalAltYazi">Minecraft sunucumuza giriş yap</p>
+    <input type="text" id="loginUser" placeholder="Kullanıcı adı (Minecraft nick)">
+    <input type="email" id="loginEmail" placeholder="E-posta (sadece @gmail.com)" style="display:none;">
+    <input type="password" id="loginPass" placeholder="Şifre (min 6 karakter)">
+    <input type="password" id="loginPassTekrar" placeholder="Şifre tekrar" style="display:none;">
+    <div class="captcha" id="captchaAlan">
+      <span class="kod" id="captchaKod">A7kL9p</span>
+      <input type="text" id="captchaCevap" placeholder="Kodu gir">
+      <button class="yenile" onclick="captchaYenile()">⟳</button>
+    </div>
+    <button class="btn-giris" id="modalGirisBtn" onclick="girisYap()">Giriş Yap</button>
+    <button class="btn-giris btn-kayit" id="modalKayitBtn" onclick="kayitOl()" style="display:none;">Kayıt Ol</button>
+    <span class="gecis-link" id="gecisLink" onclick="modalGecis()">Hesabın yok mu? Kayıt ol</span>
+    <div id="modalHata" class="hata"></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="brand">
+    <svg class="brand-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gtop" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#7ddb6a"/>
+          <stop offset="100%" stop-color="#4ea843"/>
+        </linearGradient>
+        <linearGradient id="dleft" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#8b6f4a"/>
+          <stop offset="100%" stop-color="#6b5234"/>
+        </linearGradient>
+        <linearGradient id="dright" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#6b5234"/>
+          <stop offset="100%" stop-color="#4f3d26"/>
+        </linearGradient>
+      </defs>
+      <polygon points="32,4 60,20 32,36 4,20" fill="url(#gtop)"/>
+      <polygon points="4,20 32,36 32,60 4,44" fill="url(#dleft)"/>
+      <polygon points="60,20 32,36 32,60 60,44" fill="url(#dright)"/>
+      <polygon points="32,4 60,20 32,36 4,20" fill="none" stroke="#3d8a35" stroke-width="0.6" opacity="0.5"/>
+      <rect x="9" y="18" width="3" height="3" fill="#5eb84d"/>
+      <rect x="22" y="24" width="3" height="3" fill="#7ddb6a"/>
+      <rect x="42" y="22" width="3" height="3" fill="#5eb84d"/>
+      <rect x="50" y="18" width="3" height="3" fill="#7ddb6a"/>
+    </svg>
+    <div>
+      <div class="bname">RDXY</div>
+      <span class="btag">Minecraft Network</span>
+    </div>
+  </div>
+  <nav>
+    <button class="nav-btn active" data-page="home">Anasayfa</button>
+    <button class="nav-btn" data-page="sunucu">Sunucu</button>
+    <button class="nav-btn" data-page="market">Market</button>
+    <button class="nav-btn" data-page="kurallar">Kurallar</button>
+    <button class="nav-btn" data-page="paylasimlar">Paylaşımlar</button>
+    <button class="nav-btn" data-page="admin" id="adminNav" style="display:none;">Yetkili</button>
+  </nav>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <span id="menuKullanici" style="color:var(--grass);font-size:14px;font-weight:600;display:none;"></span>
+    <button class="avatar" id="girisButon" onclick="modalAc('giris')">Giriş</button>
+    <button class="avatar" id="kayitButon" onclick="modalAc('kayit')" style="background:#2a352a;">Kayıt</button>
+    <button class="avatar" id="cikisButon" onclick="cikisYap()" style="background:#7a2020;color:#fff;display:none;">Çıkış</button>
+  </div>
+</header>
+
+<div id="anaIcerik">
+<main>
+
+<!-- ANASAYFA -->
+<section id="home" class="page active">
+  <div class="discord-banner">
+    <b>💬 RDXY Discord</b>
+    <span>Sunucu topluluğumuza katıl, etkinlikleri ve duyuruları takip et.</span>
+    <button onclick="joinDiscord()">discord.gg/rdxy ↗</button>
+  </div>
+  <div class="hero">
+    <div>
+      <span class="eyebrow">MINECRAFT SERVER</span>
+      <h1>Türkiye'nin en yenilikçi<br><em>Minecraft sunucusuna hoş geldin.</em></h1>
+      <p>Survival, SkyBlock, BedWars ve daha fazlası. Kendi dünyanı kur, arkadaşlarınla oyna, sıralamada yüksel.</p>
+      <div class="ip-box">
+        <div>
+          <div class="label">Sunucu Adresi</div>
+          <div class="ip" id="serverIp">play.rdxy.net</div>
+        </div>
+        <button onclick="copyIp()">📋 Kopyala</button>
+      </div>
+      <div class="btn-group">
+        <button class="primary" onclick="go('market')">Market'i Keşfet →</button>
+        <button class="discord-btn" onclick="joinDiscord()">Discord'a Katıl</button>
+        <button class="ghost" onclick="go('sunucu')">Sunucu Bilgileri</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <svg class="big-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="32,4 60,20 32,36 4,20" fill="#7ddb6a"/>
+        <polygon points="4,20 32,36 32,60 4,44" fill="#8b6f4a"/>
+        <polygon points="60,20 32,36 32,60 60,44" fill="#5a4428"/>
+        <polygon points="32,4 60,20 32,36 4,20" fill="none" stroke="#3d8a35" stroke-width="0.6" opacity="0.5"/>
+        <rect x="9" y="18" width="3" height="3" fill="#5eb84d"/>
+        <rect x="22" y="24" width="3" height="3" fill="#7ddb6a"/>
+        <rect x="42" y="22" width="3" height="3" fill="#5eb84d"/>
+        <rect x="50" y="18" width="3" height="3" fill="#7ddb6a"/>
+      </svg>
+      <b>Sunucu Durumu</b>
+      <span><span class="live-dot"></span>Çevrimiçi</span>
+      <span style="margin-top:4px;color:var(--grass);font-weight:700;">1.20.x — 1.21.x</span>
+    </div>
+  </div>
+  <div class="stats">
+    <div><b id="statUsers">0</b><span>Kayıtlı Oyuncu</span></div>
+    <div><b id="statProducts">0</b><span>Market Ürünü</span></div>
+    <div><b id="statShares">0</b><span>Paylaşım</span></div>
+    <div><b id="statUptime">0s</b><span>Uptime</span></div>
+  </div>
+  <div class="section-head">
+    <div><h2>Öne Çıkan Paketler</h2><p>Sunucuda en çok tercih edilen paketler.</p></div>
+    <button class="text-btn" onclick="go('market')">Tümünü gör →</button>
+  </div>
+  <div id="products-featured" class="grid cards"></div>
+</section>
+
+<!-- SUNUCU -->
+<section id="sunucu" class="page">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">SERVER INFO</span>
+      <h2>Sunucu Bilgileri</h2>
+      <p>Bağlanmak için aşağıdaki IP adresini Minecraft'a ekle.</p>
+    </div>
+  </div>
+  <div class="ip-box">
+    <div>
+      <div class="label">Sunucu Adresi</div>
+      <div class="ip">play.rdxy.net</div>
+    </div>
+    <button onclick="copyIp()">📋 Kopyala</button>
+  </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-label">Sürüm</div>
+      <div class="ic-value">1.20.x — 1.21.x</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-label">Platform</div>
+      <div class="ic-value">Java Edition</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-label">Mod</div>
+      <div class="ic-value">Survival / SkyBlock</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-label">Slot</div>
+      <div class="ic-value">500+ Oyuncu</div>
+    </div>
+  </div>
+  <div class="section-head">
+    <div><h2>Sunucu Modları</h2><p>Aktif olarak oynayabileceğin oyun modları.</p></div>
+  </div>
+  <div class="grid cards">
+    <div class="card">
+      <h3>⚔️ Survival</h3>
+      <p>Klasik hayatta kalma modu. Kendi üssünü kur, klanlar oluştur, savaş.</p>
+    </div>
+    <div class="card">
+      <h3>🏝️ SkyBlock</h3>
+      <p>Adadan başla, geliş, diğer oyuncularla ticaret yap.</p>
+    </div>
+    <div class="card">
+      <h3>🎯 BedWars</h3>
+      <p>Takımınla yataklarını koru, rakip yatakları kır.</p>
+    </div>
+    <div class="card">
+      <h3>🏰 Factions</h3>
+      <p>Klan kur, toprak al, savaş kazan. En güçlü klan ol.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market" class="page">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">MARKETPLACE</span>
+      <h2>Sunucu Market</h2>
+      <p>Sunucu içi avantajlar ve paketler.</p>
+    </div>
+    <button class="primary admin-only" id="addProductBtn" onclick="openModal('sellModal')" style="display:none;">+ Paket Ekle</button>
+  </div>
+  <div class="filters">
+    <input id="productSearch" placeholder="Paket ara..." oninput="renderProducts()">
+    <select id="category" onchange="renderProducts()">
+      <option value="">Tüm kategoriler</option>
+      <option>Rütbe</option>
+      <option>Kit</option>
+      <option>Kozmetik</option>
+      <option>Para</option>
+    </select>
+  </div>
+  <div id="products" class="grid cards"></div>
+</section>
+
+<!-- KURALLAR -->
+<section id="kurallar" class="page">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">RULES</span>
+      <h2>Sunucu Kuralları</h2>
+      <p>Sunucuya giriş yaparak tüm kuralları kabul etmiş sayılırsın.</p>
+    </div>
+  </div>
+  <div class="rules-list" id="kurallarList">
+    <div class="rule-item"><div class="num">1</div><div class="txt">Oyunculara <b>küfür, hakaret veya ayrımcılık</b> yasaktır.</div></div>
+    <div class="rule-item"><div class="num">2</div><div class="txt"><b>Hile (Hack/Client)</b> kullanmak kesinlikle yasaktır. Tespit edildiğinde kalıcı ban uygulanır.</div></div>
+    <div class="rule-item"><div class="num">3</div><div class="txt"><b>Bug abuse</b> yapan oyuncuların hesapları silinir, envanteri sıfırlanır.</div></div>
+    <div class="rule-item"><div class="num">4</div><div class="txt">Başka oyuncuların <b>özel alanlarına izinsiz</b> girmek yasaktır.</div></div>
+    <div class="rule-item"><div class="num">5</div><div class="txt"><b>Reklam yapmak</b> (başka sunucu, site vb.) yasaktır.</div></div>
+    <div class="rule-item"><div class="num">6</div><div class="txt">Yetkililere saygı gösterin. Kararları sorgulamak yerine <b>Discord'dan ticket açın</b>.</div></div>
+    <div class="rule-item"><div class="num">7</div><div class="txt">Lag oluşturacak <b>farm, redstone ve entity</b> kullanımı sınırlıdır.</div></div>
+    <div class="rule-item"><div class="num">8</div><div class="txt">Sunucu içi <b>hesap alım-satım</b> yasaktır. Hesabınızın güvenliği size aittir.</div></div>
+    <div class="rule-item"><div class="num">9</div><div class="txt">Gerçek para karşılığı <b>item satışı</b> yasaktır.</div></div>
+    <div class="rule-item"><div class="num">10</div><div class="txt">Kurallara uymayan oyuncular <b>uyarı, mute, kick veya ban</b> ile cezalandırılır.</div></div>
+  </div>
+</section>
+
+<!-- PAYLAŞIMLAR -->
+<section id="paylasimlar" class="page">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">COMMUNITY</span>
+      <h2>Topluluk Paylaşımları</h2>
+      <p>Yetkililer tarafından paylaşılan duyurular ve içerikler.</p>
+    </div>
+    <button class="primary admin-only" id="addShareBtn" onclick="openModal('shareModal')" style="display:none;">+ Paylaşım Oluştur</button>
+  </div>
+  <div class="channel-tabs">
+    <button class="active" onclick="setChannel('duyurular', this)"># duyurular</button>
+    <button onclick="setChannel('guncellemeler', this)"># güncellemeler</button>
+    <button onclick="setChannel('etkinlikler', this)"># etkinlikler</button>
+  </div>
+  <div id="fileFeed" class="feed"></div>
+</section>
+
+<!-- YETKİLİ -->
+<section id="admin" class="page">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">STAFF CONSOLE</span>
+      <h2>Yetkili Paneli</h2>
+      <p>Kullanıcı rolleri ve paylaşım yönetimi.</p>
+    </div>
+  </div>
+  <div class="admin-grid">
+    <div class="panel">
+      <h3>👥 Kullanıcı Rolleri</h3>
+      <p style="color:var(--muted); font-size:12px; margin-bottom:8px;">Yetki vermek için kullanıcı adı girin.</p>
+      <input id="roleUserName" placeholder="Kullanıcı adı">
+      <button class="primary" onclick="checkUserForRole()" style="width:100%; margin-top:8px;">Kullanıcı Ara</button>
+      <div id="roleSetupArea" style="margin-top:10px;"></div>
+      <div id="usersList" style="margin-top:16px;"></div>
+    </div>
+    <div class="panel">
+      <h3>📢 Duyuru Yayınla</h3>
+      <textarea id="announcement" placeholder="Duyuru metni..." rows="4"></textarea>
+      <button class="primary" onclick="postAnnouncement()" style="width:100%; margin-top:8px;">Yayınla</button>
+    </div>
+    <div class="panel">
+      <h3>🛒 Hızlı Paket Ekle</h3>
+      <input id="quickProductName" placeholder="Paket adı">
+      <input id="quickProductPrice" type="number" placeholder="Fiyat (₺)">
+      <button class="primary" onclick="quickAddProduct()" style="width:100%; margin-top:8px;">Ekle</button>
+    </div>
+    <div class="panel">
+      <h3>⚙️ Sistem</h3>
+      <p style="color:var(--muted); font-size:12px;">Ürün, paylaşım ve duyuruları sıfırla. Kullanıcılar korunur.</p>
+      <button class="danger" onclick="resetDemo()" style="width:100%; margin-top:8px;">Verileri Sıfırla</button>
+    </div>
+    <div class="playerdata-panel" id="playerDataPanel" style="display:none;">
+      <h3>🗂️ PlayerData <span class="live-dot"></span></h3>
+      <p class="aciklama">Tüm kayıtlı oyuncular. Şifreler maskelenmiştir. Sadece Kurucu erişebilir.</p>
+      <div id="playerDataArea" style="overflow-x:auto;">
+        <div class="playerdata-empty">Yükleniyor...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<!-- MODAL: ÜRÜN EKLE -->
+<div id="sellModal" class="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal('sellModal')">×</button>
+    <h2>Paket Ekle</h2>
+    <label>Paket adı<input id="sellName"></label>
+    <label>Kategori
+      <select id="sellCat">
+        <option>Rütbe</option>
+        <option>Kit</option>
+        <option>Kozmetik</option>
+        <option>Para</option>
+      </select>
+    </label>
+    <label>Fiyat (₺)<input id="sellPrice" type="number"></label>
+    <label>Açıklama<textarea id="sellDesc" rows="3"></textarea></label>
+    <button class="primary" onclick="addProduct()" style="width:100%; margin-top:16px;">Yayınla</button>
+  </div>
+</div>
+
+<!-- MODAL: PAYLAŞIM -->
+<div id="shareModal" class="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal('shareModal')">×</button>
+    <h2>Paylaşım Oluştur</h2>
+    <label>Başlık<input id="shareTitle"></label>
+    <label>İçerik<textarea id="shareText" rows="4"></textarea></label>
+    <button class="primary" onclick="addShare()" style="width:100%; margin-top:16px;">Paylaş</button>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+<script>
+// ==================== FIREBASE ====================
+const firebaseConfig = {
+  apiKey: "AIzaSyCPChYroY3_8xwd2ls4rEhD6EJzyj89Jks",
+  authDomain: "cybertech-community-fd4eb.firebaseapp.com",
+  databaseURL: "https://cybertech-community-fd4eb-default-rtdb.firebaseio.com",
+  projectId: "cybertech-community-fd4eb",
+  storageBucket: "cybertech-community-fd4eb.firebasestorage.app",
+  messagingSenderId: "409035442801",
+  appId: "1:409035442801:web:0bb62a99f1ff2c5cb0a9d0"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+let USERS_CACHE = {};
+let PRODUCTS_CACHE = {};
+let SHARES_CACHE = {};
+let roleWatcher = null;
+
+// Rol hiyerarşisi: Üye < Moderatör < Admin < Kurucu
+const ROL_SIRASI = ['Üye', 'Moderatör', 'Admin', 'Kurucu'];
+const ROL_SIRASI_LOWER = ['üye', 'moderatör', 'admin', 'kurucu'];
+
+// ==================== YARDIMCI ====================
+function isLoggedIn() { return !!localStorage.getItem('rdxyUser'); }
+function getUser() {
+  try {
+    const s = localStorage.getItem('rdxyUser');
+    if (!s || s === 'undefined' || s === 'null') return null;
+    return JSON.parse(s);
+  } catch(e) { return null; }
+}
+function myRoleIndex() {
+  const user = getUser();
+  if (!user) return -1;
+  return ROL_SIRASI_LOWER.indexOf((user.role || '').toLowerCase());
+}
+function isAuthorized() { return myRoleIndex() >= 1; } // Moderatör ve üstü
+function isKurucu() { return myRoleIndex() >= 3; }
+
+function girisKontrol() {
+  if (!isLoggedIn()) {
+    document.getElementById('girisModal').classList.add('open');
+    document.getElementById('anaIcerik').style.display = 'none';
+    return false;
+  }
+  return true;
+}
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.display = 'block';
+  clearTimeout(t._tm);
+  t._tm = setTimeout(()=>{t.style.display='none';},3000);
+}
+function copyIp() {
+  const ip = 'play.rdxy.net';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(ip).then(()=>showToast('✅ IP kopyalandı: ' + ip)).catch(()=>showToast('📋 IP: ' + ip));
+  } else {
+    showToast('📋 IP: ' + ip);
+  }
+}
+function joinDiscord(){ window.open('https://discord.gg/rdxy','_blank'); }
+
+// ==================== YETKİLİ GÖRÜNÜRLÜK ====================
+function updateAdminVisibility() {
+  const adminNav = document.getElementById('adminNav');
+  const addProductBtn = document.getElementById('addProductBtn');
+  const addShareBtn = document.getElementById('addShareBtn');
+  const pdPanel = document.getElementById('playerDataPanel');
+  const auth = isAuthorized();
+
+  if (adminNav) adminNav.style.display = auth ? 'inline-block' : 'none';
+  if (addProductBtn) addProductBtn.style.display = auth ? 'inline-block' : 'none';
+  if (addShareBtn) addShareBtn.style.display = auth ? 'inline-block' : 'none';
+  if (pdPanel) pdPanel.style.display = isKurucu() ? 'block' : 'none';
+}
+
+// ==================== CAPTCHA ====================
+function captchaYenile() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+  let kod = '';
+  for (let i = 0; i < 6; i++) kod += chars.charAt(Math.floor(Math.random() * chars.length));
+  document.getElementById('captchaKod').textContent = kod;
+  document.getElementById('captchaCevap').value = '';
+}
+function captchaKontrol() {
+  return document.getElementById('captchaCevap').value.trim() === document.getElementById('captchaKod').textContent;
+}
+
+// ==================== MODAL ====================
+let mod = 'giris';
+function modalAc(tip) {
+  mod = tip;
+  document.getElementById('girisModal').classList.add('open');
+  document.getElementById('modalHata').style.display = 'none';
+  if (tip === 'kayit') {
+    document.getElementById('modalAltYazi').textContent = 'Yeni hesap oluştur';
+    document.getElementById('modalGirisBtn').style.display = 'none';
+    document.getElementById('modalKayitBtn').style.display = 'block';
+    document.getElementById('loginEmail').style.display = 'block';
+    document.getElementById('loginPassTekrar').style.display = 'block';
+    document.getElementById('gecisLink').textContent = 'Zaten hesabın var mı? Giriş yap';
+  } else {
+    document.getElementById('modalAltYazi').textContent = 'Minecraft sunucumuza giriş yap';
+    document.getElementById('modalGirisBtn').style.display = 'block';
+    document.getElementById('modalKayitBtn').style.display = 'none';
+    document.getElementById('loginEmail').style.display = 'none';
+    document.getElementById('loginPassTekrar').style.display = 'none';
+    document.getElementById('gecisLink').textContent = 'Hesabın yok mu? Kayıt ol';
+  }
+  captchaYenile();
+}
+function modalGecis() { modalAc(mod === 'giris' ? 'kayit' : 'giris'); }
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+
+// ==================== GİRİŞ / KAYIT ====================
+function girisYap() {
+  const user = document.getElementById('loginUser').value.trim();
+  const pass = document.getElementById('loginPass').value.trim();
+  const hata = document.getElementById('modalHata');
+  if (!user || !pass) { hata.textContent = '⚠️ Tüm alanları doldurun.'; hata.style.display = 'block'; return; }
+  if (!captchaKontrol()) { hata.textContent = '⚠️ Captcha kodu yanlış!'; hata.style.display = 'block'; captchaYenile(); return; }
+  const key = user.toLowerCase();
+  const found = USERS_CACHE[key];
+  if (found && found.password === pass) {
+    let role = found.role || 'Üye';
+    localStorage.setItem('rdxyUser', JSON.stringify({name: found.name, role: role}));
+    girisBasarili(found.name, role);
+    watchCurrentUserRole();
+    showToast('✅ Hoş geldin, ' + found.name + '!');
+  } else {
+    hata.textContent = '❌ Kullanıcı adı veya şifre hatalı!';
+    hata.style.display = 'block';
+    captchaYenile();
+  }
+}
+
+function kayitOl() {
+  const user = document.getElementById('loginUser').value.trim();
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass = document.getElementById('loginPass').value.trim();
+  const passTekrar = document.getElementById('loginPassTekrar').value.trim();
+  const hata = document.getElementById('modalHata');
+  if (!user || !email || !pass || !passTekrar) { hata.textContent = '⚠️ Tüm alanları doldurun.'; hata.style.display = 'block'; return; }
+  if (!email.endsWith('@gmail.com')) { hata.textContent = '⚠️ Sadece @gmail.com kabul edilir.'; hata.style.display = 'block'; return; }
+  if (pass.length < 6) { hata.textContent = '⚠️ Şifre min 6 karakter.'; hata.style.display = 'block'; return; }
+  if (pass !== passTekrar) { hata.textContent = '⚠️ Şifreler eşleşmiyor.'; hata.style.display = 'block'; return; }
+  if (['kurucu','admin','moderator','moderatör','owner','rdxy'].includes(user.toLowerCase())) {
+    hata.textContent = '⚠️ Bu kullanıcı adı alınamaz!'; hata.style.display = 'block'; return;
+  }
+  if (!captchaKontrol()) { hata.textContent = '⚠️ Captcha yanlış!'; hata.style.display = 'block'; captchaYenile(); return; }
+  const key = user.toLowerCase();
+  if (USERS_CACHE[key]) { hata.textContent = '⚠️ Bu kullanıcı adı alınmış.'; hata.style.display = 'block'; return; }
+  for (const k in USERS_CACHE) {
+    if (USERS_CACHE[k].email === email) { hata.textContent = '⚠️ Bu e-posta kayıtlı.'; hata.style.display = 'block'; return; }
+  }
+  const yeniKullanici = { name: user, email, password: pass, role: 'Üye', kayitTarihi: new Date().toLocaleString() };
+  db.ref('users/' + key).set(yeniKullanici).then(() => {
+    localStorage.setItem('rdxyUser', JSON.stringify({name: user, role: 'Üye'}));
+    girisBasarili(user, 'Üye');
+    watchCurrentUserRole();
+    showToast('✅ Kayıt başarılı! Hoş geldin, ' + user + '!');
+  }).catch(err => {
+    hata.textContent = '❌ Kayıt hatası: ' + err.message;
+    hata.style.display = 'block';
+  });
+}
+
+function girisBasarili(name, role) {
+  document.getElementById('girisModal').classList.remove('open');
+  document.getElementById('anaIcerik').style.display = 'block';
+  document.getElementById('menuKullanici').textContent = '👤 ' + name;
+  document.getElementById('menuKullanici').style.display = 'inline';
+  document.getElementById('girisButon').style.display = 'none';
+  document.getElementById('kayitButon').style.display = 'none';
+  document.getElementById('cikisButon').style.display = 'inline-flex';
+  updateAdminVisibility();
+  renderPlayerData();
+  renderUsersList();
+}
+
+// ==================== ROL TAKİBİ ====================
+function watchCurrentUserRole() {
+  if (roleWatcher) { roleWatcher.off(); roleWatcher = null; }
+  const user = getUser();
+  if (!user) return;
+  roleWatcher = db.ref('users/' + user.name.toLowerCase());
+  roleWatcher.on('value', snap => {
+    if (!snap.exists()) return;
+    const data = snap.val();
+    const newRole = data.role || 'Üye';
+    const stored = getUser();
+    if (stored && stored.role !== newRole) {
+      localStorage.setItem('rdxyUser', JSON.stringify({name: data.name, role: newRole}));
+      updateAdminVisibility();
+      if (!isAuthorized() && document.getElementById('admin').classList.contains('active')) {
+        go('home');
+      }
+      showToast('🔄 Rolün güncellendi: ' + newRole);
+    }
+  });
+}
+
+// ==================== ÇIKIŞ ====================
+function cikisYap() {
+  if (roleWatcher) { roleWatcher.off(); roleWatcher = null; }
+  localStorage.removeItem('rdxyUser');
+  document.getElementById('anaIcerik').style.display = 'none';
+  document.getElementById('menuKullanici').style.display = 'none';
+  document.getElementById('girisButon').style.display = 'inline-flex';
+  document.getElementById('kayitButon').style.display = 'inline-flex';
+  document.getElementById('cikisButon').style.display = 'none';
+  document.getElementById('adminNav').style.display = 'none';
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
+  document.getElementById('loginEmail').value = '';
+  document.getElementById('loginPassTekrar').value = '';
+  document.getElementById('captchaCevap').value = '';
+  modalAc('giris');
+  showToast('🚪 Çıkış yapıldı.');
+}
+
+// ==================== NAV ====================
+function go(page){
+  if (!girisKontrol()) return;
+  if (page === 'admin' && !isAuthorized()) { showToast('⛔ Yetkin yok.'); return; }
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.nav-btn[data-page="' + page + '"]')?.classList.add('active');
+  if (page === 'admin') { renderUsersList(); renderPlayerData(); updateAdminVisibility(); }
+}
+document.querySelectorAll('.nav-btn[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+
+// ==================== FIREBASE LISTENERS ====================
+db.ref('users').on('value', snapshot => {
+  USERS_CACHE = snapshot.val() || {};
+  const el = document.getElementById('statUsers');
+  if (el) el.textContent = Object.keys(USERS_CACHE).length;
+  renderPlayerData();
+  renderUsersList();
+});
+
+db.ref('products').on('value', snapshot => {
+  PRODUCTS_CACHE = snapshot.val() || {};
+  const el = document.getElementById('statProducts');
+  if (el) el.textContent = Object.keys(PRODUCTS_CACHE).length;
+  renderProducts();
+  renderFeatured();
+});
+
+db.ref('shares').on('value', snapshot => {
+  SHARES_CACHE = snapshot.val() || {};
+  const el = document.getElementById('statShares');
+  if (el) el.textContent = Object.keys(SHARES_CACHE).length;
+  renderFileFeed();
+});
+
+// ==================== SEED ====================
+(function seedData() {
+  db.ref('users/rdxy').once('value').then(snap => {
+    if (!snap.exists()) {
+      db.ref('users/rdxy').set({
+        name: 'rdxy', email: 'rdxy@gmail.com', password: 'rdxy123', role: 'Kurucu',
+        kayitTarihi: new Date().toLocaleString()
+      });
+      console.log('✅ Kurucu hesabı oluşturuldu: rdxy / rdxy123');
+    }
+  });
+
+  db.ref('products').once('value').then(snap => {
+    if (!snap.exists() || Object.keys(snap.val() || {}).length === 0) {
+      const demoProducts = {
+        'p1': {name: 'Demir Paket', cat: 'Rütbe', price: 50, desc: 'Renkli isim, /fly, 5 ev, /kit demir'},
+        'p2': {name: 'Altın Paket', cat: 'Rütbe', price: 100, desc: '+ /heal /feed, 10 ev, /kit altın, prefix'},
+        'p3': {name: 'Elmas Paket', cat: 'Rütbe', price: 200, desc: '+ /god /repair, 20 ev, /kit elmas, özel prefix'},
+        'p4': {name: 'Netherite Paket', cat: 'Rütbe', price: 500, desc: 'Tüm özellikler + özel tag, VIP sohbet, /nick'},
+        'p5': {name: '10.000 Coin', cat: 'Para', price: 25, desc: 'Sunucu içi 10.000 coin'},
+        'p6': {name: 'Kozmetik Seti', cat: 'Kozmetik', price: 75, desc: 'Özel partikül ve şapka efektleri'}
+      };
+      db.ref('products').set(demoProducts);
+      console.log('✅ Demo ürünler eklendi.');
+    }
+  });
+
+  db.ref('shares').once('value').then(snap => {
+    if (!snap.exists() || Object.keys(snap.val() || {}).length === 0) {
+      db.ref('shares').set({
+        's1': {title: 'Sunucu Açıldı! 🎉', text: 'RDXY Minecraft sunucumuz resmi olarak açılmıştır. İyi oyunlar!', date: new Date().toLocaleString()},
+        's2': {title: 'Yeni Mod: SkyBlock', text: 'SkyBlock modu aktif edildi. /skyblock yazarak başlayabilirsiniz.', date: new Date().toLocaleString()}
+      });
+      console.log('✅ Demo paylaşımlar eklendi.');
+    }
+  });
+})();
+
+// ==================== UPTIME ====================
+function updateUptime() {
+  if (!window._startTime) window._startTime = Date.now();
+  const elapsed = Math.floor((Date.now() - window._startTime) / 1000);
+  let s = elapsed < 60 ? elapsed + 's' : elapsed < 3600 ? Math.floor(elapsed/60) + 'm' : Math.floor(elapsed/3600) + 'h';
+  const el = document.getElementById('statUptime');
+  if (el) el.textContent = s;
+}
+setInterval(updateUptime, 5000); updateUptime();
+
+// ==================== PLAYERDATA ====================
+function maskeleSifre(sifre) {
+  if (!sifre) return '**';
+  const gorunen = Math.min(3, Math.max(2, Math.floor(sifre.length / 3)));
+  return sifre.substring(0, gorunen) + '*'.repeat(Math.max(2, sifre.length - gorunen));
+}
+function renderPlayerData() {
+  const area = document.getElementById('playerDataArea');
+  if (!area) return;
+  if (!isKurucu()) { area.innerHTML = ''; return; }
+  const users = Object.values(USERS_CACHE);
+  if (users.length === 0) { area.innerHTML = '<div class="playerdata-empty">Henüz kayıtlı oyuncu yok.</div>'; return; }
+  let html = '<table class="playerdata-table"><thead><tr>';
+  html += '<th>#</th><th>Kullanıcı Adı</th><th>Şifre</th><th>E-posta</th><th>Rol</th><th>Kayıt Tarihi</th>';
+  html += '</tr></thead><tbody>';
+  users.forEach((u, i) => {
+    const rc = (u.role || 'Üye').toLowerCase().replace('ü','u').replace('ö','o').replace('ı','i').replace('ş','s');
+    html += '<tr>';
+    html += '<td style="color:#666;">' + (i + 1) + '</td>';
+    html += '<td class="uname">' + (u.name || '-') + '</td>';
+    html += '<td class="upass">' + maskeleSifre(u.password) + '</td>';
+    html += '<td class="uemail">' + (u.email || '-') + '</td>';
+    html += '<td><span class="urole ' + rc + '">' + (u.role || 'Üye') + '</span></td>';
+    html += '<td style="color:#666;font-size:11px;">' + (u.kayitTarihi || '-') + '</td>';
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  area.innerHTML = html;
+}
+
+// ==================== YETKİLİ PANEL ====================
+function renderUsersList() {
+  const listDiv = document.getElementById('usersList');
+  if (!listDiv) return;
+  const users = Object.values(USERS_CACHE);
+  if (users.length === 0) { listDiv.innerHTML = '<p style="color:#666;">Henüz kullanıcı yok.</p>'; return; }
+  let html = '<p style="color:var(--muted);font-size:12px;margin-bottom:8px;">Kayıtlı Oyuncular (' + users.length + '):</p>';
+  users.forEach(u => {
+    html += '<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid var(--border);align-items:center;">';
+    html += '<span style="color:#eafbe8;font-weight:600;">' + u.name + ' <small style="color:var(--muted);font-weight:400;">(' + (u.email || '-') + ')</small></span>';
+    html += '<span style="color:var(--grass);font-weight:700;font-size:12px;">' + (u.role || 'Üye') + '</span>';
+    html += '</div>';
+  });
+  listDiv.innerHTML = html;
+}
+
+function checkUserForRole() {
+  const nameInput = document.getElementById('roleUserName').value.trim();
+  const area = document.getElementById('roleSetupArea');
+  if (!nameInput) { showToast('⚠️ Kullanıcı adı girin.'); return; }
+  const user = USERS_CACHE[nameInput.toLowerCase()];
+  if (!user) { area.innerHTML = '<p style="color:#ef4444;">❌ Bu kullanıcı kayıtlı değil.</p>'; return; }
+
+  const benimIndex = myRoleIndex();
+  const gorunurRoller = ROL_SIRASI.slice(0, benimIndex + 1);
+  const secenekler = gorunurRoller.map(r => '<option value="' + r + '"' + (r === (user.role || 'Üye') ? ' selected' : '') + '>' + r + '</option>').join('');
+
+  area.innerHTML = '<p style="color:var(--muted); margin-bottom:8px;">Oyuncu: <b style="color:#eafbe8;">' + user.name + '</b> <span style="color:#666;font-size:11px;">(Mevcut: ' + (user.role || 'Üye') + ')</span></p>' +
+    '<select id="roleSelect" style="width:100%; padding:10px; background:rgba(0,0,0,0.3); border:1px solid var(--border); color:var(--text); border-radius:10px; font-family:inherit;">' + secenekler + '</select>' +
+    '<div style="display:flex; gap:8px; margin-top:8px;">' +
+    '<button class="primary" onclick="updateUserRole(\'' + user.name.replace(/'/g, "\\'") + '\')" style="flex:1;">Yetki Ver</button>' +
+    '<button class="danger" onclick="removeUserRole(\'' + user.name.replace(/'/g, "\\'") + '\')" style="flex:1;">Yetki Kaldır</button>' +
+    '</div>';
+}
+
+function updateUserRole(username) {
+  const newRole = document.getElementById('roleSelect').value;
+  const mevcut = getUser();
+  const benimRolum = (mevcut?.role || '').toLowerCase();
+  const benimAdim = (mevcut?.name || '').toLowerCase();
+  const hedefRol = newRole.toLowerCase();
+
+  const benimIndex = ROL_SIRASI_LOWER.indexOf(benimRolum);
+  const hedefIndex = ROL_SIRASI_LOWER.indexOf(hedefRol);
+  const hedefKullanici = USERS_CACHE[username.toLowerCase()];
+  const hedefKullaniciRol = (hedefKullanici?.role || '').toLowerCase();
+  const hedefKullaniciIndex = ROL_SIRASI_LOWER.indexOf(hedefKullaniciRol);
+  const hedefAd = (hedefKullanici?.name || '').toLowerCase();
+
+  if (hedefIndex >= benimIndex) { showToast('⛔ Kendi rolünden üstünü veremezsin!'); return; }
+  if (hedefAd !== benimAdim && hedefKullaniciIndex >= benimIndex) { showToast('⛔ Kendinle eşit veya üstün birinin rolünü değiştiremezsin!'); return; }
+
+  db.ref('users/' + username.toLowerCase() + '/role').set(newRole).then(() => {
+    showToast('✅ ' + username + ' → ' + newRole);
+    document.getElementById('roleSetupArea').innerHTML = '';
+    document.getElementById('roleUserName').value = '';
+  });
+}
+
+function removeUserRole(username) {
+  const mevcut = getUser();
+  const benimAdim = (mevcut?.name || '').toLowerCase();
+  const benimRolum = (mevcut?.role || '').toLowerCase();
+  const hedef = USERS_CACHE[username.toLowerCase()];
+  const hedefRol = (hedef?.role || 'üye').toLowerCase();
+  const hedefAd = (hedef?.name || '').toLowerCase();
+
+  const benimIndex = ROL_SIRASI_LOWER.indexOf(benimRolum);
+  const hedefIndex = ROL_SIRASI_LOWER.indexOf(hedefRol);
+
+  if (hedefAd !== benimAdim && hedefIndex >= benimIndex) { showToast('⛔ Kendinle eşit veya üstün birinin yetkisini kaldıramazsın!'); return; }
+
+  db.ref('users/' + username.toLowerCase() + '/role').set('Üye').then(() => {
+    showToast('🔄 ' + username + ' yetkisi kaldırıldı');
+    document.getElementById('roleSetupArea').innerHTML = '';
+    document.getElementById('roleUserName').value = '';
+  });
+}
+
+// ==================== ÜRÜNLER ====================
+function addProduct(){
+  if (!isAuthorized()) { showToast('⛔ Yetkiniz yok.'); return; }
+  const name = document.getElementById('sellName').value.trim();
+  const cat = document.getElementById('sellCat').value;
+  const price = document.getElementById('sellPrice').value;
+  const desc = document.getElementById('sellDesc').value.trim();
+  if (!name) { showToast('⚠️ Ürün adı gerekli.'); return; }
+  const id = 'p_' + Date.now();
+  db.ref('products/' + id).set({ name, cat: cat || 'Rütbe', price: parseFloat(price) || 0, desc: desc || 'Açıklama yok' }).then(() => {
+    closeModal('sellModal');
+    document.getElementById('sellName').value = '';
+    document.getElementById('sellPrice').value = '';
+    document.getElementById('sellDesc').value = '';
+    showToast('✅ Paket eklendi.');
+  });
+}
+
+function quickAddProduct(){
+  if (!isAuthorized()) { showToast('⛔ Yetkiniz yok.'); return; }
+  const name = document.getElementById('quickProductName').value.trim();
+  const price = document.getElementById('quickProductPrice').value;
+  if (!name) { showToast('⚠️ Paket adı gerekli.'); return; }
+  const id = 'p_' + Date.now();
+  db.ref('products/' + id).set({ name, cat: 'Rütbe', price: parseFloat(price) || 0, desc: 'Yeni paket' }).then(() => {
+    document.getElementById('quickProductName').value = '';
+    document.getElementById('quickProductPrice').value = '';
+    showToast('✅ Paket eklendi.');
+  });
+}
+
+function renderProducts(){
+  const products = Object.values(PRODUCTS_CACHE);
+  const container = document.getElementById('products');
+  if (!container) return;
+  const search = document.getElementById('productSearch')?.value.toLowerCase() || '';
+  const cat = document.getElementById('category')?.value || '';
+  let filtered = products.filter(p => (p.name||'').toLowerCase().includes(search) && (cat === '' || p.cat === cat));
+  if (filtered.length === 0) { container.innerHTML = '<div class="card"><p style="color:var(--muted);">Paket bulunamadı.</p></div>'; return; }
+  container.innerHTML = filtered.map(p =>
+    '<div class="card"><h3>' + p.name + '</h3><p>' + (p.desc||'') + '</p><div style="color:var(--grass);font-weight:800;font-size:20px;margin-top:12px;">₺' + p.price + '</div><small style="color:var(--muted);font-size:11px;display:block;margin-top:8px;text-transform:uppercase;letter-spacing:1px;">' + (p.cat||'') + '</small></div>'
+  ).join('');
+}
+
+function renderFeatured(){
+  const products = Object.values(PRODUCTS_CACHE).slice(0, 3);
+  const container = document.getElementById('products-featured');
+  if (!container) return;
+  if (products.length === 0) { container.innerHTML = '<div class="card"><p style="color:var(--muted);">Henüz paket yok.</p></div>'; return; }
+  container.innerHTML = products.map(p =>
+    '<div class="card"><h3>' + p.name + '</h3><p>' + (p.desc||'') + '</p><div style="color:var(--grass);font-weight:800;font-size:20px;margin-top:12px;">₺' + p.price + '</div></div>'
+  ).join('');
+}
+
+// ==================== PAYLAŞIMLAR ====================
+function addShare(){
+  if (!isAuthorized()) { showToast('⛔ Yetkiniz yok.'); return; }
+  const title = document.getElementById('shareTitle').value.trim();
+  const text = document.getElementById('shareText').value.trim();
+  if (!title && !text) { showToast('⚠️ En az bir şey girin.'); return; }
+  const id = 's_' + Date.now();
+  db.ref('shares/' + id).set({ title: title || 'Paylaşım', text: text || 'İçerik yok', date: new Date().toLocaleString() }).then(() => {
+    closeModal('shareModal');
+    document.getElementById('shareTitle').value = '';
+    document.getElementById('shareText').value = '';
+    showToast('✅ Paylaşım oluşturuldu.');
+  });
+}
+
+function renderFileFeed(){
+  const feed = document.getElementById('fileFeed');
+  if (!feed) return;
+  const shares = Object.values(SHARES_CACHE);
+  if (shares.length === 0) { feed.innerHTML = '<div class="feed-item" style="color:var(--muted);">Henüz paylaşım yok.</div>'; return; }
+  feed.innerHTML = shares.slice(-15).reverse().map(s =>
+    '<div class="feed-item"><h4>' + (s.title||'Paylaşım') + '</h4><p>' + (s.text||'') + '</p><small>' + (s.date||'') + '</small></div>'
+  ).join('');
+}
+
+function setChannel(ch, btn){
+  document.querySelectorAll('.channel-tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  showToast('📂 #' + ch);
+}
+
+// ==================== DUYURU ====================
+function postAnnouncement(){
+  if (!isAuthorized()) { showToast('⛔ Yetkiniz yok.'); return; }
+  const text = document.getElementById('announcement').value.trim();
+  if (!text) { showToast('⚠️ Duyuru metni gir.'); return; }
+  const id = 's_' + Date.now();
+  db.ref('shares/' + id).set({ title: '📢 Duyuru', text: text, date: new Date().toLocaleString() }).then(() => {
+    document.getElementById('announcement').value = '';
+    showToast('✅ Duyuru yayınlandı.');
+  });
+}
+
+// ==================== RESET ====================
+function resetDemo(){
+  if (!isKurucu()) { showToast('⛔ Sadece Kurucu sıfırlayabilir.'); return; }
+  if (confirm('Ürünler ve paylaşımlar silinecek. Oyuncu hesapları KORUNACAK. Emin misin?')) {
+    db.ref('products').remove();
+    db.ref('shares').remove();
+    showToast('🗑️ Ürünler ve paylaşımlar silindi. Oyuncular korundu.');
+  }
+}
+
+// ==================== BAŞLANGIÇ ====================
+(function init(){
+  if (isLoggedIn()) {
+    const user = getUser();
+    if (user && user.name) {
+      document.getElementById('girisModal').classList.remove('open');
+      document.getElementById('anaIcerik').style.display = 'block';
+      document.getElementById('menuKullanici').textContent = '👤 ' + user.name;
+      document.getElementById('menuKullanici').style.display = 'inline';
+      document.getElementById('girisButon').style.display = 'none';
+      document.getElementById('kayitButon').style.display = 'none';
+      document.getElementById('cikisButon').style.display = 'inline-flex';
+      updateAdminVisibility();
+      watchCurrentUserRole();
+    }
+  } else {
+    document.getElementById('girisModal').classList.add('open');
+    document.getElementById('anaIcerik').style.display = 'none';
+    document.getElementById('girisButon').style.display = 'inline-flex';
+    document.getElementById('kayitButon').style.display = 'inline-flex';
+    document.getElementById('cikisButon').style.display = 'none';
+    modalAc('giris');
+  }
+  updateAdminVisibility();
+  setTimeout(updateAdminVisibility, 500);
+})();
+</script>
+</body>
+</html>
