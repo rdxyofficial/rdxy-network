@@ -9,19 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0a0e0a;--surface:#111611;--surface-2:#161c16;--surface-3:#1c241c;
-  --border:#1f2720;--border-hi:#2a352a;
-  --text:#e5e8e4;--text-muted:#828b7d;--text-dim:#4d564b;
-  --green:#4ade80;--green-dark:#22c55e;--green-deep:#15803d;
-  --gold:#fbbf24;--red:#ef4444;--blue:#60a5fa;--purple:#a78bfa;
-  --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
-  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-}
+:root{--bg:#0a0e0a;--surface:#111611;--surface-2:#161c16;--surface-3:#1c241c;--border:#1f2720;--border-hi:#2a352a;--text:#e5e8e4;--text-muted:#828b7d;--text-dim:#4d564b;--green:#4ade80;--green-dark:#22c55e;--green-deep:#15803d;--gold:#fbbf24;--red:#ef4444;--blue:#60a5fa;--purple:#a78bfa;--mono:'JetBrains Mono',monospace;--sans:'Inter',system-ui,sans-serif}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh;-webkit-font-smoothing:antialiased;font-size:14px;
-  background-image:linear-gradient(rgba(74,222,128,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,0.018) 1px,transparent 1px);
-  background-size:32px 32px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh;-webkit-font-smoothing:antialiased;font-size:14px;background-image:linear-gradient(rgba(74,222,128,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,0.018) 1px,transparent 1px);background-size:32px 32px}
 button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit;outline:none}
 button{cursor:pointer;border:none;background:none}
 a{color:inherit;text-decoration:none}
@@ -29,48 +19,48 @@ a{color:inherit;text-decoration:none}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border-hi);border-radius:10px;border:2px solid var(--bg)}
-::-webkit-scrollbar-thumb:hover{background:var(--green-deep)}
 
-/* ============ MODAL: GİRİŞ ============ */
-#girisModal{position:fixed;inset:0;background:rgba(5,8,5,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:99999;padding:20px;overflow-y:auto}
+#girisModal{position:fixed;inset:0;background:rgba(5,8,5,0.94);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:99999;padding:20px;overflow-y:auto}
 #girisModal.open{display:flex}
 .giris-kutu{background:var(--surface);border:1px solid var(--border-hi);border-radius:16px;padding:36px 32px;max-width:400px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,0.6);margin:auto}
 .giris-kutu .logo-center{display:flex;justify-content:center;margin-bottom:14px}
-.giris-kutu h1{font-size:22px;font-weight:800;text-align:center;letter-spacing:-0.02em;color:#fff}
+.giris-kutu h1{font-size:22px;font-weight:800;text-align:center;color:#fff}
 .giris-kutu .alt-yazi{color:var(--text-muted);font-size:13px;text-align:center;margin-bottom:22px;margin-top:4px}
-.giris-kutu input{width:100%;padding:11px 14px;background:var(--bg);border:1px solid var(--border-hi);color:var(--text);border-radius:10px;font-size:13.5px;margin-bottom:10px;transition:border-color 0.15s}
+.giris-kutu input{width:100%;padding:11px 14px;background:var(--bg);border:1px solid var(--border-hi);color:var(--text);border-radius:10px;font-size:13.5px;margin-bottom:10px;transition:border-color .15s}
 .giris-kutu input:focus{border-color:var(--green)}
 .giris-kutu input::placeholder{color:var(--text-dim)}
-.btn-giris{width:100%;padding:12px;background:var(--green);color:#0a0e0a;border-radius:10px;font-weight:700;font-size:14px;transition:background 0.15s;margin-top:6px}
+.btn-giris{width:100%;padding:12px;background:var(--green);color:#0a0e0a;border-radius:10px;font-weight:700;font-size:14px;transition:.15s;margin-top:6px}
 .btn-giris:hover{background:#5ee595}
+.btn-giris:disabled{opacity:.5;cursor:not-allowed}
 .btn-giris.btn-kayit{background:var(--surface-3);color:var(--text)}
 .btn-giris.btn-kayit:hover{background:#242e24}
 .captcha{display:flex;gap:8px;align-items:center;margin-bottom:10px;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:10px}
 .captcha .kod{flex:0 0 auto;padding:8px 14px;background:var(--surface-2);border:1px dashed var(--border-hi);border-radius:8px;font-family:var(--mono);font-size:16px;font-weight:700;letter-spacing:2px;color:var(--green);user-select:none}
 .captcha input{flex:1;margin:0!important;padding:8px 10px!important;font-size:13px!important}
-.captcha .yenile{flex:0 0 auto;padding:8px;color:var(--text-muted);font-size:16px;border-radius:6px;transition:color 0.15s}
+.captcha .yenile{flex:0 0 auto;padding:8px;color:var(--text-muted);font-size:16px;border-radius:6px;transition:color .15s}
 .captcha .yenile:hover{color:var(--green)}
 .gecis-link{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--text-muted);cursor:pointer}
 .gecis-link:hover{color:var(--green)}
 .hata{color:var(--red);font-size:12.5px;text-align:center;margin-top:10px;display:none}
 .hata.show{display:block}
+.info-box{background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--green);text-align:center;margin-bottom:14px;display:none}
+.info-box.show{display:block}
 
-/* ============ TOPBAR ============ */
-.topbar{background:rgba(10,14,10,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:sticky;top:0;z-index:100;flex-wrap:wrap}
+.topbar{background:rgba(10,14,10,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:sticky;top:0;z-index:100;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;cursor:pointer}
 .brand-logo{width:34px;height:34px;flex-shrink:0}
 .brand-text{display:flex;flex-direction:column;line-height:1.1}
-.brand-name{font-size:16px;font-weight:800;letter-spacing:0.02em;color:#fff}
-.brand-sub{font-size:9.5px;letter-spacing:0.14em;color:var(--text-dim);text-transform:uppercase;font-weight:600;margin-top:1px}
+.brand-name{font-size:16px;font-weight:800;letter-spacing:.02em;color:#fff}
+.brand-sub{font-size:9.5px;letter-spacing:.14em;color:var(--text-dim);text-transform:uppercase;font-weight:600;margin-top:1px}
 nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
-.nav-btn{padding:8px 14px;color:var(--text-muted);border-radius:8px;font-size:13px;font-weight:500;transition:all 0.15s}
+.nav-btn{padding:8px 14px;color:var(--text-muted);border-radius:8px;font-size:13px;font-weight:500;transition:all .15s}
 .nav-btn:hover{color:var(--text);background:var(--surface)}
 .nav-btn.active{color:var(--green);background:rgba(74,222,128,0.08)}
 .auth-wrap{display:flex;gap:8px;align-items:center}
 .user-chip{display:flex;align-items:center;gap:6px;padding:5px 10px 5px 5px;background:var(--surface);border:1px solid var(--border);border-radius:100px;font-size:12.5px;color:var(--text);font-weight:500}
 .user-chip .av{width:22px;height:22px;background:var(--green-deep);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff}
 .user-chip .role-mini{font-size:10px;padding:1px 6px;border-radius:100px;background:rgba(74,222,128,0.12);color:var(--green);font-weight:700;margin-left:2px}
-.btn-tb{padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;transition:all 0.15s;display:inline-flex;align-items:center;gap:6px}
+.btn-tb{padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;transition:.15s;display:inline-flex;align-items:center;gap:6px}
 .btn-tb-primary{background:var(--green);color:#0a0e0a}
 .btn-tb-primary:hover{background:#5ee595}
 .btn-tb-ghost{background:var(--surface);color:var(--text);border:1px solid var(--border)}
@@ -78,84 +68,75 @@ nav{display:flex;gap:2px;flex-wrap:wrap;align-items:center}
 .btn-tb-danger{background:rgba(239,68,68,0.12);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)}
 .btn-tb-danger:hover{background:rgba(239,68,68,0.2)}
 
-/* ============ ANA LAYOUT ============ */
 #anaIcerik{display:none}
 #anaIcerik.show{display:block}
 main{min-height:calc(100vh - 60px)}
-.page{display:none;padding:36px 28px 72px;max-width:1240px;margin:0 auto;animation:fadeIn 0.35s ease}
+.page{display:none;padding:36px 28px 72px;max-width:1240px;margin:0 auto;animation:fadeIn .35s ease}
 .page.active{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ============ HERO ============ */
 .hero{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:center;padding:32px 0 48px;border-bottom:1px solid var(--border)}
-.eyebrow{color:var(--green);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;display:inline-flex;align-items:center;gap:8px;margin-bottom:14px}
+.eyebrow{color:var(--green);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;display:inline-flex;align-items:center;gap:8px;margin-bottom:14px}
 .eyebrow::before{content:'';width:20px;height:1px;background:var(--green)}
-.hero h1{font-size:clamp(30px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-0.02em;color:#fff}
+.hero h1{font-size:clamp(30px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-.02em;color:#fff}
 .hero h1 em{font-style:normal;color:var(--green)}
 .hero p{color:var(--text-muted);font-size:15.5px;max-width:520px;margin:16px 0 26px;line-height:1.65}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn-primary{background:var(--green);color:#0a0e0a;padding:12px 24px;border-radius:10px;font-weight:700;font-size:14px;transition:all 0.15s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--green);color:#0a0e0a;padding:12px 24px;border-radius:10px;font-weight:700;font-size:14px;transition:.15s;display:inline-flex;align-items:center;gap:8px}
 .btn-primary:hover{background:#5ee595;transform:translateY(-1px);box-shadow:0 8px 24px rgba(74,222,128,0.2)}
-.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border-hi);padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px;transition:all 0.15s}
+.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border-hi);padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px;transition:.15s}
 .btn-secondary:hover{background:var(--surface-2);border-color:var(--green-deep)}
-.btn-discord{background:rgba(88,101,242,0.14);color:#9ba5ff;border:1px solid rgba(88,101,242,0.28);padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px;transition:all 0.15s;display:inline-flex;align-items:center;gap:8px}
+.btn-discord{background:rgba(88,101,242,0.14);color:#9ba5ff;border:1px solid rgba(88,101,242,0.28);padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px;transition:.15s;display:inline-flex;align-items:center;gap:8px}
 .btn-discord:hover{background:rgba(88,101,242,0.22);color:#fff}
-
 .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;transition:border-color 0.2s}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;transition:border-color .2s}
 .stat-card:hover{border-color:var(--border-hi)}
-.stat-card .label{color:var(--text-dim);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700}
-.stat-card .val{color:var(--green);font-size:28px;font-weight:800;letter-spacing:-0.02em;margin-top:6px;line-height:1}
+.stat-card .label{color:var(--text-dim);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.stat-card .val{color:var(--green);font-size:28px;font-weight:800;letter-spacing:-.02em;margin-top:6px;line-height:1}
 .stat-card .sub{color:var(--text-muted);font-size:12px;margin-top:4px}
 
-/* ============ SECTION ============ */
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin:44px 0 22px}
-.section-head h2{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.01em}
+.section-head h2{font-size:22px;font-weight:800;color:#fff}
 .section-head p{color:var(--text-muted);font-size:13.5px;margin-top:4px}
-.link-more{color:var(--green);font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+.link-more{color:var(--green);font-size:13px;font-weight:600;cursor:pointer}
 .link-more:hover{color:#5ee595}
 
-/* ============ SUNUCU KARTLARI ============ */
 .server-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.server-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;transition:all 0.2s;cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:12px}
-.server-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0;transition:opacity 0.3s}
+.server-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;transition:.2s;cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:12px}
+.server-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0;transition:opacity .3s}
 .server-card:hover{border-color:var(--green-deep);transform:translateY(-3px)}
 .server-card:hover::after{opacity:1}
 .server-card-top{display:flex;gap:12px;align-items:flex-start}
 .server-icon{width:48px;height:48px;background:var(--surface-3);border:1px solid var(--border-hi);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;font-weight:800;color:var(--green);overflow:hidden}
 .server-info{flex:1;min-width:0}
-.server-name{font-size:15.5px;font-weight:700;color:#fff;line-height:1.3;letter-spacing:-0.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.server-name{font-size:15.5px;font-weight:700;color:#fff;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .server-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
-.tag{padding:2px 8px;background:var(--surface-3);border:1px solid var(--border-hi);border-radius:100px;font-size:10.5px;font-weight:600;color:var(--text-muted);letter-spacing:0.02em}
+.tag{padding:2px 8px;background:var(--surface-3);border:1px solid var(--border-hi);border-radius:100px;font-size:10.5px;font-weight:600;color:var(--text-muted)}
 .tag.green{background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.25);color:var(--green)}
 .tag.gold{background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.25);color:var(--gold)}
-.tag.purple{background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.25);color:var(--purple)}
 .tag.blue{background:rgba(96,165,250,0.1);border-color:rgba(96,165,250,0.25);color:var(--blue)}
 .server-desc{color:var(--text-muted);font-size:12.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .server-foot{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border);margin-top:auto}
-.server-ip{font-family:var(--mono);font-size:12px;color:var(--green);background:var(--bg);padding:4px 10px;border-radius:6px;border:1px solid var(--border-hi);display:flex;align-items:center;gap:6px}
+.server-ip{font-family:var(--mono);font-size:12px;color:var(--green);background:var(--bg);padding:4px 10px;border-radius:6px;border:1px solid var(--border-hi)}
 .server-players{color:var(--text-muted);font-size:12px;font-weight:600;display:flex;align-items:center;gap:5px}
 .dot-live{width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 6px var(--green);animation:pulse 1.6s ease-in-out infinite}
 .dot-live.offline{background:var(--text-dim);box-shadow:none;animation:none}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
 .empty-state{background:var(--surface);border:1px dashed var(--border-hi);border-radius:14px;padding:56px 24px;text-align:center}
-.empty-state .ico{font-size:38px;margin-bottom:14px;opacity:0.5}
+.empty-state .ico{font-size:38px;margin-bottom:14px;opacity:.5}
 .empty-state h3{color:var(--text);font-size:15px;font-weight:700;margin-bottom:6px}
 .empty-state p{color:var(--text-muted);font-size:13px;max-width:400px;margin:0 auto}
 
-/* ============ FİLTRELER ============ */
 .filter-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.filter-bar input,.filter-bar select{background:var(--bg);border:1px solid var(--border-hi);color:var(--text);padding:9px 13px;border-radius:8px;font-size:13px;transition:border-color 0.15s}
+.filter-bar input,.filter-bar select{background:var(--bg);border:1px solid var(--border-hi);color:var(--text);padding:9px 13px;border-radius:8px;font-size:13px;transition:border-color .15s}
 .filter-bar input:focus,.filter-bar select:focus{border-color:var(--green)}
 .filter-bar input{flex:1;min-width:180px}
 .filter-bar input::placeholder{color:var(--text-dim)}
 .filter-bar select option{background:var(--bg)}
-.search-icon{position:absolute;left:12px;color:var(--text-dim);font-size:14px}
 
-/* ============ FORMLAR ============ */
 .form-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;max-width:900px;margin:0 auto}
-.form-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-0.01em}
+.form-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px}
 .form-sub{color:var(--text-muted);font-size:13px;margin-bottom:24px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .form-grid .full{grid-column:1/-1}
@@ -163,22 +144,21 @@ main{min-height:calc(100vh - 60px)}
 .field label{color:var(--text);font-size:12.5px;font-weight:600}
 .field label .req{color:var(--red);margin-left:3px}
 .field label .hint{color:var(--text-dim);font-weight:400;font-size:11.5px;margin-left:6px}
-.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--border-hi);color:var(--text);padding:11px 14px;border-radius:10px;font-size:13.5px;transition:border-color 0.15s;width:100%}
+.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--border-hi);color:var(--text);padding:11px 14px;border-radius:10px;font-size:13.5px;transition:border-color .15s;width:100%}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green)}
 .field input::placeholder,.field textarea::placeholder{color:var(--text-dim)}
 .field textarea{resize:vertical;min-height:100px;font-family:inherit;line-height:1.55}
 .field select option{background:var(--bg)}
 .field .help{color:var(--text-dim);font-size:11.5px;margin-top:2px}
 .checkbox-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.chk{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;background:var(--bg);border:1px solid var(--border-hi);border-radius:8px;font-size:12.5px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.15s;user-select:none}
+.chk{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;background:var(--bg);border:1px solid var(--border-hi);border-radius:8px;font-size:12.5px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:.15s;user-select:none}
 .chk:hover{border-color:var(--green-deep);color:var(--text)}
 .chk input{display:none}
 .chk.on{background:rgba(74,222,128,0.1);border-color:var(--green);color:var(--green);font-weight:600}
 .form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:24px;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap}
 
-/* ============ YETKİLİ PANEL ============ */
 .admin-tabs{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap;background:var(--surface);padding:5px;border-radius:12px;border:1px solid var(--border);width:fit-content}
-.admin-tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--text-muted);transition:all 0.15s}
+.admin-tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--text-muted);transition:.15s}
 .admin-tab:hover{color:var(--text)}
 .admin-tab.active{background:var(--green);color:#0a0e0a}
 .admin-tab .count{display:inline-block;background:rgba(255,255,255,0.15);padding:1px 7px;border-radius:100px;font-size:10.5px;margin-left:6px;font-weight:700}
@@ -191,7 +171,7 @@ main{min-height:calc(100vh - 60px)}
 .req-meta{color:var(--text-muted);font-size:12px;margin-top:3px}
 .req-meta b{color:var(--text);font-weight:600}
 .req-actions{display:flex;gap:6px;flex-wrap:wrap}
-.btn-xs{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600;transition:all 0.15s}
+.btn-xs{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600;transition:.15s}
 .btn-xs.approve{background:rgba(34,197,94,0.14);color:#4ade80;border:1px solid rgba(34,197,94,0.3)}
 .btn-xs.approve:hover{background:rgba(34,197,94,0.24)}
 .btn-xs.reject{background:rgba(239,68,68,0.14);color:#fca5a5;border:1px solid rgba(239,68,68,0.3)}
@@ -199,105 +179,72 @@ main{min-height:calc(100vh - 60px)}
 .btn-xs.info{background:var(--surface-3);color:var(--text-muted);border:1px solid var(--border-hi)}
 .btn-xs.info:hover{color:var(--text);border-color:var(--green-deep)}
 
-.status-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:0.02em}
+.status-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700}
 .status-badge.pending{background:rgba(251,191,36,0.12);color:var(--gold);border:1px solid rgba(251,191,36,0.25)}
 .status-badge.approved{background:rgba(74,222,128,0.12);color:var(--green);border:1px solid rgba(74,222,128,0.25)}
 .status-badge.rejected{background:rgba(239,68,68,0.12);color:#fca5a5;border:1px solid rgba(239,68,68,0.25)}
 
-/* ============ PLAYERDATA ============ */
 .pd-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--border);border-radius:12px}
 .pd-table{width:100%;border-collapse:collapse;font-size:13px;min-width:900px}
-.pd-table th{text-align:left;padding:12px 14px;color:var(--text-dim);font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--border);background:var(--surface-2)}
+.pd-table th{text-align:left;padding:12px 14px;color:var(--text-dim);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border);background:var(--surface-2)}
 .pd-table td{padding:12px 14px;color:var(--text);border-bottom:1px solid var(--border)}
 .pd-table tr:last-child td{border-bottom:none}
 .pd-table tr:hover td{background:var(--surface-2)}
 .pd-uname{color:#fff;font-weight:600}
 .pd-pass{font-family:var(--mono);color:var(--gold);font-size:12px}
 .pd-email{color:var(--blue);font-size:12.5px}
-.role-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;font-size:10.5px;font-weight:700;letter-spacing:0.03em}
+.role-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;font-size:10.5px;font-weight:700}
 .role-pill.uye{background:var(--surface-3);color:var(--text-muted)}
 .role-pill.moderator{background:rgba(96,165,250,0.14);color:#93c5fd}
 .role-pill.admin{background:rgba(251,191,36,0.14);color:var(--gold)}
 .role-pill.kurucu{background:rgba(239,68,68,0.16);color:#fca5a5;border:1px solid rgba(239,68,68,0.3)}
 
-/* ============ MODAL: SUNUCU DETAY ============ */
-.modal{position:fixed;inset:0;background:rgba(5,8,5,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:9998;padding:20px;overflow-y:auto}
+.modal{position:fixed;inset:0;background:rgba(5,8,5,0.88);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:9998;padding:20px;overflow-y:auto}
 .modal.open{display:flex}
 .modal-box{background:var(--surface);border:1px solid var(--border-hi);border-radius:16px;padding:28px;max-width:640px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,0.6);margin:auto;position:relative;max-height:90vh;overflow-y:auto}
-.modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:8px;background:var(--surface-2);color:var(--text-muted);font-size:18px;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:8px;background:var(--surface-2);color:var(--text-muted);font-size:18px;display:flex;align-items:center;justify-content:center;transition:.15s}
 .modal-close:hover{background:var(--surface-3);color:#fff}
-.modal-box h2{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.01em;margin-bottom:4px}
+.modal-box h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:4px}
 .modal-box .m-sub{color:var(--text-muted);font-size:13px;margin-bottom:20px}
-
 .detail-row{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
 .detail-row:last-child{border-bottom:none}
 .detail-row .k{color:var(--text-muted);font-size:12.5px;font-weight:600;min-width:120px;flex-shrink:0}
 .detail-row .v{color:var(--text);font-size:13px;flex:1;word-break:break-word}
 .detail-row .v.mono{font-family:var(--mono);color:var(--green)}
 
-/* ============ TOAST ============ */
 #toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1px solid var(--border-hi);color:var(--text);padding:14px 22px;border-radius:12px;font-size:13.5px;font-weight:500;display:none;z-index:99999;box-shadow:0 12px 40px rgba(0,0,0,0.5);max-width:340px}
-#toast.show{display:block;animation:toastIn 0.3s ease}
+#toast.show{display:block;animation:toastIn .3s ease}
 #toast.success{border-color:rgba(74,222,128,0.4)}
 #toast.error{border-color:rgba(239,68,68,0.4)}
 @keyframes toastIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
 
-/* ============ BANNER ============ */
 .discord-banner{background:linear-gradient(90deg,rgba(88,101,242,0.1),rgba(88,101,242,0.02));border:1px solid rgba(88,101,242,0.24);border-radius:14px;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;margin-bottom:24px}
 .discord-banner .txt{flex:1;min-width:200px}
 .discord-banner b{color:#fff;font-size:14px;display:block}
 .discord-banner span{color:var(--text-muted);font-size:12.5px}
-.discord-banner button{background:rgba(88,101,242,0.2);color:#9ba5ff;border:1px solid rgba(88,101,242,0.4);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:700;transition:all 0.15s}
+.discord-banner button{background:rgba(88,101,242,0.2);color:#9ba5ff;border:1px solid rgba(88,101,242,0.4);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:700;transition:.15s}
 .discord-banner button:hover{background:rgba(88,101,242,0.3);color:#fff}
 
-/* ============ RULES ============ */
 .rules-list{display:flex;flex-direction:column;gap:10px}
 .rule-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px}
 .rule-num{flex:0 0 28px;height:28px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);color:var(--green);border-radius:8px;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
 .rule-txt{color:var(--text);font-size:13.5px;line-height:1.6}
 .rule-txt b{color:var(--green);font-weight:700}
 
-/* ============ RESPONSIVE ============ */
-@media (max-width:900px){
-  .hero{grid-template-columns:1fr;gap:28px;padding:20px 0 32px}
-  .form-grid{grid-template-columns:1fr}
-  .topbar{padding:12px 16px;gap:12px}
-  nav{order:5;width:100%;justify-content:center}
-  .page{padding:24px 16px 60px}
-  .form-card{padding:20px}
-  .server-grid{grid-template-columns:1fr}
-}
-@media (max-width:520px){
-  .hero h1{font-size:26px}
-  .hero-stats{grid-template-columns:1fr 1fr;gap:8px}
-  .stat-card{padding:14px}
-  .stat-card .val{font-size:22px}
-  .giris-kutu{padding:24px 20px}
-  .auth-wrap{width:100%;justify-content:flex-end}
-  .user-chip .name{display:none}
-}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:28px;padding:20px 0 32px}.form-grid{grid-template-columns:1fr}.topbar{padding:12px 16px;gap:12px}nav{order:5;width:100%;justify-content:center}.page{padding:24px 16px 60px}.form-card{padding:20px}.server-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.hero h1{font-size:26px}.hero-stats{grid-template-columns:1fr 1fr;gap:8px}.stat-card{padding:14px}.stat-card .val{font-size:22px}.giris-kutu{padding:24px 20px}.auth-wrap{width:100%;justify-content:flex-end}.user-chip .name{display:none}}
 </style>
 </head>
 <body>
 
-<!-- GİRİŞ MODAL -->
 <div id="girisModal">
   <div class="giris-kutu">
     <div class="logo-center">
       <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#7ddb6a"/>
-            <stop offset="100%" stop-color="#3fb950"/>
-          </linearGradient>
-          <linearGradient id="gL" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#8b6f4a"/>
-            <stop offset="100%" stop-color="#5a4428"/>
-          </linearGradient>
-          <linearGradient id="gR" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#6b5234"/>
-            <stop offset="100%" stop-color="#3d2c17"/>
-          </linearGradient>
+          <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ddb6a"/><stop offset="100%" stop-color="#3fb950"/></linearGradient>
+          <linearGradient id="gL" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8b6f4a"/><stop offset="100%" stop-color="#5a4428"/></linearGradient>
+          <linearGradient id="gR" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6b5234"/><stop offset="100%" stop-color="#3d2c17"/></linearGradient>
         </defs>
         <polygon points="32,6 58,20 32,34 6,20" fill="url(#gTop)"/>
         <polygon points="6,20 32,34 32,58 6,44" fill="url(#gL)"/>
@@ -310,13 +257,14 @@ main{min-height:calc(100vh - 60px)}
     </div>
     <h1 id="modalTitle">RDXY Panel</h1>
     <div class="alt-yazi" id="modalSub">Minecraft sunucu rehberine giriş yap</div>
+    <div class="info-box" id="connInfo">⏳ Sunucuya bağlanılıyor...</div>
     <input type="text" id="loginUser" placeholder="Kullanıcı adı" autocomplete="username">
     <input type="email" id="loginEmail" placeholder="E-posta (sadece @gmail.com)" style="display:none" autocomplete="email">
     <input type="password" id="loginPass" placeholder="Şifre" autocomplete="current-password">
     <input type="password" id="loginPass2" placeholder="Şifre tekrar" style="display:none" autocomplete="new-password">
     <div class="captcha">
       <span class="kod" id="captchaKod">A7kL9p</span>
-      <input type="text" id="captchaCevap" placeholder="Kodu yaz">
+      <input type="text" id="captchaCevap" placeholder="Kodu yaz (büyük/küçük önemsiz)">
       <button class="yenile" onclick="captchaYenile()" title="Yenile">⟳</button>
     </div>
     <button class="btn-giris" id="modalGirisBtn" onclick="girisYap()">Giriş Yap</button>
@@ -326,27 +274,16 @@ main{min-height:calc(100vh - 60px)}
   </div>
 </div>
 
-<!-- TOAST -->
 <div id="toast"></div>
 
-<!-- ANA PANEL -->
 <div id="anaIcerik">
 <header class="topbar">
   <div class="brand" onclick="go('home')">
     <svg class="brand-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="bTop" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#7ddb6a"/>
-          <stop offset="100%" stop-color="#3fb950"/>
-        </linearGradient>
-        <linearGradient id="bL" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#8b6f4a"/>
-          <stop offset="100%" stop-color="#5a4428"/>
-        </linearGradient>
-        <linearGradient id="bR" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#6b5234"/>
-          <stop offset="100%" stop-color="#3d2c17"/>
-        </linearGradient>
+        <linearGradient id="bTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7ddb6a"/><stop offset="100%" stop-color="#3fb950"/></linearGradient>
+        <linearGradient id="bL" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8b6f4a"/><stop offset="100%" stop-color="#5a4428"/></linearGradient>
+        <linearGradient id="bR" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6b5234"/><stop offset="100%" stop-color="#3d2c17"/></linearGradient>
       </defs>
       <polygon points="32,6 58,20 32,34 6,20" fill="url(#bTop)"/>
       <polygon points="6,20 32,34 32,58 6,44" fill="url(#bL)"/>
@@ -356,10 +293,7 @@ main{min-height:calc(100vh - 60px)}
       <rect x="44" y="22" width="2.5" height="2.5" fill="#5eb84d" opacity="0.8"/>
       <rect x="50" y="17" width="2.5" height="2.5" fill="#7ddb6a" opacity="0.9"/>
     </svg>
-    <div class="brand-text">
-      <span class="brand-name">RDXY</span>
-      <span class="brand-sub">Server Directory</span>
-    </div>
+    <div class="brand-text"><span class="brand-name">RDXY</span><span class="brand-sub">Server Directory</span></div>
   </div>
   <nav id="mainNav">
     <button class="nav-btn active" data-page="home">Anasayfa</button>
@@ -373,17 +307,11 @@ main{min-height:calc(100vh - 60px)}
 </header>
 
 <main>
-
-<!-- ANASAYFA -->
 <section id="page-home" class="page active">
   <div class="discord-banner">
-    <div class="txt">
-      <b>💬 RDXY Discord</b>
-      <span>Sunucu ekleme, düzenleme ve tüm destek talepleri Discord üzerinden yapılır.</span>
-    </div>
+    <div class="txt"><b>💬 RDXY Discord</b><span>Sunucu ekleme, düzenleme ve tüm destek talepleri Discord üzerinden yapılır.</span></div>
     <button onclick="joinDiscord()">Discord'a Katıl ↗</button>
   </div>
-
   <div class="hero">
     <div>
       <span class="eyebrow">Minecraft Sunucu Rehberi</span>
@@ -399,155 +327,50 @@ main{min-height:calc(100vh - 60px)}
       <div class="stat-card"><div class="label">Sunucu</div><div class="val" id="statServers">0</div><div class="sub">Onaylı sunucu</div></div>
       <div class="stat-card"><div class="label">Oyuncu</div><div class="val" id="statUsers">0</div><div class="sub">Kayıtlı kullanıcı</div></div>
       <div class="stat-card"><div class="label">Bekleyen</div><div class="val" id="statPending">0</div><div class="sub">Onay sırası</div></div>
-      <div class="stat-card"><div class="label">Kategori</div><div class="val" id="statCategories">14</div><div class="sub">Farklı tür</div></div>
+      <div class="stat-card"><div class="label">Kategori</div><div class="val">15</div><div class="sub">Farklı tür</div></div>
     </div>
   </div>
-
-  <div class="section-head">
-    <div><h2>Öne Çıkan Sunucular</h2><p>Editör seçkisi ve öne çıkan sunucular.</p></div>
-    <a class="link-more" onclick="go('servers')">Tümünü gör →</a>
-  </div>
+  <div class="section-head"><div><h2>Öne Çıkan Sunucular</h2><p>Editör seçkisi ve öne çıkan sunucular.</p></div><a class="link-more" onclick="go('servers')">Tümünü gör →</a></div>
   <div id="featuredServers" class="server-grid"></div>
-
-  <div class="section-head">
-    <div><h2>Nasıl Çalışır?</h2><p>Sunucunu 3 basit adımda yayınla.</p></div>
-  </div>
+  <div class="section-head"><div><h2>Nasıl Çalışır?</h2><p>Sunucunu 3 basit adımda yayınla.</p></div></div>
   <div class="server-grid">
-    <div class="server-card" style="cursor:default">
-      <div class="server-card-top">
-        <div class="server-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">1</div>
-        <div class="server-info">
-          <div class="server-name">Hesap Oluştur</div>
-          <div class="server-desc" style="-webkit-line-clamp:3">Gmail ile hızlıca kayıt ol. Captcha ile güvenli doğrulama.</div>
-        </div>
-      </div>
-    </div>
-    <div class="server-card" style="cursor:default">
-      <div class="server-card-top">
-        <div class="server-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">2</div>
-        <div class="server-info">
-          <div class="server-name">Sunucu Bilgilerini Gir</div>
-          <div class="server-desc" style="-webkit-line-clamp:3">Sunucu adı, IP, sürüm, tür, açıklama ve tüm detayları doldur.</div>
-        </div>
-      </div>
-    </div>
-    <div class="server-card" style="cursor:default">
-      <div class="server-card-top">
-        <div class="server-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">3</div>
-        <div class="server-info">
-          <div class="server-name">Onay Bekle</div>
-          <div class="server-desc" style="-webkit-line-clamp:3">Yetkililer sunucunu inceleyip onaylar. Onaylanınca listelenir.</div>
-        </div>
-      </div>
-    </div>
+    <div class="server-card" style="cursor:default"><div class="server-card-top"><div class="server-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">1</div><div class="server-info"><div class="server-name">Hesap Oluştur</div><div class="server-desc" style="-webkit-line-clamp:3">Gmail ile hızlıca kayıt ol. Captcha ile güvenli doğrulama.</div></div></div></div>
+    <div class="server-card" style="cursor:default"><div class="server-card-top"><div class="server-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">2</div><div class="server-info"><div class="server-name">Sunucu Bilgilerini Gir</div><div class="server-desc" style="-webkit-line-clamp:3">Sunucu adı, IP, sürüm, tür, açıklama ve tüm detayları doldur.</div></div></div></div>
+    <div class="server-card" style="cursor:default"><div class="server-card-top"><div class="server-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">3</div><div class="server-info"><div class="server-name">Onay Bekle</div><div class="server-desc" style="-webkit-line-clamp:3">Yetkililer sunucunu inceleyip onaylar. Onaylanınca listelenir.</div></div></div></div>
   </div>
 </section>
 
-<!-- SUNUCULAR -->
 <section id="page-servers" class="page">
-  <div class="section-head">
-    <div><h2>Minecraft Sunucuları</h2><p>Tüm onaylı sunucular. Filtrele ve keşfet.</p></div>
-    <button class="btn-primary" onclick="go('addserver')">+ Sunucu Ekle</button>
-  </div>
+  <div class="section-head"><div><h2>Minecraft Sunucuları</h2><p>Tüm onaylı sunucular. Filtrele ve keşfet.</p></div><button class="btn-primary" onclick="go('addserver')">+ Sunucu Ekle</button></div>
   <div class="filter-bar">
     <input id="fSearch" placeholder="Sunucu adı ara..." oninput="renderServers()">
     <select id="fType" onchange="renderServers()">
       <option value="">Tüm türler</option>
-      <option>SMP</option><option>Survival</option><option>SkyBlock</option>
-      <option>BedWars</option><option>Factions</option><option>Prison</option>
-      <option>Creative</option><option>PvP</option><option>Anarchy</option>
-      <option>RPG</option><option>Towny</option><option>Minigames</option>
-      <option>KitPvP</option><option>SkyWars</option><option>Diğer</option>
+      <option>SMP</option><option>Survival</option><option>SkyBlock</option><option>BedWars</option><option>Factions</option><option>Prison</option><option>Creative</option><option>PvP</option><option>Anarchy</option><option>RPG</option><option>Towny</option><option>Minigames</option><option>KitPvP</option><option>SkyWars</option><option>Diğer</option>
     </select>
-    <select id="fPlatform" onchange="renderServers()">
-      <option value="">Tüm platformlar</option>
-      <option>Java</option><option>Bedrock</option><option>Java + Bedrock</option>
-    </select>
-    <select id="fRegion" onchange="renderServers()">
-      <option value="">Tüm bölgeler</option>
-      <option>Türkiye</option><option>Avrupa</option><option>Kuzey Amerika</option><option>Asya</option>
-    </select>
-    <select id="fSort" onchange="renderServers()">
-      <option value="new">En yeni</option>
-      <option value="popular">En popüler</option>
-      <option value="name">İsme göre (A-Z)</option>
-    </select>
+    <select id="fPlatform" onchange="renderServers()"><option value="">Tüm platformlar</option><option>Java</option><option>Bedrock</option><option>Java + Bedrock</option></select>
+    <select id="fRegion" onchange="renderServers()"><option value="">Tüm bölgeler</option><option>Türkiye</option><option>Avrupa</option><option>Kuzey Amerika</option><option>Asya</option></select>
+    <select id="fSort" onchange="renderServers()"><option value="new">En yeni</option><option value="popular">En popüler</option><option value="name">İsme göre (A-Z)</option></select>
   </div>
   <div id="serversList" class="server-grid"></div>
 </section>
 
-<!-- SUNUCU EKLE -->
 <section id="page-addserver" class="page">
   <div class="form-card">
     <h2 class="form-title">Sunucu Ekle</h2>
     <p class="form-sub">Sunucu bilgilerini doldur. Yetkililer onayladıktan sonra listelenir. Düzenleme talepleri için Discord'tan ticket açman gerekir.</p>
-
     <div class="form-grid">
-      <div class="field">
-        <label>Sunucu Adı <span class="req">*</span></label>
-        <input id="sName" placeholder="Örn: RDXY Network" maxlength="60">
-      </div>
-      <div class="field">
-        <label>Sunucu IP / Adres <span class="req">*</span></label>
-        <input id="sIp" placeholder="Örn: play.ornek.com" maxlength="80">
-      </div>
-
-      <div class="field">
-        <label>Platform <span class="req">*</span></label>
-        <select id="sPlatform">
-          <option value="Java">Java Edition</option>
-          <option value="Bedrock">Bedrock Edition</option>
-          <option value="Java + Bedrock">Java + Bedrock</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Sunucu Türü <span class="req">*</span></label>
-        <select id="sType">
-          <option>SMP</option><option>Survival</option><option>SkyBlock</option>
-          <option>BedWars</option><option>Factions</option><option>Prison</option>
-          <option>Creative</option><option>PvP</option><option>Anarchy</option>
-          <option>RPG</option><option>Towny</option><option>Minigames</option>
-          <option>KitPvP</option><option>SkyWars</option><option>Diğer</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Sürüm Aralığı <span class="req">*</span></label>
-        <input id="sVersion" placeholder="Örn: 1.20.x - 1.21.x" maxlength="40">
-      </div>
-      <div class="field">
-        <label>Bölge <span class="req">*</span></label>
-        <select id="sRegion">
-          <option>Türkiye</option><option>Avrupa</option>
-          <option>Kuzey Amerika</option><option>Asya</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Maksimum Oyuncu</label>
-        <input id="sMaxPlayers" type="number" placeholder="Örn: 500" min="1">
-      </div>
-      <div class="field">
-        <label>Discord Davet Linki <span class="hint">(opsiyonel)</span></label>
-        <input id="sDiscord" placeholder="https://discord.gg/..." maxlength="120">
-      </div>
-
-      <div class="field full">
-        <label>Website <span class="hint">(opsiyonel)</span></label>
-        <input id="sWebsite" placeholder="https://..." maxlength="120">
-      </div>
-
-      <div class="field full">
-        <label>Kısa Açıklama <span class="req">*</span> <span class="hint">(listede görünür, max 160 karakter)</span></label>
-        <input id="sShort" placeholder="Sunucunun en dikkat çekici özelliği" maxlength="160">
-      </div>
-
-      <div class="field full">
-        <label>Detaylı Açıklama <span class="req">*</span></label>
-        <textarea id="sDesc" placeholder="Sunucunuz hakkında detaylı bilgi: oyun modları, özellikler, kurallar, öne çıkanlar..." maxlength="1200"></textarea>
-        <div class="help">En az 30, en fazla 1200 karakter.</div>
-      </div>
-
+      <div class="field"><label>Sunucu Adı <span class="req">*</span></label><input id="sName" placeholder="Örn: RDXY Network" maxlength="60"></div>
+      <div class="field"><label>Sunucu IP / Adres <span class="req">*</span></label><input id="sIp" placeholder="Örn: play.ornek.com" maxlength="80"></div>
+      <div class="field"><label>Platform <span class="req">*</span></label><select id="sPlatform"><option>Java</option><option>Bedrock</option><option>Java + Bedrock</option></select></div>
+      <div class="field"><label>Sunucu Türü <span class="req">*</span></label><select id="sType"><option>SMP</option><option>Survival</option><option>SkyBlock</option><option>BedWars</option><option>Factions</option><option>Prison</option><option>Creative</option><option>PvP</option><option>Anarchy</option><option>RPG</option><option>Towny</option><option>Minigames</option><option>KitPvP</option><option>SkyWars</option><option>Diğer</option></select></div>
+      <div class="field"><label>Sürüm Aralığı <span class="req">*</span></label><input id="sVersion" placeholder="Örn: 1.20.x - 1.21.x" maxlength="40"></div>
+      <div class="field"><label>Bölge <span class="req">*</span></label><select id="sRegion"><option>Türkiye</option><option>Avrupa</option><option>Kuzey Amerika</option><option>Asya</option></select></div>
+      <div class="field"><label>Maksimum Oyuncu</label><input id="sMaxPlayers" type="number" placeholder="Örn: 500" min="1"></div>
+      <div class="field"><label>Discord Davet Linki <span class="hint">(opsiyonel)</span></label><input id="sDiscord" placeholder="https://discord.gg/..." maxlength="120"></div>
+      <div class="field full"><label>Website <span class="hint">(opsiyonel)</span></label><input id="sWebsite" placeholder="https://..." maxlength="120"></div>
+      <div class="field full"><label>Kısa Açıklama <span class="req">*</span> <span class="hint">(max 160 karakter)</span></label><input id="sShort" placeholder="Sunucunun en dikkat çekici özelliği" maxlength="160"></div>
+      <div class="field full"><label>Detaylı Açıklama <span class="req">*</span></label><textarea id="sDesc" placeholder="Sunucunuz hakkında detaylı bilgi..." maxlength="1200"></textarea><div class="help">En az 30, en fazla 1200 karakter.</div></div>
       <div class="field full">
         <label>Özellikler <span class="hint">(birden fazla seçebilirsin)</span></label>
         <div class="checkbox-group" id="featureGroup">
@@ -565,14 +388,8 @@ main{min-height:calc(100vh - 60px)}
           <label class="chk"><input type="checkbox" value="VR">VR Desteği</label>
         </div>
       </div>
-
-      <div class="field full">
-        <label>İletişim E-postası <span class="req">*</span></label>
-        <input id="sContact" type="email" placeholder="ornek@gmail.com">
-        <div class="help">Yetkililer bu adres üzerinden sana ulaşabilir.</div>
-      </div>
+      <div class="field full"><label>İletişim E-postası <span class="req">*</span></label><input id="sContact" type="email" placeholder="ornek@gmail.com"><div class="help">Yetkililer bu adres üzerinden sana ulaşabilir.</div></div>
     </div>
-
     <div class="form-actions">
       <button class="btn-secondary" onclick="go('home')">İptal</button>
       <button class="btn-primary" onclick="submitServer()">Sunucuyu Gönder →</button>
@@ -580,24 +397,17 @@ main{min-height:calc(100vh - 60px)}
   </div>
 </section>
 
-<!-- SUNUCULARIM -->
 <section id="page-myservers" class="page">
-  <div class="section-head">
-    <div><h2>Sunucularım</h2><p>Eklediğin sunucuların durumunu buradan takip et.</p></div>
-    <button class="btn-primary" onclick="go('addserver')">+ Yeni Sunucu</button>
-  </div>
+  <div class="section-head"><div><h2>Sunucularım</h2><p>Eklediğin sunucuların durumunu buradan takip et.</p></div><button class="btn-primary" onclick="go('addserver')">+ Yeni Sunucu</button></div>
   <div id="myServersList"></div>
 </section>
 
-<!-- KURALLAR -->
 <section id="page-rules" class="page">
-  <div class="section-head">
-    <div><h2>Site Kuralları</h2><p>RDXY'yi kullanırken uyman gereken kurallar.</p></div>
-  </div>
+  <div class="section-head"><div><h2>Site Kuralları</h2><p>RDXY'yi kullanırken uyman gereken kurallar.</p></div></div>
   <div class="rules-list">
-    <div class="rule-item"><div class="rule-num">01</div><div class="rule-txt">Sunucu eklerken verdiğin tüm bilgilerin <b>doğru ve güncel</b> olması zorunludur. Yanıltıcı bilgi kalıcı ban sebebidir.</div></div>
-    <div class="rule-item"><div class="rule-num">02</div><div class="rule-txt">Sunucu bilgilerini <b>düzenlemek veya güncellemek</b> için Discord sunucumuzdan ticket açman gerekir. Site üzerinden düzenleme yapılamaz.</div></div>
-    <div class="rule-item"><div class="rule-num">03</div><div class="rule-txt">Aynı sunucuyu <b>birden fazla kez</b> eklemek yasaktır. Tespit edildiğinde tüm kayıtlar silinir.</div></div>
+    <div class="rule-item"><div class="rule-num">01</div><div class="rule-txt">Sunucu eklerken verdiğin tüm bilgilerin <b>doğru ve güncel</b> olması zorunludur.</div></div>
+    <div class="rule-item"><div class="rule-num">02</div><div class="rule-txt">Sunucu bilgilerini <b>düzenlemek veya güncellemek</b> için Discord sunucumuzdan ticket açman gerekir.</div></div>
+    <div class="rule-item"><div class="rule-num">03</div><div class="rule-txt">Aynı sunucuyu <b>birden fazla kez</b> eklemek yasaktır.</div></div>
     <div class="rule-item"><div class="rule-num">04</div><div class="rule-txt">Sunucu adı, açıklaması veya etiketlerinde <b>küfür, hakaret, reklam veya yasa dışı içerik</b> bulunamaz.</div></div>
     <div class="rule-item"><div class="rule-num">05</div><div class="rule-txt"><b>RDXY, owner, admin, moderator</b> gibi resmi isimler kullanıcı adı olarak alınamaz.</div></div>
     <div class="rule-item"><div class="rule-num">06</div><div class="rule-txt">Sunucun <b>aktif ve erişilebilir</b> olmalıdır. Uzun süre çevrimdışı kalan sunucular listeden kaldırılır.</div></div>
@@ -608,26 +418,19 @@ main{min-height:calc(100vh - 60px)}
   </div>
 </section>
 
-<!-- YETKİLİ PANELİ -->
 <section id="page-admin" class="page">
-  <div class="section-head">
-    <div><h2>Yetkili Paneli</h2><p>Sunucu onayları, kullanıcı yönetimi ve sistem ayarları.</p></div>
-  </div>
-
+  <div class="section-head"><div><h2>Yetkili Paneli</h2><p>Sunucu onayları, kullanıcı yönetimi ve sistem ayarları.</p></div></div>
   <div class="admin-tabs" id="adminTabs">
     <button class="admin-tab active" data-tab="pending">Bekleyen Sunucular <span class="count" id="cntPending">0</span></button>
     <button class="admin-tab" data-tab="approved">Onaylı Sunucular <span class="count" id="cntApproved">0</span></button>
     <button class="admin-tab" data-tab="rejected">Reddedilenler <span class="count" id="cntRejected">0</span></button>
     <button class="admin-tab" data-tab="users">Kullanıcılar</button>
   </div>
-
   <div id="adminContent"></div>
 </section>
-
 </main>
 </div>
 
-<!-- MODAL: SUNUCU DETAY -->
 <div id="detailModal" class="modal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('detailModal')">×</button>
@@ -639,7 +442,6 @@ main{min-height:calc(100vh - 60px)}
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
 <script>
-/* ==================== FIREBASE ==================== */
 const firebaseConfig = {
   apiKey: "AIzaSyCH1WtPf3_d8zU1TKX2LBbykL6gqe9-yik",
   authDomain: "rdxy-network.firebaseapp.com",
@@ -649,21 +451,29 @@ const firebaseConfig = {
   messagingSenderId: "876739332864",
   appId: "1:876739332864:web:4173b16df4fe9455b301e5"
 };
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
 
-/* ==================== ROL SİSTEMİ ==================== */
-// Üye < Moderatör < Admin < Kurucu (Owner)
+let db = null;
+let FB_READY = false;
+let FB_ERROR = null;
+
+try {
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.database();
+  console.log('🔥 Firebase başlatıldı');
+} catch(e){
+  FB_ERROR = e.message;
+  console.error('Firebase hatası:', e);
+}
+
 const ROLES = ['Üye', 'Moderatör', 'Admin', 'Kurucu'];
 const ROLES_LOWER = ['üye', 'moderatör', 'admin', 'kurucu'];
 
-// Yasaklı kullanıcı adları (küçük harf karşılaştırma)
 const RESERVED_NAMES = [
-  'rdxy', 'owner', 'admin', 'mod', 'moderator', 'moderatör', 'kurucu',
-  'root', 'superadmin', 'super', 'system', 'sistem', 'rdxyofficial',
-  'rdxy-network', 'rdxynetwork', 'rdxynet', 'staff', 'yetkili', 'dev',
-  'developer', 'support', 'destek', 'help', 'yardim', 'yardım', 'ceo',
-  'founder', 'sahip', 'yonetici', 'yönetici', 'operator', 'op'
+  'rdxy','owner','admin','mod','moderator','moderatör','kurucu','root',
+  'superadmin','super','system','sistem','rdxyofficial','rdxy-network',
+  'rdxynetwork','rdxynet','staff','yetkili','dev','developer','support',
+  'destek','help','yardim','yardım','ceo','founder','sahip','yonetici',
+  'yönetici','operator','op'
 ];
 
 let USERS_CACHE = {};
@@ -671,22 +481,16 @@ let SERVERS_CACHE = {};
 let roleWatcher = null;
 let currentUser = null;
 
-/* ==================== YARDIMCI ==================== */
 function showToast(msg, type = ''){
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = type;
-  t.classList.add('show');
+  t.textContent = msg; t.className = type; t.classList.add('show');
   clearTimeout(t._tm);
   t._tm = setTimeout(()=>t.classList.remove('show'), 3200);
 }
 function getUser(){
   try{ return JSON.parse(localStorage.getItem('rdxyUser') || 'null'); }catch(e){ return null; }
 }
-function myRoleIndex(){
-  if(!currentUser) return -1;
-  return ROLES_LOWER.indexOf((currentUser.role || '').toLowerCase());
-}
+function myRoleIndex(){ return currentUser ? ROLES_LOWER.indexOf((currentUser.role || '').toLowerCase()) : -1; }
 function isMod(){ return myRoleIndex() >= 1; }
 function isAdmin(){ return myRoleIndex() >= 2; }
 function isKurucu(){ return myRoleIndex() >= 3; }
@@ -718,7 +522,6 @@ function go(page){
 function openModal(id){ document.getElementById(id).classList.add('open'); }
 function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 
-/* ==================== CAPTCHA ==================== */
 function captchaYenile(){
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let kod = '';
@@ -727,10 +530,11 @@ function captchaYenile(){
   document.getElementById('captchaCevap').value = '';
 }
 function captchaKontrol(){
-  return document.getElementById('captchaCevap').value.trim() === document.getElementById('captchaKod').textContent;
+  const girilen = document.getElementById('captchaCevap').value.trim().toLowerCase();
+  const gercek = document.getElementById('captchaKod').textContent.trim().toLowerCase();
+  return girilen === gercek && girilen.length > 0;
 }
 
-/* ==================== MODAL GİRİŞ/KAYIT ==================== */
 let modalMode = 'giris';
 function modalAc(mode){
   modalMode = mode;
@@ -745,42 +549,78 @@ function modalAc(mode){
   document.getElementById('loginPass2').style.display = isKayit ? 'block' : 'none';
   document.getElementById('gecisLink').textContent = isKayit ? 'Zaten hesabın var mı? Giriş yap' : 'Hesabın yok mu? Kayıt ol';
   captchaYenile();
+  updateConnInfo();
 }
 function modalGecis(){ modalAc(modalMode === 'giris' ? 'kayit' : 'giris'); }
 
-/* ==================== GİRİŞ ==================== */
+function updateConnInfo(){
+  const box = document.getElementById('connInfo');
+  const btn = document.getElementById('modalGirisBtn');
+  const btn2 = document.getElementById('modalKayitBtn');
+  if(!box) return;
+  if(FB_ERROR){
+    box.className = 'info-box show';
+    box.style.background = 'rgba(239,68,68,0.1)';
+    box.style.borderColor = 'rgba(239,68,68,0.3)';
+    box.style.color = '#fca5a5';
+    box.textContent = '❌ Firebase bağlantı hatası: ' + FB_ERROR;
+    if(btn) btn.disabled = true;
+    if(btn2) btn2.disabled = true;
+    return;
+  }
+  if(!FB_READY){
+    box.className = 'info-box show';
+    box.style.background = 'rgba(251,191,36,0.1)';
+    box.style.borderColor = 'rgba(251,191,36,0.3)';
+    box.style.color = 'var(--gold)';
+    box.textContent = '⏳ Sunucuya bağlanılıyor, lütfen bekle...';
+    if(btn) btn.disabled = true;
+    if(btn2) btn2.disabled = true;
+    return;
+  }
+  box.className = 'info-box show';
+  box.style.background = 'rgba(74,222,128,0.08)';
+  box.style.borderColor = 'rgba(74,222,128,0.2)';
+  box.style.color = 'var(--green)';
+  box.textContent = '✅ Bağlantı hazır';
+  if(btn) btn.disabled = false;
+  if(btn2) btn2.disabled = false;
+}
+
 function girisYap(){
+  if(!FB_READY){ showToast('⏳ Sunucuya bağlanılıyor, bekle...', 'error'); updateConnInfo(); return; }
   const user = document.getElementById('loginUser').value.trim();
   const pass = document.getElementById('loginPass').value.trim();
   const hata = document.getElementById('modalHata');
   hata.classList.remove('show');
   if(!user || !pass){ hata.textContent = '⚠️ Tüm alanları doldurun.'; hata.classList.add('show'); return; }
-  if(!captchaKontrol()){ hata.textContent = '⚠️ Captcha kodu yanlış!'; hata.classList.add('show'); captchaYenile(); return; }
+  if(!captchaKontrol()){ hata.textContent = '⚠️ Captcha kodu yanlış! (Büyük/küçük harf önemli değil)'; hata.classList.add('show'); captchaYenile(); return; }
   const key = user.toLowerCase();
   const found = USERS_CACHE[key];
-  if(found && found.password === pass){
-    const sessionUser = {name: found.name, role: found.role || 'Üye'};
-    localStorage.setItem('rdxyUser', JSON.stringify(sessionUser));
-    currentUser = sessionUser;
-    girisBasarili();
-    watchRole();
-    showToast('✅ Hoş geldin, ' + found.name + '!', 'success');
-  } else {
-    hata.textContent = '❌ Kullanıcı adı veya şifre hatalı!';
-    hata.classList.add('show');
-    captchaYenile();
+  if(!found){
+    hata.textContent = '❌ Bu kullanıcı adı kayıtlı değil. Kayıt olmayı dene.';
+    hata.classList.add('show'); captchaYenile(); return;
   }
+  if(found.password !== pass){
+    hata.textContent = '❌ Şifre hatalı!';
+    hata.classList.add('show'); captchaYenile(); return;
+  }
+  const sessionUser = {name: found.name, role: found.role || 'Üye'};
+  localStorage.setItem('rdxyUser', JSON.stringify(sessionUser));
+  currentUser = sessionUser;
+  girisBasarili();
+  watchRole();
+  showToast('✅ Hoş geldin, ' + found.name + '!', 'success');
 }
 
-/* ==================== KAYIT ==================== */
 function kayitOl(){
+  if(!FB_READY){ showToast('⏳ Sunucuya bağlanılıyor, bekle...', 'error'); updateConnInfo(); return; }
   const user = document.getElementById('loginUser').value.trim();
   const email = document.getElementById('loginEmail').value.trim();
   const pass = document.getElementById('loginPass').value.trim();
   const pass2 = document.getElementById('loginPass2').value.trim();
   const hata = document.getElementById('modalHata');
   hata.classList.remove('show');
-
   if(!user || !email || !pass || !pass2){ hata.textContent = '⚠️ Tüm alanları doldurun.'; hata.classList.add('show'); return; }
   if(user.length < 3 || user.length > 20){ hata.textContent = '⚠️ Kullanıcı adı 3-20 karakter olmalı.'; hata.classList.add('show'); return; }
   if(!/^[a-zA-Z0-9_]+$/.test(user)){ hata.textContent = '⚠️ Sadece harf, rakam ve _ kullanabilirsin.'; hata.classList.add('show'); return; }
@@ -796,10 +636,7 @@ function kayitOl(){
     if((USERS_CACHE[k].email || '').toLowerCase() === email.toLowerCase()){ hata.textContent = '⚠️ Bu e-posta kayıtlı.'; hata.classList.add('show'); return; }
   }
 
-  const yeni = {
-    name: user, email, password: pass, role: 'Üye',
-    kayitTarihi: new Date().toLocaleString('tr-TR')
-  };
+  const yeni = { name: user, email, password: pass, role: 'Üye', kayitTarihi: new Date().toLocaleString('tr-TR') };
   db.ref('users/' + key).set(yeni).then(() => {
     const sessionUser = {name: user, role: 'Üye'};
     localStorage.setItem('rdxyUser', JSON.stringify(sessionUser));
@@ -813,7 +650,6 @@ function kayitOl(){
   });
 }
 
-/* ==================== GİRİŞ BAŞARILI ==================== */
 function girisBasarili(){
   document.getElementById('girisModal').classList.remove('open');
   document.getElementById('anaIcerik').classList.add('show');
@@ -821,34 +657,23 @@ function girisBasarili(){
   updateAdminNav();
   go('home');
 }
-
 function renderAuthWidget(){
   const wrap = document.getElementById('authWrap');
   if(!currentUser){
-    wrap.innerHTML = `
-      <button class="btn-tb btn-tb-ghost" onclick="modalAc('giris')">Giriş</button>
-      <button class="btn-tb btn-tb-primary" onclick="modalAc('kayit')">Kayıt Ol</button>
-    `;
+    wrap.innerHTML = `<button class="btn-tb btn-tb-ghost" onclick="modalAc('giris')">Giriş</button><button class="btn-tb btn-tb-primary" onclick="modalAc('kayit')">Kayıt Ol</button>`;
     return;
   }
   const pill = rolePillClass(currentUser.role);
-  const roleLabel = {uye:'Üye', moderator:'Mod', admin:'Admin', kurucu:'Owner'}[pill] || currentUser.role;
+  const roleLabel = {uye:'Üye',moderator:'Mod',admin:'Admin',kurucu:'Owner'}[pill] || currentUser.role;
   wrap.innerHTML = `
-    <div class="user-chip">
-      <div class="av">${escapeHtml(currentUser.name[0].toUpperCase())}</div>
-      <span class="name">${escapeHtml(currentUser.name)}</span>
-      <span class="role-mini">${escapeHtml(roleLabel)}</span>
-    </div>
+    <div class="user-chip"><div class="av">${escapeHtml(currentUser.name[0].toUpperCase())}</div><span class="name">${escapeHtml(currentUser.name)}</span><span class="role-mini">${escapeHtml(roleLabel)}</span></div>
     <button class="btn-tb btn-tb-danger" onclick="cikisYap()">Çıkış</button>
   `;
 }
 function updateAdminNav(){
   const el = document.getElementById('adminNav');
-  if(!el) return;
-  el.style.display = isMod() ? 'inline-block' : 'none';
+  if(el) el.style.display = isMod() ? 'inline-block' : 'none';
 }
-
-/* ==================== ÇIKIŞ ==================== */
 function cikisYap(){
   if(roleWatcher){ roleWatcher.off(); roleWatcher = null; }
   localStorage.removeItem('rdxyUser');
@@ -857,11 +682,9 @@ function cikisYap(){
   modalAc('giris');
   showToast('👋 Çıkış yapıldı.');
 }
-
-/* ==================== ROL TAKİBİ ==================== */
 function watchRole(){
   if(roleWatcher){ roleWatcher.off(); roleWatcher = null; }
-  if(!currentUser) return;
+  if(!currentUser || !db) return;
   roleWatcher = db.ref('users/' + currentUser.name.toLowerCase());
   roleWatcher.on('value', snap => {
     if(!snap.exists()) return;
@@ -872,70 +695,85 @@ function watchRole(){
       localStorage.setItem('rdxyUser', JSON.stringify(currentUser));
       renderAuthWidget();
       updateAdminNav();
-      if(!isMod() && document.getElementById('page-admin').classList.contains('active')){
-        go('home');
-      }
+      if(!isMod() && document.getElementById('page-admin').classList.contains('active')) go('home');
       showToast('🔄 Rolün güncellendi: ' + newRole);
     }
   });
 }
 
-/* ==================== FIREBASE LISTENERS ==================== */
-db.ref('users').on('value', snap => {
-  USERS_CACHE = snap.val() || {};
-  document.getElementById('statUsers').textContent = Object.keys(USERS_CACHE).length;
-  if(isMod()) renderAdmin();
-  renderAuthWidget();
-});
+function setupListeners(){
+  if(!db) return;
 
-db.ref('servers').on('value', snap => {
-  SERVERS_CACHE = snap.val() || {};
-  const all = Object.values(SERVERS_CACHE);
-  const approved = all.filter(s => s.status === 'approved');
-  const pending = all.filter(s => s.status === 'pending');
-  document.getElementById('statServers').textContent = approved.length;
-  document.getElementById('statPending').textContent = pending.length;
-  renderFeatured();
-  renderServers();
-  renderMyServers();
-  if(isMod()) renderAdmin();
-});
+  db.ref('.info/connected').on('value', snap => {
+    const connected = snap.val() === true;
+    console.log('Firebase bağlantı durumu:', connected);
+  });
 
-/* ==================== SEED: KURUCU HESABI ==================== */
-(function seedOwner(){
-  db.ref('users/rdxy').once('value').then(snap => {
+  db.ref('users').on('value', snap => {
+    USERS_CACHE = snap.val() || {};
+    const el = document.getElementById('statUsers');
+    if(el) el.textContent = Object.keys(USERS_CACHE).length;
+    if(!FB_READY){
+      FB_READY = true;
+      updateConnInfo();
+    }
+    if(isMod()) renderAdmin();
+    renderAuthWidget();
+  }, err => {
+    console.error('Users read hatası:', err);
+    FB_ERROR = err.message;
+    updateConnInfo();
+    showToast('❌ Veri okunamadı: ' + err.message, 'error');
+  });
+
+  db.ref('servers').on('value', snap => {
+    SERVERS_CACHE = snap.val() || {};
+    const all = Object.values(SERVERS_CACHE);
+    const approved = all.filter(s => s.status === 'approved');
+    const pending = all.filter(s => s.status === 'pending');
+    const el1 = document.getElementById('statServers'); if(el1) el1.textContent = approved.length;
+    const el2 = document.getElementById('statPending'); if(el2) el2.textContent = pending.length;
+    renderFeatured();
+    renderServers();
+    renderMyServers();
+    if(isMod()) renderAdmin();
+  });
+}
+
+async function seedOwner(){
+  if(!db) return;
+  try {
+    const snap = await db.ref('users/rdxy').once('value');
     if(!snap.exists()){
-      db.ref('users/rdxy').set({
+      await db.ref('users/rdxy').set({
         name: 'rdxy',
         email: 'rdxy@gmail.com',
         password: '06064343',
         role: 'Kurucu',
         kayitTarihi: new Date().toLocaleString('tr-TR')
-      }).then(()=>{
-        console.log('✅ Kurucu hesabı oluşturuldu: rdxy / 06064343');
       });
+      console.log('✅ Kurucu hesabı oluşturuldu: rdxy / 06064343');
     } else {
       const data = snap.val();
-      // Rol her zaman Kurucu kalsın
       if(data.role !== 'Kurucu'){
-        db.ref('users/rdxy/role').set('Kurucu');
+        await db.ref('users/rdxy/role').set('Kurucu');
+        console.log('🔄 Kurucu rolü geri yüklendi');
       }
     }
-  });
-})();
+  } catch(e){
+    console.error('Seed hatası:', e);
+  }
+}
 
-/* ==================== SUNUCU KARTI ==================== */
-function serverCardHtml(s, opts = {}){
-  const icon = s.icon || (s.name || 'S').charAt(0).toUpperCase();
+function serverCardHtml(s){
+  const icon = (s.name || 'S').charAt(0).toUpperCase();
   const tags = [];
   if(s.type) tags.push(`<span class="tag green">${escapeHtml(s.type)}</span>`);
   if(s.platform) tags.push(`<span class="tag blue">${escapeHtml(s.platform)}</span>`);
   if(s.region) tags.push(`<span class="tag">${escapeHtml(s.region)}</span>`);
   if(s.version) tags.push(`<span class="tag">${escapeHtml(s.version)}</span>`);
-
-  const playerCount = s.players || Math.floor(Math.random() * 200 + 20);
+  const playerCount = s.players || 0;
   const online = s.online !== false;
-
   return `
     <div class="server-card" onclick="openServerDetail('${escapeHtml(s.id || '')}')">
       <div class="server-card-top">
@@ -948,35 +786,24 @@ function serverCardHtml(s, opts = {}){
       <div class="server-desc">${escapeHtml(s.short || s.desc || 'Açıklama yok')}</div>
       <div class="server-foot">
         <div class="server-ip">🎮 ${escapeHtml(s.ip || '-')}</div>
-        <div class="server-players">
-          <span class="dot-live ${online ? '' : 'offline'}"></span>
-          ${playerCount}
-        </div>
+        <div class="server-players"><span class="dot-live ${online ? '' : 'offline'}"></span>${playerCount}</div>
       </div>
     </div>
   `;
 }
 
-/* ==================== RENDER: ÖNE ÇIKANLAR ==================== */
 function renderFeatured(){
   const el = document.getElementById('featuredServers');
   if(!el) return;
   const approved = Object.values(SERVERS_CACHE).filter(s => s.status === 'approved');
   if(approved.length === 0){
-    el.innerHTML = `
-      <div class="empty-state" style="grid-column:1/-1">
-        <div class="ico">🎮</div>
-        <h3>Henüz sunucu eklenmemiş</h3>
-        <p>İlk sunucuyu sen ekle ve listelenmeye başla!</p>
-        <button class="btn-primary" onclick="go('addserver')" style="margin-top:16px">Sunucu Ekle</button>
-      </div>`;
+    el.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="ico">🎮</div><h3>Henüz sunucu eklenmemiş</h3><p>İlk sunucuyu sen ekle ve listelenmeye başla!</p><button class="btn-primary" onclick="go('addserver')" style="margin-top:16px">Sunucu Ekle</button></div>`;
     return;
   }
   const featured = approved.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0)).slice(0,3);
   el.innerHTML = featured.map(s => serverCardHtml(s)).join('');
 }
 
-/* ==================== RENDER: SUNUCULAR ==================== */
 function renderServers(){
   const el = document.getElementById('serversList');
   if(!el) return;
@@ -985,72 +812,48 @@ function renderServers(){
   const fPlatform = document.getElementById('fPlatform')?.value || '';
   const fRegion = document.getElementById('fRegion')?.value || '';
   const sort = document.getElementById('fSort')?.value || 'new';
-
   let list = Object.values(SERVERS_CACHE).filter(s => s.status === 'approved');
   if(search) list = list.filter(s => (s.name||'').toLowerCase().includes(search) || (s.desc||'').toLowerCase().includes(search));
   if(fType) list = list.filter(s => s.type === fType);
   if(fPlatform) list = list.filter(s => s.platform === fPlatform);
   if(fRegion) list = list.filter(s => s.region === fRegion);
-
   if(sort === 'new') list.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
   else if(sort === 'popular') list.sort((a,b)=> (b.players||0) - (a.players||0));
   else if(sort === 'name') list.sort((a,b)=> (a.name||'').localeCompare(b.name||''));
-
   if(list.length === 0){
-    el.innerHTML = `
-      <div class="empty-state" style="grid-column:1/-1">
-        <div class="ico">🔍</div>
-        <h3>Sonuç bulunamadı</h3>
-        <p>Filtreleri değiştirmeyi veya arama terimini değiştirmeyi dene.</p>
-      </div>`;
+    el.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="ico">🔍</div><h3>Sonuç bulunamadı</h3><p>Filtreleri değiştirmeyi dene.</p></div>`;
     return;
   }
   el.innerHTML = list.map(s => serverCardHtml(s)).join('');
 }
 
-/* ==================== RENDER: SUNUCULARIM ==================== */
 function renderMyServers(){
   const el = document.getElementById('myServersList');
   if(!el || !currentUser) return;
   const mine = Object.values(SERVERS_CACHE).filter(s => (s.owner || '').toLowerCase() === currentUser.name.toLowerCase());
   if(mine.length === 0){
-    el.innerHTML = `
-      <div class="empty-state">
-        <div class="ico">📭</div>
-        <h3>Henüz sunucu eklemedin</h3>
-        <p>İlk sunucunu ekleyerek binlerce oyuncuya ulaş.</p>
-        <button class="btn-primary" onclick="go('addserver')" style="margin-top:16px">Sunucu Ekle</button>
-      </div>`;
+    el.innerHTML = `<div class="empty-state"><div class="ico">📭</div><h3>Henüz sunucu eklemedin</h3><p>İlk sunucunu ekleyerek binlerce oyuncuya ulaş.</p><button class="btn-primary" onclick="go('addserver')" style="margin-top:16px">Sunucu Ekle</button></div>`;
     return;
   }
   el.innerHTML = mine.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0)).map(s => {
     const status = s.status === 'approved' ? 'approved' : s.status === 'rejected' ? 'rejected' : 'pending';
     const statusLabel = {approved:'✅ Onaylı', rejected:'❌ Reddedildi', pending:'⏳ Onay Bekliyor'}[status];
     const rejection = s.rejectReason ? `<div class="req-meta" style="color:#fca5a5;margin-top:6px">Sebep: ${escapeHtml(s.rejectReason)}</div>` : '';
-    return `
-      <div class="req-item" style="margin-bottom:12px">
-        <div class="req-icon">${escapeHtml((s.name||'S').charAt(0).toUpperCase())}</div>
-        <div class="req-body">
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <span class="req-name">${escapeHtml(s.name)}</span>
-            <span class="status-badge ${status}">${statusLabel}</span>
-          </div>
-          <div class="req-meta">${escapeHtml(s.ip)} · ${escapeHtml(s.type)} · ${escapeHtml(s.platform)}</div>
-          <div class="req-meta" style="margin-top:4px">Eklenme: ${escapeHtml(s.createdAtStr || '-')}</div>
-          ${rejection}
-          <div style="margin-top:10px;padding:8px 12px;background:rgba(88,101,242,0.08);border:1px solid rgba(88,101,242,0.2);border-radius:8px;font-size:12px;color:#9ba5ff">
-            ℹ️ Düzenleme talebi için Discord'tan ticket açın.
-          </div>
-        </div>
+    return `<div class="req-item" style="margin-bottom:12px">
+      <div class="req-icon">${escapeHtml((s.name||'S').charAt(0).toUpperCase())}</div>
+      <div class="req-body">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="req-name">${escapeHtml(s.name)}</span><span class="status-badge ${status}">${statusLabel}</span></div>
+        <div class="req-meta">${escapeHtml(s.ip)} · ${escapeHtml(s.type)} · ${escapeHtml(s.platform)}</div>
+        <div class="req-meta" style="margin-top:4px">Eklenme: ${escapeHtml(s.createdAtStr || '-')}</div>
+        ${rejection}
+        <div style="margin-top:10px;padding:8px 12px;background:rgba(88,101,242,0.08);border:1px solid rgba(88,101,242,0.2);border-radius:8px;font-size:12px;color:#9ba5ff">ℹ️ Düzenleme talebi için Discord'tan ticket açın.</div>
       </div>
-    `;
+    </div>`;
   }).join('');
 }
 
-/* ==================== SUNUCU EKLE ==================== */
 function submitServer(){
   if(!currentUser){ modalAc('giris'); return; }
-
   const name = document.getElementById('sName').value.trim();
   const ip = document.getElementById('sIp').value.trim();
   const platform = document.getElementById('sPlatform').value;
@@ -1063,55 +866,31 @@ function submitServer(){
   const short = document.getElementById('sShort').value.trim();
   const desc = document.getElementById('sDesc').value.trim();
   const contact = document.getElementById('sContact').value.trim();
-
-  if(!name || !ip || !version || !short || !desc || !contact){
-    showToast('⚠️ Zorunlu alanları doldur', 'error'); return;
-  }
-  if(desc.length < 30){
-    showToast('⚠️ Açıklama en az 30 karakter olmalı', 'error'); return;
-  }
-  if(!contact.endsWith('@gmail.com')){
-    showToast('⚠️ İletişim e-postası @gmail.com olmalı', 'error'); return;
-  }
-  if(discord && !/^https?:\/\/(www\.)?(discord\.gg|discord\.com)\//i.test(discord)){
-    showToast('⚠️ Geçerli bir Discord linki gir', 'error'); return;
-  }
-  if(website && !/^https?:\/\//i.test(website)){
-    showToast('⚠️ Geçerli bir website adresi gir', 'error'); return;
-  }
-
+  if(!name || !ip || !version || !short || !desc || !contact){ showToast('⚠️ Zorunlu alanları doldur', 'error'); return; }
+  if(desc.length < 30){ showToast('⚠️ Açıklama en az 30 karakter olmalı', 'error'); return; }
+  if(!contact.endsWith('@gmail.com')){ showToast('⚠️ İletişim e-postası @gmail.com olmalı', 'error'); return; }
+  if(discord && !/^https?:\/\/(www\.)?(discord\.gg|discord\.com)\//i.test(discord)){ showToast('⚠️ Geçerli Discord linki gir', 'error'); return; }
+  if(website && !/^https?:\/\//i.test(website)){ showToast('⚠️ Geçerli website adresi gir', 'error'); return; }
   const features = [];
   document.querySelectorAll('#featureGroup input:checked').forEach(i => features.push(i.value));
-
   const id = 'srv_' + Date.now() + '_' + Math.random().toString(36).substr(2,6);
   const payload = {
     id, name, ip, platform, type, version, region,
     maxPlayers: parseInt(maxPlayers) || 100,
-    discord, website, short, desc, features,
-    contact,
+    discord, website, short, desc, features, contact,
     owner: currentUser.name,
-    ownerEmail: currentUser.name.toLowerCase() === 'rdxy' ? 'rdxy@gmail.com' : '',
-    status: 'pending',
-    players: 0,
-    online: true,
+    status: 'pending', players: 0, online: true,
     createdAt: Date.now(),
     createdAtStr: new Date().toLocaleString('tr-TR')
   };
-
   db.ref('servers/' + id).set(payload).then(() => {
     showToast('✅ Sunucun gönderildi! Onay bekleniyor.', 'success');
-    // Formu temizle
-    ['sName','sIp','sVersion','sMaxPlayers','sDiscord','sWebsite','sShort','sDesc','sContact'].forEach(i => {
-      document.getElementById(i).value = '';
-    });
-    document.querySelectorAll('#featureGroup input:checked').forEach(i => { i.checked = false; i.parentElement.classList.remove('on'); });
+    ['sName','sIp','sVersion','sMaxPlayers','sDiscord','sWebsite','sShort','sDesc','sContact'].forEach(i => { document.getElementById(i).value = ''; });
+    document.querySelectorAll('#featureGroup .chk').forEach(c => { c.classList.remove('on'); c.querySelector('input').checked = false; });
     go('myservers');
-  }).catch(err => {
-    showToast('❌ Hata: ' + err.message, 'error');
-  });
+  }).catch(err => showToast('❌ Hata: ' + err.message, 'error'));
 }
 
-/* ==================== MODAL: SUNUCU DETAY ==================== */
 function openServerDetail(id){
   const s = SERVERS_CACHE[id];
   if(!s) return;
@@ -1134,10 +913,7 @@ function openServerDetail(id){
     ${s.discord ? `<div class="detail-row"><div class="k">Discord</div><div class="v"><a href="${escapeHtml(s.discord)}" target="_blank" style="color:var(--blue)">${escapeHtml(s.discord)} ↗</a></div></div>` : ''}
     ${s.website ? `<div class="detail-row"><div class="k">Website</div><div class="v"><a href="${escapeHtml(s.website)}" target="_blank" style="color:var(--blue)">${escapeHtml(s.website)} ↗</a></div></div>` : ''}
     ${features ? `<div class="detail-row"><div class="k">Özellikler</div><div class="v"><div style="display:flex;gap:6px;flex-wrap:wrap">${features}</div></div></div>` : ''}
-    <div style="margin-top:16px">
-      <div style="color:var(--text-muted);font-size:12.5px;font-weight:600;margin-bottom:6px">Açıklama</div>
-      <div style="color:var(--text);font-size:13.5px;line-height:1.65;white-space:pre-wrap">${escapeHtml(s.desc)}</div>
-    </div>
+    <div style="margin-top:16px"><div style="color:var(--text-muted);font-size:12.5px;font-weight:600;margin-bottom:6px">Açıklama</div><div style="color:var(--text);font-size:13.5px;line-height:1.65;white-space:pre-wrap">${escapeHtml(s.desc)}</div></div>
     <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap">
       <button class="btn-primary" onclick="copyText('${escapeHtml(s.ip)}')">📋 IP Kopyala</button>
       ${s.discord ? `<a class="btn-discord" href="${escapeHtml(s.discord)}" target="_blank">💬 Discord</a>` : ''}
@@ -1147,14 +923,10 @@ function openServerDetail(id){
   openModal('detailModal');
 }
 function copyText(txt){
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(txt).then(()=>showToast('✅ Kopyalandı: ' + txt, 'success'));
-  } else {
-    showToast('📋 ' + txt);
-  }
+  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(()=>showToast('✅ Kopyalandı: ' + txt, 'success'));
+  else showToast('📋 ' + txt);
 }
 
-/* ==================== ADMIN PANEL ==================== */
 let adminTab = 'pending';
 document.getElementById('adminTabs').addEventListener('click', e => {
   const tab = e.target.closest('.admin-tab');
@@ -1171,42 +943,27 @@ function renderAdmin(){
   const pending = all.filter(s => s.status === 'pending');
   const approved = all.filter(s => s.status === 'approved');
   const rejected = all.filter(s => s.status === 'rejected');
-
   document.getElementById('cntPending').textContent = pending.length;
   document.getElementById('cntApproved').textContent = approved.length;
   document.getElementById('cntRejected').textContent = rejected.length;
-
   const content = document.getElementById('adminContent');
-
-  if(adminTab === 'users'){
-    content.innerHTML = renderUsersAdmin();
-    return;
-  }
-
+  if(adminTab === 'users'){ content.innerHTML = renderUsersAdmin(); return; }
   const list = adminTab === 'pending' ? pending : adminTab === 'approved' ? approved : rejected;
-  if(list.length === 0){
-    content.innerHTML = `<div class="empty-state"><div class="ico">📭</div><h3>Bu kategoride sunucu yok</h3></div>`;
-    return;
-  }
+  if(list.length === 0){ content.innerHTML = `<div class="empty-state"><div class="ico">📭</div><h3>Bu kategoride sunucu yok</h3></div>`; return; }
   content.innerHTML = list.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0)).map(s => {
     const actions = adminTab === 'pending'
-      ? `<button class="btn-xs approve" onclick="event.stopPropagation();approveServer('${s.id}')">✅ Onayla</button>
-         <button class="btn-xs reject" onclick="event.stopPropagation();rejectServer('${s.id}')">❌ Reddet</button>
-         <button class="btn-xs info" onclick="openServerDetail('${s.id}')">👁 Detay</button>`
-      : `<button class="btn-xs info" onclick="openServerDetail('${s.id}')">👁 Detay</button>
-         <button class="btn-xs reject" onclick="event.stopPropagation();deleteServer('${s.id}')">🗑 Sil</button>`;
-    return `
-      <div class="req-item">
-        <div class="req-icon">${escapeHtml((s.name||'S').charAt(0).toUpperCase())}</div>
-        <div class="req-body">
-          <div class="req-name">${escapeHtml(s.name)}</div>
-          <div class="req-meta">Sahip: <b>${escapeHtml(s.owner || '-')}</b> · IP: <b>${escapeHtml(s.ip)}</b></div>
-          <div class="req-meta">${escapeHtml(s.type)} · ${escapeHtml(s.platform)} · ${escapeHtml(s.region)}</div>
-          <div class="req-meta" style="font-size:11.5px;margin-top:4px">${escapeHtml(s.createdAtStr || '')}</div>
-        </div>
-        <div class="req-actions">${actions}</div>
+      ? `<button class="btn-xs approve" onclick="event.stopPropagation();approveServer('${s.id}')">✅ Onayla</button><button class="btn-xs reject" onclick="event.stopPropagation();rejectServer('${s.id}')">❌ Reddet</button><button class="btn-xs info" onclick="openServerDetail('${s.id}')">👁 Detay</button>`
+      : `<button class="btn-xs info" onclick="openServerDetail('${s.id}')">👁 Detay</button><button class="btn-xs reject" onclick="event.stopPropagation();deleteServer('${s.id}')">🗑 Sil</button>`;
+    return `<div class="req-item">
+      <div class="req-icon">${escapeHtml((s.name||'S').charAt(0).toUpperCase())}</div>
+      <div class="req-body">
+        <div class="req-name">${escapeHtml(s.name)}</div>
+        <div class="req-meta">Sahip: <b>${escapeHtml(s.owner || '-')}</b> · IP: <b>${escapeHtml(s.ip)}</b></div>
+        <div class="req-meta">${escapeHtml(s.type)} · ${escapeHtml(s.platform)} · ${escapeHtml(s.region)}</div>
+        <div class="req-meta" style="font-size:11.5px;margin-top:4px">${escapeHtml(s.createdAtStr || '')}</div>
       </div>
-    `;
+      <div class="req-actions">${actions}</div>
+    </div>`;
   }).join('');
 }
 
@@ -1219,57 +976,19 @@ function renderUsersAdmin(){
     const canEdit = !mine && ROLES_LOWER.indexOf((role||'').toLowerCase()) < myRoleIndex();
     const opts = ROLES.slice(0, myRoleIndex()).map(r => `<option value="${r}" ${r===role?'selected':''}>${r}</option>`).join('');
     const controls = canEdit
-      ? `<select onchange="changeUserRole('${escapeHtml(u.name)}', this.value)" style="padding:6px 10px;background:var(--bg);border:1px solid var(--border-hi);color:var(--text);border-radius:8px;font-size:12px">${opts}</select>
-         <button class="btn-xs reject" onclick="removeUser('${escapeHtml(u.name)}')" style="margin-left:6px">🗑</button>`
+      ? `<select onchange="changeUserRole('${escapeHtml(u.name)}', this.value)" style="padding:6px 10px;background:var(--bg);border:1px solid var(--border-hi);color:var(--text);border-radius:8px;font-size:12px">${opts}</select><button class="btn-xs reject" onclick="removeUser('${escapeHtml(u.name)}')" style="margin-left:6px">🗑</button>`
       : `<span style="color:var(--text-dim);font-size:12px">${mine ? 'Kendin' : 'Yetkin yok'}</span>`;
-    return `
-      <tr>
-        <td class="pd-uname">${escapeHtml(u.name)}</td>
-        <td class="pd-pass">••••••••</td>
-        <td class="pd-email">${escapeHtml(u.email || '-')}</td>
-        <td><span class="role-pill ${rolePillClass(role)}">${escapeHtml(role)}</span></td>
-        <td style="color:var(--text-dim);font-size:11.5px">${escapeHtml(u.kayitTarihi || '-')}</td>
-        <td>${controls}</td>
-      </tr>
-    `;
+    return `<tr><td class="pd-uname">${escapeHtml(u.name)}</td><td class="pd-pass">••••••••</td><td class="pd-email">${escapeHtml(u.email || '-')}</td><td><span class="role-pill ${rolePillClass(role)}">${escapeHtml(role)}</span></td><td style="color:var(--text-dim);font-size:11.5px">${escapeHtml(u.kayitTarihi || '-')}</td><td>${controls}</td></tr>`;
   }).join('');
-  return `
-    <div class="pd-wrap">
-      <table class="pd-table">
-        <thead><tr><th>Kullanıcı</th><th>Şifre</th><th>E-posta</th><th>Rol</th><th>Kayıt</th><th>İşlem</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-  `;
+  return `<div class="pd-wrap"><table class="pd-table"><thead><tr><th>Kullanıcı</th><th>Şifre</th><th>E-posta</th><th>Rol</th><th>Kayıt</th><th>İşlem</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
-function approveServer(id){
-  db.ref('servers/' + id + '/status').set('approved');
-  db.ref('servers/' + id + '/approvedAt').set(Date.now());
-  showToast('✅ Sunucu onaylandı', 'success');
-}
-function rejectServer(id){
-  const reason = prompt('Red sebebi:') || 'Belirtilmedi';
-  db.ref('servers/' + id).update({status: 'rejected', rejectReason: reason});
-  showToast('❌ Sunucu reddedildi');
-}
-function deleteServer(id){
-  if(!confirm('Bu sunucuyu silmek istediğine emin misin?')) return;
-  db.ref('servers/' + id).remove();
-  showToast('🗑️ Sunucu silindi');
-}
-function changeUserRole(username, newRole){
-  db.ref('users/' + username.toLowerCase() + '/role').set(newRole).then(()=>{
-    showToast('✅ ' + username + ' → ' + newRole, 'success');
-  });
-}
-function removeUser(username){
-  if(!confirm(username + ' adlı kullanıcıyı silmek istediğine emin misin?')) return;
-  db.ref('users/' + username.toLowerCase()).remove();
-  showToast('🗑️ Kullanıcı silindi');
-}
+function approveServer(id){ db.ref('servers/' + id + '/status').set('approved'); db.ref('servers/' + id + '/approvedAt').set(Date.now()); showToast('✅ Sunucu onaylandı', 'success'); }
+function rejectServer(id){ const reason = prompt('Red sebebi:') || 'Belirtilmedi'; db.ref('servers/' + id).update({status: 'rejected', rejectReason: reason}); showToast('❌ Sunucu reddedildi'); }
+function deleteServer(id){ if(!confirm('Bu sunucuyu silmek istediğine emin misin?')) return; db.ref('servers/' + id).remove(); showToast('🗑️ Sunucu silindi'); }
+function changeUserRole(username, newRole){ db.ref('users/' + username.toLowerCase() + '/role').set(newRole).then(()=>showToast('✅ ' + username + ' → ' + newRole, 'success')); }
+function removeUser(username){ if(!confirm(username + ' adlı kullanıcıyı silmek istediğine emin misin?')) return; db.ref('users/' + username.toLowerCase()).remove(); showToast('🗑️ Kullanıcı silindi'); }
 
-/* ==================== CHECKBOX ETIKETLERI ==================== */
 document.querySelectorAll('#featureGroup .chk').forEach(chk => {
   chk.addEventListener('click', e => {
     e.preventDefault();
@@ -1279,13 +998,18 @@ document.querySelectorAll('#featureGroup .chk').forEach(chk => {
   });
 });
 
-/* ==================== NAV EVENTLERI ==================== */
 document.querySelectorAll('.nav-btn[data-page]').forEach(b => {
   b.addEventListener('click', () => go(b.dataset.page));
 });
 
-/* ==================== INIT ==================== */
-(function init(){
+(async function init(){
+  if(!db){
+    updateConnInfo();
+    return;
+  }
+  updateConnInfo();
+  setupListeners();
+  await seedOwner();
   const stored = getUser();
   if(stored && stored.name){
     currentUser = stored;
