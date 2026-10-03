@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0e0a;--surface:#111611;--surface-2:#161c16;--surface-3:#1c241c;--border:#1f2720;--border-hi:#2a352a;--text:#e5e8e4;--text-muted:#828b7d;--text-dim:#4d564b;--green:#4ade80;--green-dark:#22c55e;--green-deep:#15803d;--gold:#fbbf24;--red:#ef4444;--blue:#60a5fa;--purple:#a78bfa;--mono:'JetBrains Mono',monospace;--sans:'Inter',system-ui,sans-serif}
+:root{--bg:#0a0e0a;--surface:#111611;--surface-2:#161c16;--surface-3:#1c241c;--border:#1f2720;--border-hi:#2a352a;--text:#e5e8e4;--text-muted:#828b7d;--text-dim:#4d564b;--green:#4ade80;--green-dark:#22c55e;--green-deep:#15803d;--gold:#fbbf24;--red:#ef4444;--blue:#60a5fa;--purple:#a78bfa;--pink:#f472b6;--mono:'JetBrains Mono',monospace;--sans:'Inter',system-ui,sans-serif}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh;-webkit-font-smoothing:antialiased;font-size:14px;background-image:linear-gradient(rgba(74,222,128,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,0.018) 1px,transparent 1px);background-size:32px 32px}
 button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit;outline:none}
@@ -170,7 +170,7 @@ main{min-height:calc(100vh - 60px)}
 .pd-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--border);border-radius:12px}
 .pd-table{width:100%;border-collapse:collapse;font-size:13px;min-width:900px}
 .pd-table th{text-align:left;padding:12px 14px;color:var(--text-dim);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border);background:var(--surface-2)}
-.pd-table td{padding:12px 14px;color:var(--text);border-bottom:1px solid var(--border)}
+.pd-table td{padding:12px 14px;color:var(--text);border-bottom:1px solid var(--border);vertical-align:middle}
 .pd-table tr:last-child td{border-bottom:none}
 .pd-table tr:hover td{background:var(--surface-2)}
 .pd-uname{color:#fff;font-weight:600}
@@ -178,9 +178,13 @@ main{min-height:calc(100vh - 60px)}
 .pd-email{color:var(--blue);font-size:12.5px}
 .role-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;font-size:10.5px;font-weight:700}
 .role-pill.uye{background:var(--surface-3);color:var(--text-muted)}
+.role-pill.yayinci{background:rgba(244,114,182,0.14);color:var(--pink)}
 .role-pill.moderator{background:rgba(96,165,250,0.14);color:#93c5fd}
 .role-pill.admin{background:rgba(251,191,36,0.14);color:var(--gold)}
 .role-pill.kurucu{background:rgba(239,68,68,0.16);color:#fca5a5;border:1px solid rgba(239,68,68,0.3)}
+.role-select{padding:6px 10px;background:var(--bg);border:1px solid var(--border-hi);color:var(--text);border-radius:8px;font-size:12px;cursor:pointer;transition:border-color .15s}
+.role-select:focus{border-color:var(--green)}
+.role-select option{background:var(--bg)}
 .modal{position:fixed;inset:0;background:rgba(5,8,5,0.88);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:9998;padding:20px;overflow-y:auto}
 .modal.open{display:flex}
 .modal-box{background:var(--surface);border:1px solid var(--border-hi);border-radius:16px;padding:28px;max-width:640px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,0.6);margin:auto;position:relative;max-height:90vh;overflow-y:auto}
@@ -198,18 +202,12 @@ main{min-height:calc(100vh - 60px)}
 #toast.success{border-color:rgba(74,222,128,0.4)}
 #toast.error{border-color:rgba(239,68,68,0.4)}
 @keyframes toastIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
-.discord-banner{background:linear-gradient(90deg,rgba(88,101,242,0.1),rgba(88,101,242,0.02));border:1px solid rgba(88,101,242,0.24);border-radius:14px;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;margin-bottom:24px}
-.discord-banner .txt{flex:1;min-width:200px}
-.discord-banner b{color:#fff;font-size:14px;display:block}
-.discord-banner span{color:var(--text-muted);font-size:12.5px}
-.discord-banner button{background:rgba(88,101,242,0.2);color:#9ba5ff;border:1px solid rgba(88,101,242,0.4);padding:8px 18px;border-radius:8px;font-size:12.5px;font-weight:700;transition:.15s}
-.discord-banner button:hover{background:rgba(88,101,242,0.3);color:#fff}
 .rules-list{display:flex;flex-direction:column;gap:10px}
 .rule-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:14px}
 .rule-num{flex:0 0 28px;height:28px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);color:var(--green);border-radius:8px;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
 .rule-txt{color:var(--text);font-size:13.5px;line-height:1.6}
 .rule-txt b{color:var(--green);font-weight:700}
-@media (max-width:900px){.hero{grid-template-columns:1fr;gap:28px;padding:20px 0 32px}.form-grid{grid-template-columns:1fr}.topbar{padding:12px 16px;gap:12px}nav{order:5;width:100%;justify-content:center}.page{padding:24px 16px 60px}.form-card{padding:20px}.server-grid{grid-template-columns:1fr}}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:28px;padding:20px 0 32px}.form-grid{grid-template-columns:1fr}.topbar{padding:12px 16px;gap:12px}nav{order:5;width:100%;justify-content:center}.page{padding:24px 16px 60px}.form-card{padding:20px}.server-grid{grid-template-columns:1fr}.pd-table{font-size:11px}.pd-table th,.pd-table td{padding:8px 10px}}
 @media (max-width:520px){.hero h1{font-size:26px}.hero-stats{grid-template-columns:1fr 1fr;gap:8px}.stat-card{padding:14px}.stat-card .val{font-size:22px}.giris-kutu{padding:24px 20px}.auth-wrap{width:100%;justify-content:flex-end}.user-chip .name{display:none}}
 </style>
 </head>
@@ -241,7 +239,7 @@ main{min-height:calc(100vh - 60px)}
     <input type="password" id="loginPass2" placeholder="Şifre tekrar" style="display:none" autocomplete="new-password">
     <div class="captcha">
       <span class="kod" id="captchaKod">A7kL9p</span>
-      <input type="text" id="captchaCevap" placeholder="Kodu yaz (büyük/küçük önemsiz)">
+      <input type="text" id="captchaCevap" placeholder="Kodu yaz">
       <button class="yenile" onclick="captchaYenile()" title="Yenile">⟳</button>
     </div>
     <button class="btn-giris" id="modalGirisBtn" onclick="girisYap()">Giriş Yap</button>
@@ -322,7 +320,7 @@ main{min-height:calc(100vh - 60px)}
     </select>
     <select id="fPlatform" onchange="renderServers()"><option value="">Tüm platformlar</option><option>Java</option><option>Bedrock</option><option>Java + Bedrock</option></select>
     <select id="fRegion" onchange="renderServers()"><option value="">Tüm bölgeler</option><option>Türkiye</option><option>Avrupa</option><option>Kuzey Amerika</option><option>Asya</option></select>
-    <select id="fSort" onchange="renderServers()"><option value="new">En yeni</option><option value="popular">En popüler</option><option value="name">İsme göre (A-Z)</option></select>
+    <select id="fSort" onchange="renderServers()"><option value="popular">En popüler</option><option value="new">En yeni</option><option value="name">İsme göre (A-Z)</option></select>
   </div>
   <div id="serversList" class="server-grid"></div>
 </section>
@@ -396,7 +394,7 @@ main{min-height:calc(100vh - 60px)}
     <button class="admin-tab active" data-tab="pending">Bekleyen Sunucular <span class="count" id="cntPending">0</span></button>
     <button class="admin-tab" data-tab="approved">Onaylı Sunucular <span class="count" id="cntApproved">0</span></button>
     <button class="admin-tab" data-tab="rejected">Reddedilenler <span class="count" id="cntRejected">0</span></button>
-    <button class="admin-tab" data-tab="users">Kullanıcılar</button>
+    <button class="admin-tab" data-tab="users">Kullanıcılar <span class="count" id="cntUsers">0</span></button>
   </div>
   <div id="adminContent"></div>
 </section>
@@ -437,8 +435,11 @@ try {
   console.error('Firebase hatası:', e);
 }
 
-const ROLES = ['Üye', 'Moderatör', 'Admin', 'Kurucu'];
-const ROLES_LOWER = ['üye', 'moderatör', 'admin', 'kurucu'];
+// ==================== ROL SİSTEMİ ====================
+// Üye < Yayıncı < Moderatör < Admin < Kurucu
+const ROLES = ['Üye', 'Yayıncı', 'Moderatör', 'Admin', 'Kurucu'];
+const ROLES_LOWER = ['üye', 'yayıncı', 'moderatör', 'admin', 'kurucu'];
+const ROLE_LABELS = { 'Üye':'Üye', 'Yayıncı':'Yayıncı', 'Moderatör':'Moderatör', 'Admin':'Admin', 'Kurucu':'Kurucu' };
 
 const RESERVED_NAMES = [
   'rdxy','owner','admin','mod','moderator','moderatör','kurucu','root',
@@ -463,20 +464,20 @@ function getUser(){
   try{ return JSON.parse(localStorage.getItem('rdxyUser') || 'null'); }catch(e){ return null; }
 }
 function myRoleIndex(){ return currentUser ? ROLES_LOWER.indexOf((currentUser.role || '').toLowerCase()) : -1; }
-function isMod(){ return myRoleIndex() >= 1; }
-function isAdmin(){ return myRoleIndex() >= 2; }
-function isKurucu(){ return myRoleIndex() >= 3; }
+function isMod(){ return myRoleIndex() >= 2; }
+function isAdmin(){ return myRoleIndex() >= 3; }
+function isKurucu(){ return myRoleIndex() >= 4; }
 function rolePillClass(role){
   const r = (role || 'Üye').toLowerCase();
   if(r === 'kurucu') return 'kurucu';
   if(r === 'admin') return 'admin';
   if(r === 'moderatör') return 'moderator';
+  if(r === 'yayıncı') return 'yayinci';
   return 'uye';
 }
 function escapeHtml(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
-function joinDiscord(){ window.open('https://discord.gg/rdxy', '_blank'); }
 function go(page){
   if(!currentUser){ modalAc('giris'); return; }
   if(page === 'admin' && !isMod()){ showToast('⛔ Yetkiniz yok', 'error'); return; }
@@ -528,18 +529,9 @@ function modalGecis(){ modalAc(modalMode === 'giris' ? 'kayit' : 'giris'); }
 function updateConnInfo(){
   const btn = document.getElementById('modalGirisBtn');
   const btn2 = document.getElementById('modalKayitBtn');
-  if(FB_ERROR){
-    if(btn) btn.disabled = true;
-    if(btn2) btn2.disabled = true;
-    return;
-  }
-  if(!FB_READY){
-    if(btn) btn.disabled = true;
-    if(btn2) btn2.disabled = true;
-    return;
-  }
-  if(btn) btn.disabled = false;
-  if(btn2) btn2.disabled = false;
+  const ready = !FB_ERROR && FB_READY;
+  if(btn) btn.disabled = !ready;
+  if(btn2) btn2.disabled = !ready;
 }
 
 function girisYap(){
@@ -549,7 +541,7 @@ function girisYap(){
   const hata = document.getElementById('modalHata');
   hata.classList.remove('show');
   if(!user || !pass){ hata.textContent = '⚠️ Tüm alanları doldurun.'; hata.classList.add('show'); return; }
-  if(!captchaKontrol()){ hata.textContent = '⚠️ Captcha kodu yanlış! (Büyük/küçük harf önemli değil)'; hata.classList.add('show'); captchaYenile(); return; }
+  if(!captchaKontrol()){ hata.textContent = '⚠️ Captcha kodu yanlış!'; hata.classList.add('show'); captchaYenile(); return; }
   const key = user.toLowerCase();
   const found = USERS_CACHE[key];
   if(!found){
@@ -618,8 +610,7 @@ function renderAuthWidget(){
     wrap.innerHTML = `<button class="btn-tb btn-tb-ghost" onclick="modalAc('giris')">Giriş</button><button class="btn-tb btn-tb-primary" onclick="modalAc('kayit')">Kayıt Ol</button>`;
     return;
   }
-  const pill = rolePillClass(currentUser.role);
-  const roleLabel = {uye:'Üye',moderator:'Mod',admin:'Admin',kurucu:'Owner'}[pill] || currentUser.role;
+  const roleLabel = ROLE_LABELS[currentUser.role] || currentUser.role;
   wrap.innerHTML = `
     <div class="user-chip"><div class="av">${escapeHtml(currentUser.name[0].toUpperCase())}</div><span class="name">${escapeHtml(currentUser.name)}</span><span class="role-mini">${escapeHtml(roleLabel)}</span></div>
     <button class="btn-tb btn-tb-danger" onclick="cikisYap()">Çıkış</button>
@@ -659,15 +650,12 @@ function watchRole(){
 function setupListeners(){
   if(!db) return;
 
-  db.ref('.info/connected').on('value', snap => {
-    const connected = snap.val() === true;
-    console.log('Firebase bağlantı durumu:', connected);
-  });
-
   db.ref('users').on('value', snap => {
     USERS_CACHE = snap.val() || {};
     const el = document.getElementById('statUsers');
     if(el) el.textContent = Object.keys(USERS_CACHE).length;
+    const cnt = document.getElementById('cntUsers');
+    if(cnt) cnt.textContent = Object.keys(USERS_CACHE).length;
     if(!FB_READY){
       FB_READY = true;
       updateConnInfo();
@@ -695,10 +683,11 @@ function setupListeners(){
   });
 }
 
+// ==================== SEED ====================
 async function seedOwner(){
   if(!db) return;
 
-  // ============ KURUCU HESABI (rdxy) ============
+  // Kurucu: rdxy
   try {
     const snap = await db.ref('users/rdxy').once('value');
     if(!snap.exists()){
@@ -721,7 +710,7 @@ async function seedOwner(){
     console.error('Kurucu seed hatası:', e);
   }
 
-  // ============ YAYINCI HESABI (Afyonlu03sucuk) ============
+  // Yayıncı: Afyonlu03sucuk
   try {
     const snap2 = await db.ref('users/afyonlu03sucuk').once('value');
     if(!snap2.exists()){
@@ -729,16 +718,102 @@ async function seedOwner(){
         name: 'Afyonlu03sucuk',
         email: 'afyonlu03@gmail.com',
         password: '03sucuk03',
-        role: 'Üye',
+        role: 'Yayıncı',
         kayitTarihi: new Date().toLocaleString('tr-TR')
       });
       console.log('✅ Yayıncı hesabı oluşturuldu: Afyonlu03sucuk / 03sucuk03');
+    } else {
+      const data2 = snap2.val();
+      // Şifre güncellensin
+      if(data2.password !== '03sucuk03'){
+        await db.ref('users/afyonlu03sucuk/password').set('03sucuk03');
+      }
     }
   } catch(e){
     console.error('Yayıncı seed hatası:', e);
   }
 }
 
+// ==================== DEMO SUNUCULAR ====================
+async function seedDemoServers(){
+  if(!db) return;
+
+  // Her zaman kontrol et: eksik olan demo sunucuları ekle
+  const demoList = [
+    { key:'zenitmc',     name:'ZenitMC',         ip:'play.zenitmc.com',              type:'PvP',       platform:'Java',           version:'1.8 - 1.21',    region:'Türkiye', short:'Türkiye\'nin en büyük PvP sunucusu',          players:420, maxPlayers:1000 },
+    { key:'chickennw',   name:'ChickenNW',        ip:'play.chickennw.com',            type:'PvP',       platform:'Java',           version:'1.8 - 1.21',    region:'Türkiye', short:'Yeni nesil PvP deneyimi',                     players:380, maxPlayers:800 },
+    { key:'aesirmc',     name:'AesirMC',          ip:'play.aesirmc.com',              type:'Survival',  platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'Kaliteli survival ve aktif yönetim',          players:290, maxPlayers:500 },
+    { key:'blueloremc',  name:'BlueLoreMC',       ip:'oyna.blueloremc.com',           type:'PvP',       platform:'Java',           version:'1.8 - 1.21',    region:'Türkiye', short:'Pratice • Hunger Games • BoxPvP • TrapPvP',   players:245, maxPlayers:600 },
+    { key:'craftavia',   name:'Craftavia',        ip:'play.craftavia.net',            type:'SMP',       platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'DonutSMP tarzı ekonomi ve takım sistemi',     players:210, maxPlayers:500 },
+    { key:'lxmvanilla',  name:'LXMVanilla',       ip:'oyna.lxmvanilla.com.tr',        type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Sade ve özgür saf vanilla deneyimi',          players:180, maxPlayers:300 },
+    { key:'mc4fun',      name:'MC4FUN',           ip:'minetr.mc4fun.net',             type:'RPG',       platform:'Java',           version:'1.21',          region:'Türkiye', short:'Türkiye\'nin en iyi MMORPG Survival sunucusu', players:165, maxPlayers:400 },
+    { key:'knightnw',    name:'Knight Network',   ip:'mc.knightnw.com',               type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Türkiye\'nin en iyi Minecraft sunucusu',      players:320, maxPlayers:700 },
+    { key:'aeseria',     name:'Aeseria Network',  ip:'play.aeseria.net',              type:'SMP',       platform:'Java',           version:'1.8 - 1.15',    region:'Türkiye', short:'Kapanmayacak tek sunucu, özgün ve kaliteli',  players:150, maxPlayers:300 },
+    { key:'gamerway',    name:'Gamerway Towny',   ip:'play.gamerway.com',             type:'Towny',     platform:'Java',           version:'1.12 - 1.17',   region:'Türkiye', short:'Krallığını kur, düşmanlarını yok et!',        players:130, maxPlayers:250 },
+    { key:'hyperios',    name:'Hyperios Network', ip:'play.hyperios.net',             type:'SkyBlock',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Hızlı ilerleme, güçlü ekonomi, bol event',    players:175, maxPlayers:350 },
+    { key:'heretic',     name:'Heretic',          ip:'play.heretic.gg',               type:'Anarchy',   platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Aktif güncellemelerle donatılmış anarşi',    players:95,  maxPlayers:200 },
+    { key:'pokebalta',   name:'PokeBalta',        ip:'play.pokebalta.com.tr',         type:'RPG',       platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'Türk Pixelmon sunucusu',                      players:220, maxPlayers:450 },
+    { key:'sektorsmp',   name:'SektorSMP',        ip:'play.sektorsmp.com',            type:'SMP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Kaliteli Survival Multiplayer sunucusu',      players:140, maxPlayers:250 },
+    { key:'zurnacraft',  name:'ZurnaCraft',       ip:'play.zurnacraft.com',           type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Türk yapımı survival sunucusu',               players:120, maxPlayers:200 },
+    { key:'muzcraft',    name:'MuzCraft',         ip:'play.muzcraft.com',             type:'SkyBlock',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Eğlenceli SkyBlock deneyimi',                 players:105, maxPlayers:200 },
+    { key:'kralg',       name:'KralGSurvival',    ip:'play.kralgsurvival.com',        type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Kral gibi survival oyna',                     players:115, maxPlayers:200 },
+    { key:'kattegat',    name:'KattegatMC',       ip:'play.kattegatmc.com',           type:'RPG',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Viking temalı RPG sunucusu',                  players:135, maxPlayers:300 },
+    { key:'alazcraft',   name:'AlazCraft',        ip:'play.alazcraft.com',            type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Alev gibi PvP deneyimi',                      players:160, maxPlayers:300 },
+    { key:'hanemc',      name:'HaneMC',           ip:'play.hanemc.com',               type:'Towny',     platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Kasabanı kur, krallığını ilan et',            players:90,  maxPlayers:150 },
+    { key:'pistoncraft', name:'PistonCraft',      ip:'pistoncraft.redstone.tr',       type:'Creative',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Redstone ve yaratıcılık sunucusu',            players:85,  maxPlayers:200 },
+    { key:'betablok',    name:'Betablok',         ip:'play.betablok.com',             type:'SMP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Beta döneminden kalma eğlence',               players:100, maxPlayers:200 },
+    { key:'luathes',     name:'LuathesMC',        ip:'play.luathesmc.com',            type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Luathes dünyasına adım at',                   players:110, maxPlayers:200 },
+    { key:'exkill',      name:'ExKiLLCraft',      ip:'play.exkillcraft.com',          type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Öldürmek için yaşa',                          players:145, maxPlayers:250 },
+    { key:'poncik',      name:'PoncikCRAFT',      ip:'play.poncikcraft.com',          type:'SMP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Tatlı ve eğlenceli SMP sunucusu',             players:125, maxPlayers:200 },
+    { key:'projectsgg',  name:'ProjectSGG',       ip:'play.projectsgg.com',           type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Survival • Skyblock • Hunger Games',          players:155, maxPlayers:300 },
+    { key:'bekanw',      name:'BekaNW',           ip:'play.bekanw.com',               type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Beka Network PvP deneyimi',                   players:170, maxPlayers:300 },
+    { key:'rinacraft',   name:'RinaCraft',        ip:'play.rinacraft.com',            type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Rina dünyasında hayatta kal',                 players:130, maxPlayers:250 },
+    { key:'ironmc',      name:'IronMC',           ip:'play.ironmc.net',               type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Demir gibi sağlam sunucu',                    players:140, maxPlayers:250 },
+    { key:'ryzencraft',  name:'RyzenCraft',       ip:'play.ryzencraft.com',           type:'Survival',  platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'Güçlü donanım, kesintisiz oyun',              players:190, maxPlayers:400 },
+    { key:'vimenw',      name:'VimeNetwork',      ip:'play.vimenw.com',               type:'SkyBlock',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Vime Network SkyBlock deneyimi',              players:105, maxPlayers:200 },
+    { key:'rexcraft',    name:'RexCraft',         ip:'play.rexcraft.com',             type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Rex gibi güçlü PvP',                          players:150, maxPlayers:250 },
+    { key:'turkcraft',   name:'TurkCraft',        ip:'play.turkcraft.net',            type:'Survival',  platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'Türk yapımı kaliteli survival',               players:185, maxPlayers:350 },
+    { key:'novamc',      name:'NovaMC',           ip:'play.novamc.com',               type:'SkyBlock',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Yeni nesil SkyBlock sunucusu',                players:165, maxPlayers:300 }
+  ];
+
+  const snap = await db.ref('servers').once('value');
+  const existing = snap.val() || {};
+
+  const updates = {};
+  demoList.forEach((s, i) => {
+    const id = 'srv_' + s.key;
+    if(existing[id]) return; // zaten var
+    updates[id] = {
+      id: id,
+      name: s.name,
+      ip: s.ip,
+      type: s.type,
+      platform: s.platform,
+      version: s.version,
+      region: s.region,
+      short: s.short,
+      desc: s.name + ' — ' + s.short + '. Detaylı bilgi için sunucunun Discord sunucusuna katılabilirsin.',
+      maxPlayers: s.maxPlayers,
+      players: s.players,
+      discord: '',
+      website: '',
+      features: ['Economy', 'Ranks', 'Anti-Cheat', 'Events'],
+      contact: 'rdxy@gmail.com',
+      owner: 'rdxy',
+      status: 'approved',
+      online: true,
+      createdAt: Date.now() - i * 3600000,
+      createdAtStr: new Date(Date.now() - i * 3600000).toLocaleString('tr-TR')
+    };
+  });
+
+  if(Object.keys(updates).length > 0){
+    await db.ref('servers').update(updates);
+    console.log('✅ ' + Object.keys(updates).length + ' demo sunucu eklendi');
+  }
+}
+
+// ==================== SERVER RENDER ====================
 function serverCardHtml(s){
   const icon = (s.name || 'S').charAt(0).toUpperCase();
   const tags = [];
@@ -774,7 +849,7 @@ function renderFeatured(){
     el.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="ico">🎮</div><h3>Henüz sunucu eklenmemiş</h3><p>İlk sunucuyu sen ekle ve listelenmeye başla!</p><button class="btn-primary" onclick="go('addserver')" style="margin-top:16px">Sunucu Ekle</button></div>`;
     return;
   }
-  const featured = approved.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0)).slice(0,3);
+  const featured = approved.sort((a,b)=> (b.players||0) - (a.players||0)).slice(0,6);
   el.innerHTML = featured.map(s => serverCardHtml(s)).join('');
 }
 
@@ -785,7 +860,7 @@ function renderServers(){
   const fType = document.getElementById('fType')?.value || '';
   const fPlatform = document.getElementById('fPlatform')?.value || '';
   const fRegion = document.getElementById('fRegion')?.value || '';
-  const sort = document.getElementById('fSort')?.value || 'new';
+  const sort = document.getElementById('fSort')?.value || 'popular';
   let list = Object.values(SERVERS_CACHE).filter(s => s.status === 'approved');
   if(search) list = list.filter(s => (s.name||'').toLowerCase().includes(search) || (s.desc||'').toLowerCase().includes(search));
   if(fType) list = list.filter(s => s.type === fType);
@@ -899,6 +974,7 @@ function copyText(txt){
   else showToast('📋 ' + txt);
 }
 
+// ==================== ADMİN PANEL ====================
 let adminTab = 'pending';
 document.getElementById('adminTabs').addEventListener('click', e => {
   const tab = e.target.closest('.admin-tab');
@@ -918,6 +994,7 @@ function renderAdmin(){
   document.getElementById('cntPending').textContent = pending.length;
   document.getElementById('cntApproved').textContent = approved.length;
   document.getElementById('cntRejected').textContent = rejected.length;
+  document.getElementById('cntUsers').textContent = Object.keys(USERS_CACHE).length;
   const content = document.getElementById('adminContent');
   if(adminTab === 'users'){ content.innerHTML = renderUsersAdmin(); return; }
   const list = adminTab === 'pending' ? pending : adminTab === 'approved' ? approved : rejected;
@@ -942,18 +1019,65 @@ function renderAdmin(){
 function renderUsersAdmin(){
   const users = Object.values(USERS_CACHE);
   if(users.length === 0) return `<div class="empty-state"><div class="ico">👥</div><h3>Kullanıcı yok</h3></div>`;
-  const rows = users.sort((a,b)=> (a.name||'').localeCompare(b.name||'')).map(u => {
+
+  const myIdx = myRoleIndex();
+
+  const rows = users.sort((a,b) => {
+    const ai = ROLES_LOWER.indexOf((a.role||'üye').toLowerCase());
+    const bi = ROLES_LOWER.indexOf((b.role||'üye').toLowerCase());
+    if(ai !== bi) return bi - ai;
+    return (a.name||'').localeCompare(b.name||'');
+  }).map(u => {
     const role = u.role || 'Üye';
+    const roleIdx = ROLES_LOWER.indexOf(role.toLowerCase());
     const mine = currentUser && u.name.toLowerCase() === currentUser.name.toLowerCase();
-    const canEdit = !mine && ROLES_LOWER.indexOf((role||'').toLowerCase()) < myRoleIndex();
-    const opts = ROLES.slice(0, myRoleIndex()).map(r => `<option value="${r}" ${r===role?'selected':''}>${r}</option>`).join('');
-    const controls = canEdit
-      ? `<select onchange="changeUserRole('${escapeHtml(u.name)}', this.value)" style="padding:6px 10px;background:var(--bg);border:1px solid var(--border-hi);color:var(--text);border-radius:8px;font-size:12px">${opts}</select><button class="btn-xs reject" onclick="removeUser('${escapeHtml(u.name)}')" style="margin-left:6px">🗑</button>`
-      : `<span style="color:var(--text-dim);font-size:12px">${mine ? 'Kendin' : 'Yetkin yok'}</span>`;
+
+    // Kurallar:
+    // 1. Kendi rolünü değiştiremez
+    // 2. Kendi seviyesinden yüksek veya eşit rolü olan birini değiştiremez (kendisi hariç)
+    // 3. Sadece kendi seviyesinden KÜÇÜK rolleri verebilir (yani < myIdx)
+    const canEdit = !mine && roleIdx < myIdx;
+
+    // Verilebilecek roller: kendi seviyesinden küçük olanlar
+    const assignableRoles = ROLES.slice(0, myIdx);
+
+    let controls;
+    if(mine){
+      controls = `<span style="color:var(--text-dim);font-size:12px;font-style:italic">Kendin</span>`;
+    } else if(canEdit){
+      const opts = assignableRoles.map(r => `<option value="${r}" ${r===role?'selected':''}>${r}</option>`).join('');
+      controls = `
+        <select class="role-select" onchange="changeUserRole('${escapeHtml(u.name)}', this.value)">
+          ${opts}
+        </select>
+        <button class="btn-xs reject" onclick="removeUser('${escapeHtml(u.name)}')" style="margin-left:6px" title="Kullanıcıyı Sil">🗑</button>
+      `;
+    } else {
+      controls = `<span style="color:var(--text-dim);font-size:12px;font-style:italic">Yetkin yok</span>`;
+    }
+
     const maskedEmail = maskEmail(u.email);
-    return `<tr><td class="pd-uname">${escapeHtml(u.name)}</td><td class="pd-pass">••••••••</td><td class="pd-email">${escapeHtml(maskedEmail)}</td><td><span class="role-pill ${rolePillClass(role)}">${escapeHtml(role)}</span></td><td style="color:var(--text-dim);font-size:11.5px">${escapeHtml(u.kayitTarihi || '-')}</td><td>${controls}</td></tr>`;
+    return `<tr>
+      <td class="pd-uname">${escapeHtml(u.name)}</td>
+      <td class="pd-pass">••••••••</td>
+      <td class="pd-email">${escapeHtml(maskedEmail)}</td>
+      <td><span class="role-pill ${rolePillClass(role)}">${escapeHtml(role)}</span></td>
+      <td style="color:var(--text-dim);font-size:11.5px">${escapeHtml(u.kayitTarihi || '-')}</td>
+      <td style="white-space:nowrap">${controls}</td>
+    </tr>`;
   }).join('');
-  return `<div class="pd-wrap"><table class="pd-table"><thead><tr><th>Kullanıcı</th><th>Şifre</th><th>E-posta</th><th>Rol</th><th>Kayıt</th><th>İşlem</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+
+  return `
+    <div style="margin-bottom:12px;padding:10px 14px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.18);border-radius:10px;font-size:12.5px;color:var(--text-muted)">
+      ℹ️ Kurallar: Kendi rolünü değiştiremezsin, kendinle eşit veya üstün birinin rolünü değiştiremezsin. Sadece <b style="color:var(--green)">kendi rolünden küçük</b> rolleri verebilirsin.
+    </div>
+    <div class="pd-wrap">
+      <table class="pd-table">
+        <thead><tr><th>Kullanıcı</th><th>Şifre</th><th>E-posta</th><th>Rol</th><th>Kayıt</th><th>İşlem</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
 }
 
 function maskEmail(email){
@@ -969,8 +1093,48 @@ function maskEmail(email){
 function approveServer(id){ db.ref('servers/' + id + '/status').set('approved'); db.ref('servers/' + id + '/approvedAt').set(Date.now()); showToast('✅ Sunucu onaylandı', 'success'); }
 function rejectServer(id){ const reason = prompt('Red sebebi:') || 'Belirtilmedi'; db.ref('servers/' + id).update({status: 'rejected', rejectReason: reason}); showToast('❌ Sunucu reddedildi'); }
 function deleteServer(id){ if(!confirm('Bu sunucuyu silmek istediğine emin misin?')) return; db.ref('servers/' + id).remove(); showToast('🗑️ Sunucu silindi'); }
-function changeUserRole(username, newRole){ db.ref('users/' + username.toLowerCase() + '/role').set(newRole).then(()=>showToast('✅ ' + username + ' → ' + newRole, 'success')); }
-function removeUser(username){ if(!confirm(username + ' adlı kullanıcıyı silmek istediğine emin misin?')) return; db.ref('users/' + username.toLowerCase()).remove(); showToast('🗑️ Kullanıcı silindi'); }
+
+function changeUserRole(username, newRole){
+  if(!currentUser) return;
+  const myIdx = myRoleIndex();
+  const newIdx = ROLES_LOWER.indexOf((newRole||'').toLowerCase());
+  const target = USERS_CACHE[username.toLowerCase()];
+  if(!target){ showToast('❌ Kullanıcı bulunamadı', 'error'); return; }
+  const targetIdx = ROLES_LOWER.indexOf((target.role||'üye').toLowerCase());
+
+  // Kurallar
+  if(username.toLowerCase() === currentUser.name.toLowerCase()){
+    showToast('⛔ Kendi rolünü değiştiremezsin!', 'error'); renderAdmin(); return;
+  }
+  if(newIdx >= myIdx){
+    showToast('⛔ Kendi rolünle eşit veya üstün bir rol veremezsin!', 'error'); renderAdmin(); return;
+  }
+  if(targetIdx >= myIdx){
+    showToast('⛔ Kendinle eşit veya üstün birinin rolünü değiştiremezsin!', 'error'); renderAdmin(); return;
+  }
+
+  db.ref('users/' + username.toLowerCase() + '/role').set(newRole).then(()=>{
+    showToast('✅ ' + username + ' → ' + newRole, 'success');
+  }).catch(err => showToast('❌ ' + err.message, 'error'));
+}
+
+function removeUser(username){
+  if(!currentUser) return;
+  const myIdx = myRoleIndex();
+  const target = USERS_CACHE[username.toLowerCase()];
+  if(!target){ showToast('❌ Kullanıcı bulunamadı', 'error'); return; }
+  const targetIdx = ROLES_LOWER.indexOf((target.role||'üye').toLowerCase());
+
+  if(username.toLowerCase() === currentUser.name.toLowerCase()){
+    showToast('⛔ Kendini silemezsin!', 'error'); return;
+  }
+  if(targetIdx >= myIdx){
+    showToast('⛔ Kendinle eşit veya üstün birini silemezsin!', 'error'); return;
+  }
+  if(!confirm(username + ' adlı kullanıcıyı silmek istediğine emin misin?')) return;
+  db.ref('users/' + username.toLowerCase()).remove();
+  showToast('🗑️ Kullanıcı silindi');
+}
 
 document.querySelectorAll('#featureGroup .chk').forEach(chk => {
   chk.addEventListener('click', e => {
@@ -985,6 +1149,7 @@ document.querySelectorAll('.nav-btn[data-page]').forEach(b => {
   b.addEventListener('click', () => go(b.dataset.page));
 });
 
+// ==================== INIT ====================
 (async function init(){
   if(!db){
     updateConnInfo();
@@ -993,6 +1158,7 @@ document.querySelectorAll('.nav-btn[data-page]').forEach(b => {
   updateConnInfo();
   setupListeners();
   await seedOwner();
+  await seedDemoServers();
   const stored = getUser();
   if(stored && stored.name){
     currentUser = stored;
@@ -1005,60 +1171,6 @@ document.querySelectorAll('.nav-btn[data-page]').forEach(b => {
     modalAc('giris');
   }
 })();
-
-// Demo sunucuları yükle (mc-tr.com'dan)
-async function seedDemoServers(){
-  if(!db) return;
-  const snap = await db.ref('servers').once('value');
-  if(snap.exists() && Object.keys(snap.val()).length > 0) return; // Zaten veri var
-
-  const demoServers = [
-    { name: 'BlueLoreMC', ip: 'oyna.blueloremc.com', type: 'PvP', platform: 'Java', version: '1.21.x', region: 'Türkiye', short: 'Pratice • Hunger Games • BoxPvP • TrapPvP' },
-    { name: 'Craftavia', ip: 'play.craftavia.net', type: 'SMP', platform: 'Java + Bedrock', version: '1.20 - 1.21', region: 'Türkiye', short: 'Survival SMP • DonutSMP tarzı ekonomi ve takım' },
-    { name: 'LXMVanilla', ip: 'oyna.lxmvanilla.com.tr:25826', type: 'Survival', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Sade ve özgür saf vanilla deneyimi' },
-    { name: 'MC4FUN', ip: 'minetr.mc4fun.net', type: 'RPG', platform: 'Java', version: '1.21.11', region: 'Türkiye', short: 'Türkiye\'nin en iyi MMORPG Survival sunucusu' },
-    { name: 'Knight Network', ip: 'mc.knightnw.com', type: 'PvP', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Türkiye\'nin en iyi Minecraft sunucusu' },
-    { name: 'Aeseria Network', ip: 'play.aeseria.net', type: 'SMP', platform: 'Java', version: '1.8 - 1.15.2', region: 'Türkiye', short: 'Kapanmayacak tek sunucu, özgün ve kaliteli' },
-    { name: 'Gamerway Towny', ip: 'play.gamerway.com', type: 'Towny', platform: 'Java', version: '1.12 - 1.17', region: 'Türkiye', short: 'Krallığını kur, düşmanlarını yok et!' },
-    { name: 'Hyperios Network', ip: 'play.hyperios.net', type: 'SkyBlock', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Hızlı ilerleme, güçlü ekonomi, bol ödüllü eventler' },
-    { name: 'Heretic', ip: 'play.heretic.gg', type: 'Anarchy', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Aktif güncellemelerle donatılmış anarşi sunucusu' },
-    { name: 'PokeBalta', ip: 'play.pokebalta.com.tr', type: 'RPG', platform: 'Java + Bedrock', version: '1.20 - 1.21', region: 'Türkiye', short: 'Türk Pixelmon sunucusu' },
-    { name: 'SektorSMP', ip: 'play.sektorsmp.com', type: 'SMP', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Kaliteli Survival Multiplayer sunucusu' },
-    { name: 'ZurnaCraft', ip: 'play.zurnacraft.com', type: 'Survival', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Türk yapımı survival sunucusu' },
-    { name: 'MuzCraft', ip: 'play.muzcraft.com', type: 'SkyBlock', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Eğlenceli SkyBlock deneyimi' },
-    { name: 'KralGSurvival', ip: 'play.kralgsurvival.com', type: 'Survival', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Kral gibi survival oyna' },
-    { name: 'KattegatMC', ip: 'play.kattegatmc.com', type: 'RPG', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Viking temalı RPG sunucusu' },
-    { name: 'AlazCraft', ip: 'play.alazcraft.com', type: 'PvP', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Alev gibi PvP deneyimi' },
-    { name: 'Windo5DJ', ip: 'play.windo5dj.com', type: 'Minigames', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Birbirinden eğlenceli mini oyunlar' },
-    { name: 'HaneMC', ip: 'play.hanemc.com', type: 'Towny', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Kasabanı kur, krallığını ilan et' },
-    { name: 'PistonCraft', ip: 'pistoncraft.redstone.tr:25644', type: 'Creative', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Redstone ve yaratıcılık sunucusu' },
-    { name: 'Betablok', ip: 'play.betablok.com', type: 'SMP', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Beta döneminden kalma eğlence' },
-    { name: 'Windo5DJ', ip: 'play.windo5dj.com', type: 'Minigames', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Eğlenceli mini oyun sunucusu' },
-    { name: 'LuathesMC', ip: 'play.luathesmc.com', type: 'Survival', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Luathes dünyasına adım at' },
-    { name: 'ExKiLLCraft', ip: 'play.exkillcraft.com', type: 'PvP', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Öldürmek için yaşa' },
-    { name: 'PoncikCRAFT', ip: 'play.poncikcraft.com', type: 'SMP', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Tatlı ve eğlenceli SMP sunucusu' },
-    { name: 'ProjectSGG', ip: 'play.projectsgg.com', type: 'Survival', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Türkiye Survival Skyblock HG' },
-    { name: 'BekaNW', ip: 'play.bekanw.com', type: 'PvP', platform: 'Java', version: '1.20 - 1.21', region: 'Türkiye', short: 'Beka Network PvP deneyimi' }
-  ];
-
-  const updates = {};
-  demoServers.forEach((s, i) => {
-    const id = 'srv_demo_' + (i + 1);
-    updates[id] = {
-      id, ...s,
-      maxPlayers: 100, players: Math.floor(Math.random() * 200) + 20,
-      online: true, owner: 'rdxy', status: 'approved',
-      createdAt: Date.now() - i * 86400000,
-      createdAtStr: new Date(Date.now() - i * 86400000).toLocaleString('tr-TR')
-    };
-  });
-
-  await db.ref('servers').update(updates);
-  console.log('✅ Demo sunucular yüklendi');
-}
-
-// Uygulama başladıktan sonra demo sunucuları yükle
-setTimeout(() => { seedDemoServers(); }, 2000);
 </script>
 </body>
 </html>
