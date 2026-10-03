@@ -697,6 +697,8 @@ function setupListeners(){
 
 async function seedOwner(){
   if(!db) return;
+
+  // ============ KURUCU HESABI (rdxy) ============
   try {
     const snap = await db.ref('users/rdxy').once('value');
     if(!snap.exists()){
@@ -716,7 +718,24 @@ async function seedOwner(){
       }
     }
   } catch(e){
-    console.error('Seed hatası:', e);
+    console.error('Kurucu seed hatası:', e);
+  }
+
+  // ============ YAYINCI HESABI (Afyonlu03sucuk) ============
+  try {
+    const snap2 = await db.ref('users/afyonlu03sucuk').once('value');
+    if(!snap2.exists()){
+      await db.ref('users/afyonlu03sucuk').set({
+        name: 'Afyonlu03sucuk',
+        email: 'afyonlu03@gmail.com',
+        password: '03sucuk03',
+        role: 'Üye',
+        kayitTarihi: new Date().toLocaleString('tr-TR')
+      });
+      console.log('✅ Yayıncı hesabı oluşturuldu: Afyonlu03sucuk / 03sucuk03');
+    }
+  } catch(e){
+    console.error('Yayıncı seed hatası:', e);
   }
 }
 
