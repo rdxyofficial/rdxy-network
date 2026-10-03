@@ -225,10 +225,6 @@ main{min-height:calc(100vh - 60px)}
         <polygon points="32,6 58,20 32,34 6,20" fill="url(#gTop)"/>
         <polygon points="6,20 32,34 32,58 6,44" fill="url(#gL)"/>
         <polygon points="58,20 32,34 32,58 58,44" fill="url(#gR)"/>
-        <rect x="11" y="17" width="2.5" height="2.5" fill="#5eb84d" opacity="0.8"/>
-        <rect x="24" y="24" width="2.5" height="2.5" fill="#7ddb6a" opacity="0.9"/>
-        <rect x="44" y="22" width="2.5" height="2.5" fill="#5eb84d" opacity="0.8"/>
-        <rect x="50" y="17" width="2.5" height="2.5" fill="#7ddb6a" opacity="0.9"/>
       </svg>
     </div>
     <h1 id="modalTitle">RDXY Network</h1>
@@ -263,10 +259,6 @@ main{min-height:calc(100vh - 60px)}
       <polygon points="32,6 58,20 32,34 6,20" fill="url(#bTop)"/>
       <polygon points="6,20 32,34 32,58 6,44" fill="url(#bL)"/>
       <polygon points="58,20 32,34 32,58 58,44" fill="url(#bR)"/>
-      <rect x="11" y="17" width="2.5" height="2.5" fill="#5eb84d" opacity="0.8"/>
-      <rect x="24" y="24" width="2.5" height="2.5" fill="#7ddb6a" opacity="0.9"/>
-      <rect x="44" y="22" width="2.5" height="2.5" fill="#5eb84d" opacity="0.8"/>
-      <rect x="50" y="17" width="2.5" height="2.5" fill="#7ddb6a" opacity="0.9"/>
     </svg>
     <div class="brand-text"><span class="brand-name">RDXY</span><span class="brand-sub">Server Directory</span></div>
   </div>
@@ -302,12 +294,6 @@ main{min-height:calc(100vh - 60px)}
   </div>
   <div class="section-head"><div><h2>Öne Çıkan Sunucular</h2><p>Editör seçkisi ve öne çıkan sunucular.</p></div><a class="link-more" onclick="go('servers')">Tümünü gör →</a></div>
   <div id="featuredServers" class="server-grid"></div>
-  <div class="section-head"><div><h2>Nasıl Çalışır?</h2><p>Sunucunu 3 basit adımda yayınla.</p></div></div>
-  <div class="server-grid">
-    <div class="server-card" style="cursor:default"><div class="server-card-top"><div class="server-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">1</div><div class="server-info"><div class="server-name">Hesap Oluştur</div><div class="server-desc" style="-webkit-line-clamp:3">Gmail ile hızlıca kayıt ol. Captcha ile güvenli doğrulama.</div></div></div></div>
-    <div class="server-card" style="cursor:default"><div class="server-card-top"><div class="server-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">2</div><div class="server-info"><div class="server-name">Sunucu Bilgilerini Gir</div><div class="server-desc" style="-webkit-line-clamp:3">Sunucu adı, IP, sürüm, tür, açıklama ve tüm detayları doldur.</div></div></div></div>
-    <div class="server-card" style="cursor:default"><div class="server-card-top"><div class="server-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">3</div><div class="server-info"><div class="server-name">Onay Bekle</div><div class="server-desc" style="-webkit-line-clamp:3">Yetkililer sunucunu inceleyip onaylar. Onaylanınca listelenir.</div></div></div></div>
-  </div>
 </section>
 
 <section id="page-servers" class="page">
@@ -328,7 +314,7 @@ main{min-height:calc(100vh - 60px)}
 <section id="page-addserver" class="page">
   <div class="form-card">
     <h2 class="form-title">Sunucu Ekle</h2>
-    <p class="form-sub">Sunucu bilgilerini doldur. Yetkililer onayladıktan sonra listelenir. Düzenleme talepleri için Discord'tan ticket açman gerekir.</p>
+    <p class="form-sub">Sunucu bilgilerini doldur. Yetkililer onayladıktan sonra listelenir.</p>
     <div class="form-grid">
       <div class="field"><label>Sunucu Adı <span class="req">*</span></label><input id="sName" placeholder="Örn: RDXY Network" maxlength="60"></div>
       <div class="field"><label>Sunucu IP / Adres <span class="req">*</span></label><input id="sIp" placeholder="Örn: play.ornek.com" maxlength="80"></div>
@@ -341,24 +327,7 @@ main{min-height:calc(100vh - 60px)}
       <div class="field full"><label>Website <span class="hint">(opsiyonel)</span></label><input id="sWebsite" placeholder="https://..." maxlength="120"></div>
       <div class="field full"><label>Kısa Açıklama <span class="req">*</span> <span class="hint">(max 160 karakter)</span></label><input id="sShort" placeholder="Sunucunun en dikkat çekici özelliği" maxlength="160"></div>
       <div class="field full"><label>Detaylı Açıklama <span class="req">*</span></label><textarea id="sDesc" placeholder="Sunucunuz hakkında detaylı bilgi..." maxlength="1200"></textarea><div class="help">En az 30, en fazla 1200 karakter.</div></div>
-      <div class="field full">
-        <label>Özellikler <span class="hint">(birden fazla seçebilirsin)</span></label>
-        <div class="checkbox-group" id="featureGroup">
-          <label class="chk"><input type="checkbox" value="Economy">Ekonomi Sistemi</label>
-          <label class="chk"><input type="checkbox" value="Ranks">Rütbe Sistemi</label>
-          <label class="chk"><input type="checkbox" value="Custom Enchants">Özel Büyüler</label>
-          <label class="chk"><input type="checkbox" value="Pets">Evcil Hayvanlar</label>
-          <label class="chk"><input type="checkbox" value="Crates">Sandık Sistemi</label>
-          <label class="chk"><input type="checkbox" value="Land Claim">Arazi Koruma</label>
-          <label class="chk"><input type="checkbox" value="Anti-Cheat">Anti-Cheat</label>
-          <label class="chk"><input type="checkbox" value="Custom Items">Özel Eşyalar</label>
-          <label class="chk"><input type="checkbox" value="Events">Etkinlikler</label>
-          <label class="chk"><input type="checkbox" value="Cross-play">Cross-play</label>
-          <label class="chk"><input type="checkbox" value="No P2W">Pay-to-Win Yok</label>
-          <label class="chk"><input type="checkbox" value="VR">VR Desteği</label>
-        </div>
-      </div>
-      <div class="field full"><label>İletişim E-postası <span class="req">*</span></label><input id="sContact" type="email" placeholder="ornek@gmail.com"><div class="help">Yetkililer bu adres üzerinden sana ulaşabilir.</div></div>
+      <div class="field full"><label>İletişim E-postası <span class="req">*</span></label><input id="sContact" type="email" placeholder="ornek@gmail.com"></div>
     </div>
     <div class="form-actions">
       <button class="btn-secondary" onclick="go('home')">İptal</button>
@@ -380,20 +349,20 @@ main{min-height:calc(100vh - 60px)}
     <div class="rule-item"><div class="rule-num">03</div><div class="rule-txt">Aynı sunucuyu <b>birden fazla kez</b> eklemek yasaktır.</div></div>
     <div class="rule-item"><div class="rule-num">04</div><div class="rule-txt">Sunucu adı, açıklaması veya etiketlerinde <b>küfür, hakaret, reklam veya yasa dışı içerik</b> bulunamaz.</div></div>
     <div class="rule-item"><div class="rule-num">05</div><div class="rule-txt"><b>RDXY, owner, admin, moderator</b> gibi resmi isimler kullanıcı adı olarak alınamaz.</div></div>
-    <div class="rule-item"><div class="rule-num">06</div><div class="rule-txt">Sunucun <b>aktif ve erişilebilir</b> olmalıdır. Uzun süre çevrimdışı kalan sunucular listeden kaldırılır.</div></div>
+    <div class="rule-item"><div class="rule-num">06</div><div class="rule-txt">Sunucun <b>aktif ve erişilebilir</b> olmalıdır.</div></div>
     <div class="rule-item"><div class="rule-num">07</div><div class="rule-txt">Yetkililer, <b>önceden haber vermeksizin</b> sunucu kaydını reddedebilir veya kaldırabilir.</div></div>
-    <div class="rule-item"><div class="rule-num">08</div><div class="rule-txt">Sunucuların içeriğinden <b>yalnızca sunucu sahibi sorumludur</b>. RDXY aracı platformdur.</div></div>
-    <div class="rule-item"><div class="rule-num">09</div><div class="rule-txt">Hesap güvenliği kullanıcının sorumluluğundadır. Hesabını <b>kimseyle paylaşma</b>.</div></div>
-    <div class="rule-item"><div class="rule-num">10</div><div class="rule-txt">Kurallar önceden bildirilmeksizin <b>güncellenebilir</b>. Güncel kuralları düzenli kontrol et.</div></div>
+    <div class="rule-item"><div class="rule-num">08</div><div class="rule-txt">Sunucuların içeriğinden <b>yalnızca sunucu sahibi sorumludur</b>.</div></div>
+    <div class="rule-item"><div class="rule-num">09</div><div class="rule-txt">Hesap güvenliği kullanıcının sorumluluğundadır.</div></div>
+    <div class="rule-item"><div class="rule-num">10</div><div class="rule-txt">Kurallar önceden bildirilmeksizin <b>güncellenebilir</b>.</div></div>
   </div>
 </section>
 
 <section id="page-admin" class="page">
   <div class="section-head"><div><h2>Yetkili Paneli</h2><p>Sunucu onayları, kullanıcı yönetimi ve sistem ayarları.</p></div></div>
   <div class="admin-tabs" id="adminTabs">
-    <button class="admin-tab active" data-tab="pending">Bekleyen Sunucular <span class="count" id="cntPending">0</span></button>
-    <button class="admin-tab" data-tab="approved">Onaylı Sunucular <span class="count" id="cntApproved">0</span></button>
-    <button class="admin-tab" data-tab="rejected">Reddedilenler <span class="count" id="cntRejected">0</span></button>
+    <button class="admin-tab active" data-tab="pending">Bekleyen <span class="count" id="cntPending">0</span></button>
+    <button class="admin-tab" data-tab="approved">Onaylı <span class="count" id="cntApproved">0</span></button>
+    <button class="admin-tab" data-tab="rejected">Reddedilen <span class="count" id="cntRejected">0</span></button>
     <button class="admin-tab" data-tab="users">Kullanıcılar <span class="count" id="cntUsers">0</span></button>
   </div>
   <div id="adminContent"></div>
@@ -412,6 +381,7 @@ main{min-height:calc(100vh - 60px)}
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 
 <script>
+// ==================== FIREBASE ====================
 const firebaseConfig = {
   apiKey: "AIzaSyCH1WtPf3_d8zU1TKX2LBbykL6gqe9-yik",
   authDomain: "rdxy-network.firebaseapp.com",
@@ -427,38 +397,38 @@ let FB_READY = false;
 let FB_ERROR = null;
 
 try {
-  firebase.initializeApp(firebaseConfig);
-  db = firebase.database();
-  console.log('🔥 Firebase başlatıldı');
+  if(typeof firebase !== 'undefined' && firebase.initializeApp){
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.database();
+    console.log('🔥 Firebase başlatıldı');
+  } else {
+    FB_ERROR = 'Firebase SDK yüklenemedi';
+    console.error('Firebase SDK yüklenemedi');
+  }
 } catch(e){
   FB_ERROR = e.message;
   console.error('Firebase hatası:', e);
 }
 
 // ==================== ROL SİSTEMİ ====================
-// Üye < Yayıncı < Moderatör < Admin < Kurucu
 const ROLES = ['Üye', 'Yayıncı', 'Moderatör', 'Admin', 'Kurucu'];
 const ROLES_LOWER = ['üye', 'yayıncı', 'moderatör', 'admin', 'kurucu'];
 const ROLE_LABELS = { 'Üye':'Üye', 'Yayıncı':'Yayıncı', 'Moderatör':'Moderatör', 'Admin':'Admin', 'Kurucu':'Kurucu' };
 
-const RESERVED_NAMES = [
-  'rdxy','owner','admin','mod','moderator','moderatör','kurucu','root',
-  'superadmin','super','system','sistem','rdxyofficial','rdxy-network',
-  'rdxynetwork','rdxynet','staff','yetkili','dev','developer','support',
-  'destek','help','yardim','yardım','ceo','founder','sahip','yonetici',
-  'yönetici','operator','op'
-];
+const RESERVED_NAMES = ['rdxy','owner','admin','mod','moderator','moderatör','kurucu','root','superadmin','super','system','sistem','rdxyofficial','rdxy-network','rdxynetwork','rdxynet','staff','yetkili','dev','developer','support','destek','help','yardim','yardım','ceo','founder','sahip','yonetici','yönetici','operator','op'];
 
 let USERS_CACHE = {};
 let SERVERS_CACHE = {};
 let roleWatcher = null;
 let currentUser = null;
 
-function showToast(msg, type = ''){
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.className = type; t.classList.add('show');
+// ==================== YARDIMCI ====================
+function showToast(msg, type){
+  var t = document.getElementById('toast');
+  if(!t) return;
+  t.textContent = msg; t.className = type || ''; t.classList.add('show');
   clearTimeout(t._tm);
-  t._tm = setTimeout(()=>t.classList.remove('show'), 3200);
+  t._tm = setTimeout(function(){ t.classList.remove('show'); }, 3200);
 }
 function getUser(){
   try{ return JSON.parse(localStorage.getItem('rdxyUser') || 'null'); }catch(e){ return null; }
@@ -468,7 +438,7 @@ function isMod(){ return myRoleIndex() >= 2; }
 function isAdmin(){ return myRoleIndex() >= 3; }
 function isKurucu(){ return myRoleIndex() >= 4; }
 function rolePillClass(role){
-  const r = (role || 'Üye').toLowerCase();
+  var r = (role || 'Üye').toLowerCase();
   if(r === 'kurucu') return 'kurucu';
   if(r === 'admin') return 'admin';
   if(r === 'moderatör') return 'moderator';
@@ -476,44 +446,49 @@ function rolePillClass(role){
   return 'uye';
 }
 function escapeHtml(s){
-  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]); });
 }
+
 function go(page){
   if(!currentUser){ modalAc('giris'); return; }
   if(page === 'admin' && !isMod()){ showToast('⛔ Yetkiniz yok', 'error'); return; }
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const el = document.getElementById('page-' + page);
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  var el = document.getElementById('page-' + page);
   if(el) el.classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  const navBtn = document.querySelector('.nav-btn[data-page="' + page + '"]');
+  document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('active'); });
+  var navBtn = document.querySelector('.nav-btn[data-page="' + page + '"]');
   if(navBtn) navBtn.classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
   if(page === 'servers') renderServers();
   if(page === 'myservers') renderMyServers();
   if(page === 'admin') renderAdmin();
 }
-function openModal(id){ document.getElementById(id).classList.add('open'); }
-function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+function openModal(id){ var e = document.getElementById(id); if(e) e.classList.add('open'); }
+function closeModal(id){ var e = document.getElementById(id); if(e) e.classList.remove('open'); }
 
 function captchaYenile(){
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let kod = '';
-  for(let i = 0; i < 6; i++) kod += chars[Math.floor(Math.random() * chars.length)];
-  document.getElementById('captchaKod').textContent = kod;
-  document.getElementById('captchaCevap').value = '';
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var kod = '';
+  for(var i = 0; i < 6; i++) kod += chars[Math.floor(Math.random() * chars.length)];
+  var el = document.getElementById('captchaKod');
+  if(el) el.textContent = kod;
+  var inp = document.getElementById('captchaCevap');
+  if(inp) inp.value = '';
 }
 function captchaKontrol(){
-  const girilen = document.getElementById('captchaCevap').value.trim().toLowerCase();
-  const gercek = document.getElementById('captchaKod').textContent.trim().toLowerCase();
-  return girilen === gercek && girilen.length > 0;
+  var a = (document.getElementById('captchaCevap').value || '').trim().toLowerCase();
+  var b = (document.getElementById('captchaKod').textContent || '').trim().toLowerCase();
+  return a === b && a.length > 0;
 }
 
-let modalMode = 'giris';
+var modalMode = 'giris';
 function modalAc(mode){
   modalMode = mode;
-  document.getElementById('girisModal').classList.add('open');
-  document.getElementById('modalHata').classList.remove('show');
-  const isKayit = mode === 'kayit';
+  var m = document.getElementById('girisModal');
+  if(m) m.classList.add('open');
+  var h = document.getElementById('modalHata');
+  if(h) h.classList.remove('show');
+  var isKayit = mode === 'kayit';
   document.getElementById('modalTitle').textContent = isKayit ? 'Hesap Oluştur' : 'RDXY Network';
   document.getElementById('modalSub').textContent = isKayit ? 'Yeni hesap oluştur' : 'Minecraft sunucu rehberine giriş yap';
   document.getElementById('modalGirisBtn').style.display = isKayit ? 'none' : 'block';
@@ -527,32 +502,28 @@ function modalAc(mode){
 function modalGecis(){ modalAc(modalMode === 'giris' ? 'kayit' : 'giris'); }
 
 function updateConnInfo(){
-  const btn = document.getElementById('modalGirisBtn');
-  const btn2 = document.getElementById('modalKayitBtn');
-  const ready = !FB_ERROR && FB_READY;
+  var btn = document.getElementById('modalGirisBtn');
+  var btn2 = document.getElementById('modalKayitBtn');
+  var ready = !FB_ERROR && FB_READY;
   if(btn) btn.disabled = !ready;
   if(btn2) btn2.disabled = !ready;
 }
 
+// ==================== GİRİŞ / KAYIT ====================
 function girisYap(){
-  if(!FB_READY){ showToast('⏳ Sunucuya bağlanılıyor, bekle...', 'error'); updateConnInfo(); return; }
-  const user = document.getElementById('loginUser').value.trim();
-  const pass = document.getElementById('loginPass').value.trim();
-  const hata = document.getElementById('modalHata');
+  if(FB_ERROR){ showToast('❌ Firebase hatası: ' + FB_ERROR, 'error'); return; }
+  if(!FB_READY){ showToast('⏳ Sunucuya bağlanılıyor, bekle...', 'error'); return; }
+  var user = document.getElementById('loginUser').value.trim();
+  var pass = document.getElementById('loginPass').value.trim();
+  var hata = document.getElementById('modalHata');
   hata.classList.remove('show');
   if(!user || !pass){ hata.textContent = '⚠️ Tüm alanları doldurun.'; hata.classList.add('show'); return; }
   if(!captchaKontrol()){ hata.textContent = '⚠️ Captcha kodu yanlış!'; hata.classList.add('show'); captchaYenile(); return; }
-  const key = user.toLowerCase();
-  const found = USERS_CACHE[key];
-  if(!found){
-    hata.textContent = '❌ Bu kullanıcı adı kayıtlı değil. Kayıt olmayı dene.';
-    hata.classList.add('show'); captchaYenile(); return;
-  }
-  if(found.password !== pass){
-    hata.textContent = '❌ Şifre hatalı!';
-    hata.classList.add('show'); captchaYenile(); return;
-  }
-  const sessionUser = {name: found.name, role: found.role || 'Üye'};
+  var key = user.toLowerCase();
+  var found = USERS_CACHE[key];
+  if(!found){ hata.textContent = '❌ Bu kullanıcı adı kayıtlı değil. Kayıt olmayı dene.'; hata.classList.add('show'); captchaYenile(); return; }
+  if(found.password !== pass){ hata.textContent = '❌ Şifre hatalı!'; hata.classList.add('show'); captchaYenile(); return; }
+  var sessionUser = {name: found.name, role: found.role || 'Üye'};
   localStorage.setItem('rdxyUser', JSON.stringify(sessionUser));
   currentUser = sessionUser;
   girisBasarili();
@@ -561,37 +532,36 @@ function girisYap(){
 }
 
 function kayitOl(){
-  if(!FB_READY){ showToast('⏳ Sunucuya bağlanılıyor, bekle...', 'error'); updateConnInfo(); return; }
-  const user = document.getElementById('loginUser').value.trim();
-  const email = document.getElementById('loginEmail').value.trim();
-  const pass = document.getElementById('loginPass').value.trim();
-  const pass2 = document.getElementById('loginPass2').value.trim();
-  const hata = document.getElementById('modalHata');
+  if(FB_ERROR){ showToast('❌ Firebase hatası: ' + FB_ERROR, 'error'); return; }
+  if(!FB_READY){ showToast('⏳ Sunucuya bağlanılıyor, bekle...', 'error'); return; }
+  var user = document.getElementById('loginUser').value.trim();
+  var email = document.getElementById('loginEmail').value.trim();
+  var pass = document.getElementById('loginPass').value.trim();
+  var pass2 = document.getElementById('loginPass2').value.trim();
+  var hata = document.getElementById('modalHata');
   hata.classList.remove('show');
   if(!user || !email || !pass || !pass2){ hata.textContent = '⚠️ Tüm alanları doldurun.'; hata.classList.add('show'); return; }
   if(user.length < 3 || user.length > 20){ hata.textContent = '⚠️ Kullanıcı adı 3-20 karakter olmalı.'; hata.classList.add('show'); return; }
   if(!/^[a-zA-Z0-9_]+$/.test(user)){ hata.textContent = '⚠️ Sadece harf, rakam ve _ kullanabilirsin.'; hata.classList.add('show'); return; }
-  if(RESERVED_NAMES.includes(user.toLowerCase())){ hata.textContent = '⛔ Bu kullanıcı adı kullanılamaz.'; hata.classList.add('show'); return; }
+  if(RESERVED_NAMES.indexOf(user.toLowerCase()) !== -1){ hata.textContent = '⛔ Bu kullanıcı adı kullanılamaz.'; hata.classList.add('show'); return; }
   if(!email.endsWith('@gmail.com')){ hata.textContent = '⚠️ Sadece @gmail.com kabul edilir.'; hata.classList.add('show'); return; }
   if(pass.length < 6){ hata.textContent = '⚠️ Şifre en az 6 karakter olmalı.'; hata.classList.add('show'); return; }
   if(pass !== pass2){ hata.textContent = '⚠️ Şifreler eşleşmiyor.'; hata.classList.add('show'); return; }
   if(!captchaKontrol()){ hata.textContent = '⚠️ Captcha kodu yanlış!'; hata.classList.add('show'); captchaYenile(); return; }
-
-  const key = user.toLowerCase();
+  var key = user.toLowerCase();
   if(USERS_CACHE[key]){ hata.textContent = '⚠️ Bu kullanıcı adı alınmış.'; hata.classList.add('show'); return; }
-  for(const k in USERS_CACHE){
+  for(var k in USERS_CACHE){
     if((USERS_CACHE[k].email || '').toLowerCase() === email.toLowerCase()){ hata.textContent = '⚠️ Bu e-posta kayıtlı.'; hata.classList.add('show'); return; }
   }
-
-  const yeni = { name: user, email, password: pass, role: 'Üye', kayitTarihi: new Date().toLocaleString('tr-TR') };
-  db.ref('users/' + key).set(yeni).then(() => {
-    const sessionUser = {name: user, role: 'Üye'};
-    localStorage.setItem('rdxyUser', JSON.stringify(sessionUser));
-    currentUser = sessionUser;
+  var yeni = { name: user, email: email, password: pass, role: 'Üye', kayitTarihi: new Date().toLocaleString('tr-TR') };
+  db.ref('users/' + key).set(yeni).then(function(){
+    var s = {name: user, role: 'Üye'};
+    localStorage.setItem('rdxyUser', JSON.stringify(s));
+    currentUser = s;
     girisBasarili();
     watchRole();
     showToast('✅ Kayıt başarılı! Hoş geldin, ' + user, 'success');
-  }).catch(err => {
+  }).catch(function(err){
     hata.textContent = '❌ Kayıt hatası: ' + err.message;
     hata.classList.add('show');
   });
@@ -605,19 +575,17 @@ function girisBasarili(){
   go('home');
 }
 function renderAuthWidget(){
-  const wrap = document.getElementById('authWrap');
+  var wrap = document.getElementById('authWrap');
+  if(!wrap) return;
   if(!currentUser){
-    wrap.innerHTML = `<button class="btn-tb btn-tb-ghost" onclick="modalAc('giris')">Giriş</button><button class="btn-tb btn-tb-primary" onclick="modalAc('kayit')">Kayıt Ol</button>`;
+    wrap.innerHTML = '<button class="btn-tb btn-tb-ghost" onclick="modalAc(\'giris\')">Giriş</button><button class="btn-tb btn-tb-primary" onclick="modalAc(\'kayit\')">Kayıt Ol</button>';
     return;
   }
-  const roleLabel = ROLE_LABELS[currentUser.role] || currentUser.role;
-  wrap.innerHTML = `
-    <div class="user-chip"><div class="av">${escapeHtml(currentUser.name[0].toUpperCase())}</div><span class="name">${escapeHtml(currentUser.name)}</span><span class="role-mini">${escapeHtml(roleLabel)}</span></div>
-    <button class="btn-tb btn-tb-danger" onclick="cikisYap()">Çıkış</button>
-  `;
+  var roleLabel = ROLE_LABELS[currentUser.role] || currentUser.role;
+  wrap.innerHTML = '<div class="user-chip"><div class="av">' + escapeHtml(currentUser.name[0].toUpperCase()) + '</div><span class="name">' + escapeHtml(currentUser.name) + '</span><span class="role-mini">' + escapeHtml(roleLabel) + '</span></div><button class="btn-tb btn-tb-danger" onclick="cikisYap()">Çıkış</button>';
 }
 function updateAdminNav(){
-  const el = document.getElementById('adminNav');
+  var el = document.getElementById('adminNav');
   if(el) el.style.display = isMod() ? 'inline-block' : 'none';
 }
 function cikisYap(){
@@ -632,10 +600,10 @@ function watchRole(){
   if(roleWatcher){ roleWatcher.off(); roleWatcher = null; }
   if(!currentUser || !db) return;
   roleWatcher = db.ref('users/' + currentUser.name.toLowerCase());
-  roleWatcher.on('value', snap => {
+  roleWatcher.on('value', function(snap){
     if(!snap.exists()) return;
-    const data = snap.val();
-    const newRole = data.role || 'Üye';
+    var data = snap.val();
+    var newRole = data.role || 'Üye';
     if(currentUser.role !== newRole){
       currentUser = {name: data.name, role: newRole};
       localStorage.setItem('rdxyUser', JSON.stringify(currentUser));
@@ -647,14 +615,15 @@ function watchRole(){
   });
 }
 
+// ==================== LISTENERS ====================
 function setupListeners(){
   if(!db) return;
 
-  db.ref('users').on('value', snap => {
+  db.ref('users').on('value', function(snap){
     USERS_CACHE = snap.val() || {};
-    const el = document.getElementById('statUsers');
+    var el = document.getElementById('statUsers');
     if(el) el.textContent = Object.keys(USERS_CACHE).length;
-    const cnt = document.getElementById('cntUsers');
+    var cnt = document.getElementById('cntUsers');
     if(cnt) cnt.textContent = Object.keys(USERS_CACHE).length;
     if(!FB_READY){
       FB_READY = true;
@@ -662,514 +631,424 @@ function setupListeners(){
     }
     if(isMod()) renderAdmin();
     renderAuthWidget();
-  }, err => {
+  }, function(err){
     console.error('Users read hatası:', err);
     FB_ERROR = err.message;
     updateConnInfo();
     showToast('❌ Veri okunamadı: ' + err.message, 'error');
   });
 
-  db.ref('servers').on('value', snap => {
+  db.ref('servers').on('value', function(snap){
     SERVERS_CACHE = snap.val() || {};
-    const all = Object.values(SERVERS_CACHE);
-    const approved = all.filter(s => s.status === 'approved');
-    const pending = all.filter(s => s.status === 'pending');
-    const el1 = document.getElementById('statServers'); if(el1) el1.textContent = approved.length;
-    const el2 = document.getElementById('statPending'); if(el2) el2.textContent = pending.length;
+    var all = Object.values(SERVERS_CACHE);
+    var approved = all.filter(function(s){ return s.status === 'approved'; });
+    var pending = all.filter(function(s){ return s.status === 'pending'; });
+    var el1 = document.getElementById('statServers'); if(el1) el1.textContent = approved.length;
+    var el2 = document.getElementById('statPending'); if(el2) el2.textContent = pending.length;
     renderFeatured();
     renderServers();
     renderMyServers();
     if(isMod()) renderAdmin();
+  }, function(err){
+    console.error('Servers read hatası:', err);
   });
 }
 
 // ==================== SEED ====================
 async function seedOwner(){
   if(!db) return;
-
-  // Kurucu: rdxy
   try {
-    const snap = await db.ref('users/rdxy').once('value');
+    var snap = await db.ref('users/rdxy').once('value');
     if(!snap.exists()){
       await db.ref('users/rdxy').set({
-        name: 'rdxy',
-        email: 'rdxy@gmail.com',
-        password: '06064343',
-        role: 'Kurucu',
-        kayitTarihi: new Date().toLocaleString('tr-TR')
+        name: 'rdxy', email: 'rdxy@gmail.com', password: '06064343',
+        role: 'Kurucu', kayitTarihi: new Date().toLocaleString('tr-TR')
       });
-      console.log('✅ Kurucu hesabı oluşturuldu: rdxy / 06064343');
+      console.log('✅ Kurucu: rdxy / 06064343');
     } else {
-      const data = snap.val();
-      if(data.role !== 'Kurucu'){
-        await db.ref('users/rdxy/role').set('Kurucu');
-        console.log('🔄 Kurucu rolü geri yüklendi');
-      }
+      var data = snap.val();
+      if(data.role !== 'Kurucu') await db.ref('users/rdxy/role').set('Kurucu');
     }
-  } catch(e){
-    console.error('Kurucu seed hatası:', e);
-  }
+  } catch(e){ console.error('Kurucu seed hatası:', e); }
 
-  // Yayıncı: Afyonlu03sucuk
   try {
-    const snap2 = await db.ref('users/afyonlu03sucuk').once('value');
+    var snap2 = await db.ref('users/afyonlu03sucuk').once('value');
     if(!snap2.exists()){
       await db.ref('users/afyonlu03sucuk').set({
-        name: 'Afyonlu03sucuk',
-        email: 'afyonlu03@gmail.com',
-        password: '03sucuk03',
-        role: 'Yayıncı',
-        kayitTarihi: new Date().toLocaleString('tr-TR')
+        name: 'Afyonlu03sucuk', email: 'afyonlu03@gmail.com', password: '03sucuk03',
+        role: 'Yayıncı', kayitTarihi: new Date().toLocaleString('tr-TR')
       });
-      console.log('✅ Yayıncı hesabı oluşturuldu: Afyonlu03sucuk / 03sucuk03');
+      console.log('✅ Yayıncı: Afyonlu03sucuk / 03sucuk03');
     } else {
-      const data2 = snap2.val();
-      // Şifre güncellensin
-      if(data2.password !== '03sucuk03'){
-        await db.ref('users/afyonlu03sucuk/password').set('03sucuk03');
-      }
+      var data2 = snap2.val();
+      if(data2.password !== '03sucuk03') await db.ref('users/afyonlu03sucuk/password').set('03sucuk03');
     }
-  } catch(e){
-    console.error('Yayıncı seed hatası:', e);
-  }
+  } catch(e){ console.error('Yayıncı seed hatası:', e); }
 }
 
-// ==================== DEMO SUNUCULAR ====================
 async function seedDemoServers(){
   if(!db) return;
+  try {
+    var demoList = [
+      { key:'zenitmc', name:'ZenitMC', ip:'play.zenitmc.com', type:'PvP', platform:'Java', version:'1.8 - 1.21', region:'Türkiye', short:'Türkiye\'nin en büyük PvP sunucusu', players:420, maxPlayers:1000 },
+      { key:'chickennw', name:'ChickenNW', ip:'play.chickennw.com', type:'PvP', platform:'Java', version:'1.8 - 1.21', region:'Türkiye', short:'Yeni nesil PvP deneyimi', players:380, maxPlayers:800 },
+      { key:'aesirmc', name:'AesirMC', ip:'play.aesirmc.com', type:'Survival', platform:'Java + Bedrock', version:'1.20 - 1.21', region:'Türkiye', short:'Kaliteli survival ve aktif yönetim', players:290, maxPlayers:500 },
+      { key:'blueloremc', name:'BlueLoreMC', ip:'oyna.blueloremc.com', type:'PvP', platform:'Java', version:'1.8 - 1.21', region:'Türkiye', short:'Pratice • Hunger Games • BoxPvP • TrapPvP', players:245, maxPlayers:600 },
+      { key:'craftavia', name:'Craftavia', ip:'play.craftavia.net', type:'SMP', platform:'Java + Bedrock', version:'1.20 - 1.21', region:'Türkiye', short:'DonutSMP tarzı ekonomi ve takım sistemi', players:210, maxPlayers:500 },
+      { key:'lxmvanilla', name:'LXMVanilla', ip:'oyna.lxmvanilla.com.tr', type:'Survival', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Sade ve özgür saf vanilla deneyimi', players:180, maxPlayers:300 },
+      { key:'mc4fun', name:'MC4FUN', ip:'minetr.mc4fun.net', type:'RPG', platform:'Java', version:'1.21', region:'Türkiye', short:'Türkiye\'nin en iyi MMORPG Survival sunucusu', players:165, maxPlayers:400 },
+      { key:'knightnw', name:'Knight Network', ip:'mc.knightnw.com', type:'PvP', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Türkiye\'nin en iyi Minecraft sunucusu', players:320, maxPlayers:700 },
+      { key:'aeseria', name:'Aeseria Network', ip:'play.aeseria.net', type:'SMP', platform:'Java', version:'1.8 - 1.15', region:'Türkiye', short:'Kapanmayacak tek sunucu, özgün ve kaliteli', players:150, maxPlayers:300 },
+      { key:'gamerway', name:'Gamerway Towny', ip:'play.gamerway.com', type:'Towny', platform:'Java', version:'1.12 - 1.17', region:'Türkiye', short:'Krallığını kur, düşmanlarını yok et!', players:130, maxPlayers:250 },
+      { key:'hyperios', name:'Hyperios Network', ip:'play.hyperios.net', type:'SkyBlock', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Hızlı ilerleme, güçlü ekonomi, bol event', players:175, maxPlayers:350 },
+      { key:'heretic', name:'Heretic', ip:'play.heretic.gg', type:'Anarchy', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Aktif güncellemelerle donatılmış anarşi', players:95, maxPlayers:200 },
+      { key:'pokebalta', name:'PokeBalta', ip:'play.pokebalta.com.tr', type:'RPG', platform:'Java + Bedrock', version:'1.20 - 1.21', region:'Türkiye', short:'Türk Pixelmon sunucusu', players:220, maxPlayers:450 },
+      { key:'sektorsmp', name:'SektorSMP', ip:'play.sektorsmp.com', type:'SMP', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Kaliteli Survival Multiplayer sunucusu', players:140, maxPlayers:250 },
+      { key:'zurnacraft', name:'ZurnaCraft', ip:'play.zurnacraft.com', type:'Survival', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Türk yapımı survival sunucusu', players:120, maxPlayers:200 },
+      { key:'muzcraft', name:'MuzCraft', ip:'play.muzcraft.com', type:'SkyBlock', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Eğlenceli SkyBlock deneyimi', players:105, maxPlayers:200 },
+      { key:'kralg', name:'KralGSurvival', ip:'play.kralgsurvival.com', type:'Survival', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Kral gibi survival oyna', players:115, maxPlayers:200 },
+      { key:'kattegat', name:'KattegatMC', ip:'play.kattegatmc.com', type:'RPG', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Viking temalı RPG sunucusu', players:135, maxPlayers:300 },
+      { key:'alazcraft', name:'AlazCraft', ip:'play.alazcraft.com', type:'PvP', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Alev gibi PvP deneyimi', players:160, maxPlayers:300 },
+      { key:'hanemc', name:'HaneMC', ip:'play.hanemc.com', type:'Towny', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Kasabanı kur, krallığını ilan et', players:90, maxPlayers:150 },
+      { key:'pistoncraft', name:'PistonCraft', ip:'pistoncraft.redstone.tr', type:'Creative', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Redstone ve yaratıcılık sunucusu', players:85, maxPlayers:200 },
+      { key:'betablok', name:'Betablok', ip:'play.betablok.com', type:'SMP', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Beta döneminden kalma eğlence', players:100, maxPlayers:200 },
+      { key:'luathes', name:'LuathesMC', ip:'play.luathesmc.com', type:'Survival', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Luathes dünyasına adım at', players:110, maxPlayers:200 },
+      { key:'exkill', name:'ExKiLLCraft', ip:'play.exkillcraft.com', type:'PvP', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Öldürmek için yaşa', players:145, maxPlayers:250 },
+      { key:'poncik', name:'PoncikCRAFT', ip:'play.poncikcraft.com', type:'SMP', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Tatlı ve eğlenceli SMP sunucusu', players:125, maxPlayers:200 },
+      { key:'projectsgg', name:'ProjectSGG', ip:'play.projectsgg.com', type:'Survival', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Survival • Skyblock • Hunger Games', players:155, maxPlayers:300 },
+      { key:'bekanw', name:'BekaNW', ip:'play.bekanw.com', type:'PvP', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Beka Network PvP deneyimi', players:170, maxPlayers:300 },
+      { key:'rinacraft', name:'RinaCraft', ip:'play.rinacraft.com', type:'Survival', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Rina dünyasında hayatta kal', players:130, maxPlayers:250 },
+      { key:'ironmc', name:'IronMC', ip:'play.ironmc.net', type:'Survival', platform:'Java', version:'1.20 - 1.21', region:'Türkiye', short:'Demir gibi sağlam sunucu', players:140, maxPlayers:250 },
+      { key:'ryzencraft', name:'RyzenCraft', ip:'play.ryzencraft.com', type:'Survival', platform:'Java + Bedrock', version:'1.20 - 1.21', region:'Türkiye', short:'Güçlü donanım, kesintisiz oyun', players:190, maxPlayers:400 }
+    ];
 
-  // Her zaman kontrol et: eksik olan demo sunucuları ekle
-  const demoList = [
-    { key:'zenitmc',     name:'ZenitMC',         ip:'play.zenitmc.com',              type:'PvP',       platform:'Java',           version:'1.8 - 1.21',    region:'Türkiye', short:'Türkiye\'nin en büyük PvP sunucusu',          players:420, maxPlayers:1000 },
-    { key:'chickennw',   name:'ChickenNW',        ip:'play.chickennw.com',            type:'PvP',       platform:'Java',           version:'1.8 - 1.21',    region:'Türkiye', short:'Yeni nesil PvP deneyimi',                     players:380, maxPlayers:800 },
-    { key:'aesirmc',     name:'AesirMC',          ip:'play.aesirmc.com',              type:'Survival',  platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'Kaliteli survival ve aktif yönetim',          players:290, maxPlayers:500 },
-    { key:'blueloremc',  name:'BlueLoreMC',       ip:'oyna.blueloremc.com',           type:'PvP',       platform:'Java',           version:'1.8 - 1.21',    region:'Türkiye', short:'Pratice • Hunger Games • BoxPvP • TrapPvP',   players:245, maxPlayers:600 },
-    { key:'craftavia',   name:'Craftavia',        ip:'play.craftavia.net',            type:'SMP',       platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'DonutSMP tarzı ekonomi ve takım sistemi',     players:210, maxPlayers:500 },
-    { key:'lxmvanilla',  name:'LXMVanilla',       ip:'oyna.lxmvanilla.com.tr',        type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Sade ve özgür saf vanilla deneyimi',          players:180, maxPlayers:300 },
-    { key:'mc4fun',      name:'MC4FUN',           ip:'minetr.mc4fun.net',             type:'RPG',       platform:'Java',           version:'1.21',          region:'Türkiye', short:'Türkiye\'nin en iyi MMORPG Survival sunucusu', players:165, maxPlayers:400 },
-    { key:'knightnw',    name:'Knight Network',   ip:'mc.knightnw.com',               type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Türkiye\'nin en iyi Minecraft sunucusu',      players:320, maxPlayers:700 },
-    { key:'aeseria',     name:'Aeseria Network',  ip:'play.aeseria.net',              type:'SMP',       platform:'Java',           version:'1.8 - 1.15',    region:'Türkiye', short:'Kapanmayacak tek sunucu, özgün ve kaliteli',  players:150, maxPlayers:300 },
-    { key:'gamerway',    name:'Gamerway Towny',   ip:'play.gamerway.com',             type:'Towny',     platform:'Java',           version:'1.12 - 1.17',   region:'Türkiye', short:'Krallığını kur, düşmanlarını yok et!',        players:130, maxPlayers:250 },
-    { key:'hyperios',    name:'Hyperios Network', ip:'play.hyperios.net',             type:'SkyBlock',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Hızlı ilerleme, güçlü ekonomi, bol event',    players:175, maxPlayers:350 },
-    { key:'heretic',     name:'Heretic',          ip:'play.heretic.gg',               type:'Anarchy',   platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Aktif güncellemelerle donatılmış anarşi',    players:95,  maxPlayers:200 },
-    { key:'pokebalta',   name:'PokeBalta',        ip:'play.pokebalta.com.tr',         type:'RPG',       platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'Türk Pixelmon sunucusu',                      players:220, maxPlayers:450 },
-    { key:'sektorsmp',   name:'SektorSMP',        ip:'play.sektorsmp.com',            type:'SMP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Kaliteli Survival Multiplayer sunucusu',      players:140, maxPlayers:250 },
-    { key:'zurnacraft',  name:'ZurnaCraft',       ip:'play.zurnacraft.com',           type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Türk yapımı survival sunucusu',               players:120, maxPlayers:200 },
-    { key:'muzcraft',    name:'MuzCraft',         ip:'play.muzcraft.com',             type:'SkyBlock',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Eğlenceli SkyBlock deneyimi',                 players:105, maxPlayers:200 },
-    { key:'kralg',       name:'KralGSurvival',    ip:'play.kralgsurvival.com',        type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Kral gibi survival oyna',                     players:115, maxPlayers:200 },
-    { key:'kattegat',    name:'KattegatMC',       ip:'play.kattegatmc.com',           type:'RPG',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Viking temalı RPG sunucusu',                  players:135, maxPlayers:300 },
-    { key:'alazcraft',   name:'AlazCraft',        ip:'play.alazcraft.com',            type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Alev gibi PvP deneyimi',                      players:160, maxPlayers:300 },
-    { key:'hanemc',      name:'HaneMC',           ip:'play.hanemc.com',               type:'Towny',     platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Kasabanı kur, krallığını ilan et',            players:90,  maxPlayers:150 },
-    { key:'pistoncraft', name:'PistonCraft',      ip:'pistoncraft.redstone.tr',       type:'Creative',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Redstone ve yaratıcılık sunucusu',            players:85,  maxPlayers:200 },
-    { key:'betablok',    name:'Betablok',         ip:'play.betablok.com',             type:'SMP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Beta döneminden kalma eğlence',               players:100, maxPlayers:200 },
-    { key:'luathes',     name:'LuathesMC',        ip:'play.luathesmc.com',            type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Luathes dünyasına adım at',                   players:110, maxPlayers:200 },
-    { key:'exkill',      name:'ExKiLLCraft',      ip:'play.exkillcraft.com',          type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Öldürmek için yaşa',                          players:145, maxPlayers:250 },
-    { key:'poncik',      name:'PoncikCRAFT',      ip:'play.poncikcraft.com',          type:'SMP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Tatlı ve eğlenceli SMP sunucusu',             players:125, maxPlayers:200 },
-    { key:'projectsgg',  name:'ProjectSGG',       ip:'play.projectsgg.com',           type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Survival • Skyblock • Hunger Games',          players:155, maxPlayers:300 },
-    { key:'bekanw',      name:'BekaNW',           ip:'play.bekanw.com',               type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Beka Network PvP deneyimi',                   players:170, maxPlayers:300 },
-    { key:'rinacraft',   name:'RinaCraft',        ip:'play.rinacraft.com',            type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Rina dünyasında hayatta kal',                 players:130, maxPlayers:250 },
-    { key:'ironmc',      name:'IronMC',           ip:'play.ironmc.net',               type:'Survival',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Demir gibi sağlam sunucu',                    players:140, maxPlayers:250 },
-    { key:'ryzencraft',  name:'RyzenCraft',       ip:'play.ryzencraft.com',           type:'Survival',  platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'Güçlü donanım, kesintisiz oyun',              players:190, maxPlayers:400 },
-    { key:'vimenw',      name:'VimeNetwork',      ip:'play.vimenw.com',               type:'SkyBlock',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Vime Network SkyBlock deneyimi',              players:105, maxPlayers:200 },
-    { key:'rexcraft',    name:'RexCraft',         ip:'play.rexcraft.com',             type:'PvP',       platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Rex gibi güçlü PvP',                          players:150, maxPlayers:250 },
-    { key:'turkcraft',   name:'TurkCraft',        ip:'play.turkcraft.net',            type:'Survival',  platform:'Java + Bedrock', version:'1.20 - 1.21',   region:'Türkiye', short:'Türk yapımı kaliteli survival',               players:185, maxPlayers:350 },
-    { key:'novamc',      name:'NovaMC',           ip:'play.novamc.com',               type:'SkyBlock',  platform:'Java',           version:'1.20 - 1.21',   region:'Türkiye', short:'Yeni nesil SkyBlock sunucusu',                players:165, maxPlayers:300 }
-  ];
-
-  const snap = await db.ref('servers').once('value');
-  const existing = snap.val() || {};
-
-  const updates = {};
-  demoList.forEach((s, i) => {
-    const id = 'srv_' + s.key;
-    if(existing[id]) return; // zaten var
-    updates[id] = {
-      id: id,
-      name: s.name,
-      ip: s.ip,
-      type: s.type,
-      platform: s.platform,
-      version: s.version,
-      region: s.region,
-      short: s.short,
-      desc: s.name + ' — ' + s.short + '. Detaylı bilgi için sunucunun Discord sunucusuna katılabilirsin.',
-      maxPlayers: s.maxPlayers,
-      players: s.players,
-      discord: '',
-      website: '',
-      features: ['Economy', 'Ranks', 'Anti-Cheat', 'Events'],
-      contact: 'rdxy@gmail.com',
-      owner: 'rdxy',
-      status: 'approved',
-      online: true,
-      createdAt: Date.now() - i * 3600000,
-      createdAtStr: new Date(Date.now() - i * 3600000).toLocaleString('tr-TR')
-    };
-  });
-
-  if(Object.keys(updates).length > 0){
-    await db.ref('servers').update(updates);
-    console.log('✅ ' + Object.keys(updates).length + ' demo sunucu eklendi');
-  }
+    var snap = await db.ref('servers').once('value');
+    var existing = snap.val() || {};
+    var updates = {};
+    demoList.forEach(function(s, i){
+      var id = 'srv_' + s.key;
+      if(existing[id]) return;
+      updates[id] = {
+        id: id, name: s.name, ip: s.ip, type: s.type, platform: s.platform,
+        version: s.version, region: s.region, short: s.short,
+        desc: s.name + ' — ' + s.short + '. Detaylı bilgi için sunucunun Discord sunucusuna katılabilirsin.',
+        maxPlayers: s.maxPlayers, players: s.players, discord: '', website: '',
+        features: ['Economy', 'Ranks', 'Anti-Cheat', 'Events'],
+        contact: 'rdxy@gmail.com', owner: 'rdxy', status: 'approved', online: true,
+        createdAt: Date.now() - i * 3600000,
+        createdAtStr: new Date(Date.now() - i * 3600000).toLocaleString('tr-TR')
+      };
+    });
+    if(Object.keys(updates).length > 0){
+      await db.ref('servers').update(updates);
+      console.log('✅ ' + Object.keys(updates).length + ' demo sunucu eklendi');
+    }
+  } catch(e){ console.error('Demo seed hatası:', e); }
 }
 
 // ==================== SERVER RENDER ====================
 function serverCardHtml(s){
-  const icon = (s.name || 'S').charAt(0).toUpperCase();
-  const tags = [];
-  if(s.type) tags.push(`<span class="tag green">${escapeHtml(s.type)}</span>`);
-  if(s.platform) tags.push(`<span class="tag blue">${escapeHtml(s.platform)}</span>`);
-  if(s.region) tags.push(`<span class="tag">${escapeHtml(s.region)}</span>`);
-  if(s.version) tags.push(`<span class="tag">${escapeHtml(s.version)}</span>`);
-  const playerCount = s.players || 0;
-  const online = s.online !== false;
-  return `
-    <div class="server-card" onclick="openServerDetail('${escapeHtml(s.id || '')}')">
-      <div class="server-card-top">
-        <div class="server-icon">${escapeHtml(icon)}</div>
-        <div class="server-info">
-          <div class="server-name">${escapeHtml(s.name || 'İsimsiz')}</div>
-          <div class="server-tags">${tags.join('')}</div>
-        </div>
-      </div>
-      <div class="server-desc">${escapeHtml(s.short || s.desc || 'Açıklama yok')}</div>
-      <div class="server-foot">
-        <div class="server-ip">🎮 ${escapeHtml(s.ip || '-')}</div>
-        <div class="server-players"><span class="dot-live ${online ? '' : 'offline'}"></span>${playerCount}</div>
-      </div>
-    </div>
-  `;
+  var icon = (s.name || 'S').charAt(0).toUpperCase();
+  var tags = [];
+  if(s.type) tags.push('<span class="tag green">' + escapeHtml(s.type) + '</span>');
+  if(s.platform) tags.push('<span class="tag blue">' + escapeHtml(s.platform) + '</span>');
+  if(s.region) tags.push('<span class="tag">' + escapeHtml(s.region) + '</span>');
+  if(s.version) tags.push('<span class="tag">' + escapeHtml(s.version) + '</span>');
+  var pc = s.players || 0;
+  var online = s.online !== false;
+  return '<div class="server-card" onclick="openServerDetail(\'' + escapeHtml(s.id || '') + '\')">' +
+    '<div class="server-card-top"><div class="server-icon">' + escapeHtml(icon) + '</div>' +
+    '<div class="server-info"><div class="server-name">' + escapeHtml(s.name || 'İsimsiz') + '</div>' +
+    '<div class="server-tags">' + tags.join('') + '</div></div></div>' +
+    '<div class="server-desc">' + escapeHtml(s.short || s.desc || 'Açıklama yok') + '</div>' +
+    '<div class="server-foot"><div class="server-ip">🎮 ' + escapeHtml(s.ip || '-') + '</div>' +
+    '<div class="server-players"><span class="dot-live ' + (online ? '' : 'offline') + '"></span>' + pc + '</div></div></div>';
 }
 
 function renderFeatured(){
-  const el = document.getElementById('featuredServers');
+  var el = document.getElementById('featuredServers');
   if(!el) return;
-  const approved = Object.values(SERVERS_CACHE).filter(s => s.status === 'approved');
+  var approved = Object.values(SERVERS_CACHE).filter(function(s){ return s.status === 'approved'; });
   if(approved.length === 0){
-    el.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="ico">🎮</div><h3>Henüz sunucu eklenmemiş</h3><p>İlk sunucuyu sen ekle ve listelenmeye başla!</p><button class="btn-primary" onclick="go('addserver')" style="margin-top:16px">Sunucu Ekle</button></div>`;
+    el.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="ico">🎮</div><h3>Henüz sunucu eklenmemiş</h3><p>İlk sunucuyu sen ekle ve listelenmeye başla!</p></div>';
     return;
   }
-  const featured = approved.sort((a,b)=> (b.players||0) - (a.players||0)).slice(0,6);
-  el.innerHTML = featured.map(s => serverCardHtml(s)).join('');
+  var featured = approved.sort(function(a,b){ return (b.players||0) - (a.players||0); }).slice(0,6);
+  el.innerHTML = featured.map(serverCardHtml).join('');
 }
 
 function renderServers(){
-  const el = document.getElementById('serversList');
+  var el = document.getElementById('serversList');
   if(!el) return;
-  const search = (document.getElementById('fSearch')?.value || '').toLowerCase();
-  const fType = document.getElementById('fType')?.value || '';
-  const fPlatform = document.getElementById('fPlatform')?.value || '';
-  const fRegion = document.getElementById('fRegion')?.value || '';
-  const sort = document.getElementById('fSort')?.value || 'popular';
-  let list = Object.values(SERVERS_CACHE).filter(s => s.status === 'approved');
-  if(search) list = list.filter(s => (s.name||'').toLowerCase().includes(search) || (s.desc||'').toLowerCase().includes(search));
-  if(fType) list = list.filter(s => s.type === fType);
-  if(fPlatform) list = list.filter(s => s.platform === fPlatform);
-  if(fRegion) list = list.filter(s => s.region === fRegion);
-  if(sort === 'new') list.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
-  else if(sort === 'popular') list.sort((a,b)=> (b.players||0) - (a.players||0));
-  else if(sort === 'name') list.sort((a,b)=> (a.name||'').localeCompare(b.name||''));
+  var search = (document.getElementById('fSearch').value || '').toLowerCase();
+  var fType = document.getElementById('fType').value;
+  var fPlatform = document.getElementById('fPlatform').value;
+  var fRegion = document.getElementById('fRegion').value;
+  var sort = document.getElementById('fSort').value;
+  var list = Object.values(SERVERS_CACHE).filter(function(s){ return s.status === 'approved'; });
+  if(search) list = list.filter(function(s){ return (s.name||'').toLowerCase().indexOf(search) !== -1 || (s.desc||'').toLowerCase().indexOf(search) !== -1; });
+  if(fType) list = list.filter(function(s){ return s.type === fType; });
+  if(fPlatform) list = list.filter(function(s){ return s.platform === fPlatform; });
+  if(fRegion) list = list.filter(function(s){ return s.region === fRegion; });
+  if(sort === 'new') list.sort(function(a,b){ return (b.createdAt||0) - (a.createdAt||0); });
+  else if(sort === 'popular') list.sort(function(a,b){ return (b.players||0) - (a.players||0); });
+  else if(sort === 'name') list.sort(function(a,b){ return (a.name||'').localeCompare(b.name||''); });
   if(list.length === 0){
-    el.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="ico">🔍</div><h3>Sonuç bulunamadı</h3><p>Filtreleri değiştirmeyi dene.</p></div>`;
+    el.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="ico">🔍</div><h3>Sonuç bulunamadı</h3><p>Filtreleri değiştirmeyi dene.</p></div>';
     return;
   }
-  el.innerHTML = list.map(s => serverCardHtml(s)).join('');
+  el.innerHTML = list.map(serverCardHtml).join('');
 }
 
 function renderMyServers(){
-  const el = document.getElementById('myServersList');
+  var el = document.getElementById('myServersList');
   if(!el || !currentUser) return;
-  const mine = Object.values(SERVERS_CACHE).filter(s => (s.owner || '').toLowerCase() === currentUser.name.toLowerCase());
+  var mine = Object.values(SERVERS_CACHE).filter(function(s){ return (s.owner || '').toLowerCase() === currentUser.name.toLowerCase(); });
   if(mine.length === 0){
-    el.innerHTML = `<div class="empty-state"><div class="ico">📭</div><h3>Henüz sunucu eklemedin</h3><p>İlk sunucunu ekleyerek binlerce oyuncuya ulaş.</p><button class="btn-primary" onclick="go('addserver')" style="margin-top:16px">Sunucu Ekle</button></div>`;
+    el.innerHTML = '<div class="empty-state"><div class="ico">📭</div><h3>Henüz sunucu eklemedin</h3><p>İlk sunucunu ekleyerek binlerce oyuncuya ulaş.</p><button class="btn-primary" onclick="go(\'addserver\')" style="margin-top:16px">Sunucu Ekle</button></div>';
     return;
   }
-  el.innerHTML = mine.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0)).map(s => {
-    const status = s.status === 'approved' ? 'approved' : s.status === 'rejected' ? 'rejected' : 'pending';
-    const statusLabel = {approved:'✅ Onaylı', rejected:'❌ Reddedildi', pending:'⏳ Onay Bekliyor'}[status];
-    const rejection = s.rejectReason ? `<div class="req-meta" style="color:#fca5a5;margin-top:6px">Sebep: ${escapeHtml(s.rejectReason)}</div>` : '';
-    return `<div class="req-item" style="margin-bottom:12px">
-      <div class="req-icon">${escapeHtml((s.name||'S').charAt(0).toUpperCase())}</div>
-      <div class="req-body">
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="req-name">${escapeHtml(s.name)}</span><span class="status-badge ${status}">${statusLabel}</span></div>
-        <div class="req-meta">${escapeHtml(s.ip)} · ${escapeHtml(s.type)} · ${escapeHtml(s.platform)}</div>
-        <div class="req-meta" style="margin-top:4px">Eklenme: ${escapeHtml(s.createdAtStr || '-')}</div>
-        ${rejection}
-      </div>
-    </div>`;
+  el.innerHTML = mine.sort(function(a,b){ return (b.createdAt||0) - (a.createdAt||0); }).map(function(s){
+    var status = s.status === 'approved' ? 'approved' : s.status === 'rejected' ? 'rejected' : 'pending';
+    var label = {approved:'✅ Onaylı', rejected:'❌ Reddedildi', pending:'⏳ Onay Bekliyor'}[status];
+    var rejection = s.rejectReason ? '<div class="req-meta" style="color:#fca5a5;margin-top:6px">Sebep: ' + escapeHtml(s.rejectReason) + '</div>' : '';
+    return '<div class="req-item" style="margin-bottom:12px"><div class="req-icon">' + escapeHtml((s.name||'S').charAt(0).toUpperCase()) + '</div>' +
+      '<div class="req-body"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="req-name">' + escapeHtml(s.name) + '</span><span class="status-badge ' + status + '">' + label + '</span></div>' +
+      '<div class="req-meta">' + escapeHtml(s.ip) + ' · ' + escapeHtml(s.type) + ' · ' + escapeHtml(s.platform) + '</div>' +
+      '<div class="req-meta" style="margin-top:4px">Eklenme: ' + escapeHtml(s.createdAtStr || '-') + '</div>' + rejection + '</div></div>';
   }).join('');
 }
 
 function submitServer(){
   if(!currentUser){ modalAc('giris'); return; }
-  const name = document.getElementById('sName').value.trim();
-  const ip = document.getElementById('sIp').value.trim();
-  const platform = document.getElementById('sPlatform').value;
-  const type = document.getElementById('sType').value;
-  const version = document.getElementById('sVersion').value.trim();
-  const region = document.getElementById('sRegion').value;
-  const maxPlayers = document.getElementById('sMaxPlayers').value;
-  const discord = document.getElementById('sDiscord').value.trim();
-  const website = document.getElementById('sWebsite').value.trim();
-  const short = document.getElementById('sShort').value.trim();
-  const desc = document.getElementById('sDesc').value.trim();
-  const contact = document.getElementById('sContact').value.trim();
+  var name = document.getElementById('sName').value.trim();
+  var ip = document.getElementById('sIp').value.trim();
+  var platform = document.getElementById('sPlatform').value;
+  var type = document.getElementById('sType').value;
+  var version = document.getElementById('sVersion').value.trim();
+  var region = document.getElementById('sRegion').value;
+  var maxPlayers = document.getElementById('sMaxPlayers').value;
+  var discord = document.getElementById('sDiscord').value.trim();
+  var website = document.getElementById('sWebsite').value.trim();
+  var short = document.getElementById('sShort').value.trim();
+  var desc = document.getElementById('sDesc').value.trim();
+  var contact = document.getElementById('sContact').value.trim();
   if(!name || !ip || !version || !short || !desc || !contact){ showToast('⚠️ Zorunlu alanları doldur', 'error'); return; }
   if(desc.length < 30){ showToast('⚠️ Açıklama en az 30 karakter olmalı', 'error'); return; }
   if(!contact.endsWith('@gmail.com')){ showToast('⚠️ İletişim e-postası @gmail.com olmalı', 'error'); return; }
-  if(discord && !/^https?:\/\/(www\.)?(discord\.gg|discord\.com)\//i.test(discord)){ showToast('⚠️ Geçerli Discord linki gir', 'error'); return; }
-  if(website && !/^https?:\/\//i.test(website)){ showToast('⚠️ Geçerli website adresi gir', 'error'); return; }
-  const features = [];
-  document.querySelectorAll('#featureGroup input:checked').forEach(i => features.push(i.value));
-  const id = 'srv_' + Date.now() + '_' + Math.random().toString(36).substr(2,6);
-  const payload = {
-    id, name, ip, platform, type, version, region,
-    maxPlayers: parseInt(maxPlayers) || 100,
-    discord, website, short, desc, features, contact,
-    owner: currentUser.name,
-    status: 'pending', players: 0, online: true,
-    createdAt: Date.now(),
-    createdAtStr: new Date().toLocaleString('tr-TR')
-  };
-  db.ref('servers/' + id).set(payload).then(() => {
+  var id = 'srv_' + Date.now() + '_' + Math.random().toString(36).substr(2,6);
+  var payload = { id:id, name:name, ip:ip, platform:platform, type:type, version:version, region:region,
+    maxPlayers: parseInt(maxPlayers) || 100, discord:discord, website:website, short:short, desc:desc,
+    features: [], contact:contact, owner:currentUser.name, status:'pending', players:0, online:true,
+    createdAt: Date.now(), createdAtStr: new Date().toLocaleString('tr-TR') };
+  db.ref('servers/' + id).set(payload).then(function(){
     showToast('✅ Sunucun gönderildi! Onay bekleniyor.', 'success');
-    ['sName','sIp','sVersion','sMaxPlayers','sDiscord','sWebsite','sShort','sDesc','sContact'].forEach(i => { document.getElementById(i).value = ''; });
-    document.querySelectorAll('#featureGroup .chk').forEach(c => { c.classList.remove('on'); c.querySelector('input').checked = false; });
+    ['sName','sIp','sVersion','sMaxPlayers','sDiscord','sWebsite','sShort','sDesc','sContact'].forEach(function(i){ document.getElementById(i).value = ''; });
     go('myservers');
-  }).catch(err => showToast('❌ Hata: ' + err.message, 'error'));
+  }).catch(function(err){ showToast('❌ Hata: ' + err.message, 'error'); });
 }
 
 function openServerDetail(id){
-  const s = SERVERS_CACHE[id];
+  var s = SERVERS_CACHE[id];
   if(!s) return;
-  const features = (s.features || []).map(f => `<span class="tag green">${escapeHtml(f)}</span>`).join('');
-  document.getElementById('detailContent').innerHTML = `
-    <h2>${escapeHtml(s.name)}</h2>
-    <p class="m-sub">${escapeHtml(s.short || '')}</p>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">
-      <span class="tag green">${escapeHtml(s.type)}</span>
-      <span class="tag blue">${escapeHtml(s.platform)}</span>
-      <span class="tag">${escapeHtml(s.region)}</span>
-      <span class="tag">${escapeHtml(s.version)}</span>
-      ${s.maxPlayers ? `<span class="tag">Maks ${escapeHtml(s.maxPlayers)}</span>` : ''}
-    </div>
-    <div class="detail-row"><div class="k">Sunucu IP</div><div class="v mono">${escapeHtml(s.ip)}</div></div>
-    <div class="detail-row"><div class="k">Sürüm</div><div class="v">${escapeHtml(s.version)}</div></div>
-    <div class="detail-row"><div class="k">Tür</div><div class="v">${escapeHtml(s.type)}</div></div>
-    <div class="detail-row"><div class="k">Bölge</div><div class="v">${escapeHtml(s.region)}</div></div>
-    <div class="detail-row"><div class="k">Platform</div><div class="v">${escapeHtml(s.platform)}</div></div>
-    ${s.discord ? `<div class="detail-row"><div class="k">Discord</div><div class="v"><a href="${escapeHtml(s.discord)}" target="_blank" style="color:var(--blue)">${escapeHtml(s.discord)} ↗</a></div></div>` : ''}
-    ${s.website ? `<div class="detail-row"><div class="k">Website</div><div class="v"><a href="${escapeHtml(s.website)}" target="_blank" style="color:var(--blue)">${escapeHtml(s.website)} ↗</a></div></div>` : ''}
-    ${features ? `<div class="detail-row"><div class="k">Özellikler</div><div class="v"><div style="display:flex;gap:6px;flex-wrap:wrap">${features}</div></div></div>` : ''}
-    <div style="margin-top:16px"><div style="color:var(--text-muted);font-size:12.5px;font-weight:600;margin-bottom:6px">Açıklama</div><div style="color:var(--text);font-size:13.5px;line-height:1.65;white-space:pre-wrap">${escapeHtml(s.desc)}</div></div>
-    <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn-primary" onclick="copyText('${escapeHtml(s.ip)}')">📋 IP Kopyala</button>
-      <button class="btn-secondary" onclick="closeModal('detailModal')">Kapat</button>
-    </div>
-  `;
+  document.getElementById('detailContent').innerHTML = '<h2>' + escapeHtml(s.name) + '</h2>' +
+    '<p class="m-sub">' + escapeHtml(s.short || '') + '</p>' +
+    '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px">' +
+    '<span class="tag green">' + escapeHtml(s.type) + '</span>' +
+    '<span class="tag blue">' + escapeHtml(s.platform) + '</span>' +
+    '<span class="tag">' + escapeHtml(s.region) + '</span>' +
+    '<span class="tag">' + escapeHtml(s.version) + '</span></div>' +
+    '<div class="detail-row"><div class="k">Sunucu IP</div><div class="v mono">' + escapeHtml(s.ip) + '</div></div>' +
+    '<div style="margin-top:16px"><div style="color:var(--text-muted);font-size:12.5px;font-weight:600;margin-bottom:6px">Açıklama</div>' +
+    '<div style="color:var(--text);font-size:13.5px;line-height:1.65;white-space:pre-wrap">' + escapeHtml(s.desc) + '</div></div>' +
+    '<div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap">' +
+    '<button class="btn-primary" onclick="copyText(\'' + escapeHtml(s.ip) + '\')">📋 IP Kopyala</button>' +
+    '<button class="btn-secondary" onclick="closeModal(\'detailModal\')">Kapat</button></div>';
   openModal('detailModal');
 }
 function copyText(txt){
-  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(()=>showToast('✅ Kopyalandı: ' + txt, 'success'));
+  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(function(){ showToast('✅ Kopyalandı: ' + txt, 'success'); });
   else showToast('📋 ' + txt);
 }
 
-// ==================== ADMİN PANEL ====================
-let adminTab = 'pending';
-document.getElementById('adminTabs').addEventListener('click', e => {
-  const tab = e.target.closest('.admin-tab');
-  if(!tab) return;
-  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-  tab.classList.add('active');
-  adminTab = tab.dataset.tab;
-  renderAdmin();
-});
+// ==================== ADMIN ====================
+var adminTab = 'pending';
 
 function renderAdmin(){
   if(!isMod()) return;
-  const all = Object.values(SERVERS_CACHE);
-  const pending = all.filter(s => s.status === 'pending');
-  const approved = all.filter(s => s.status === 'approved');
-  const rejected = all.filter(s => s.status === 'rejected');
+  var all = Object.values(SERVERS_CACHE);
+  var pending = all.filter(function(s){ return s.status === 'pending'; });
+  var approved = all.filter(function(s){ return s.status === 'approved'; });
+  var rejected = all.filter(function(s){ return s.status === 'rejected'; });
   document.getElementById('cntPending').textContent = pending.length;
   document.getElementById('cntApproved').textContent = approved.length;
   document.getElementById('cntRejected').textContent = rejected.length;
   document.getElementById('cntUsers').textContent = Object.keys(USERS_CACHE).length;
-  const content = document.getElementById('adminContent');
+  var content = document.getElementById('adminContent');
   if(adminTab === 'users'){ content.innerHTML = renderUsersAdmin(); return; }
-  const list = adminTab === 'pending' ? pending : adminTab === 'approved' ? approved : rejected;
-  if(list.length === 0){ content.innerHTML = `<div class="empty-state"><div class="ico">📭</div><h3>Bu kategoride sunucu yok</h3></div>`; return; }
-  content.innerHTML = list.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0)).map(s => {
-    const actions = adminTab === 'pending'
-      ? `<button class="btn-xs approve" onclick="event.stopPropagation();approveServer('${s.id}')">✅ Onayla</button><button class="btn-xs reject" onclick="event.stopPropagation();rejectServer('${s.id}')">❌ Reddet</button><button class="btn-xs info" onclick="openServerDetail('${s.id}')">👁 Detay</button>`
-      : `<button class="btn-xs info" onclick="openServerDetail('${s.id}')">👁 Detay</button><button class="btn-xs reject" onclick="event.stopPropagation();deleteServer('${s.id}')">🗑 Sil</button>`;
-    return `<div class="req-item">
-      <div class="req-icon">${escapeHtml((s.name||'S').charAt(0).toUpperCase())}</div>
-      <div class="req-body">
-        <div class="req-name">${escapeHtml(s.name)}</div>
-        <div class="req-meta">Sahip: <b>${escapeHtml(s.owner || '-')}</b> · IP: <b>${escapeHtml(s.ip)}</b></div>
-        <div class="req-meta">${escapeHtml(s.type)} · ${escapeHtml(s.platform)} · ${escapeHtml(s.region)}</div>
-        <div class="req-meta" style="font-size:11.5px;margin-top:4px">${escapeHtml(s.createdAtStr || '')}</div>
-      </div>
-      <div class="req-actions">${actions}</div>
-    </div>`;
+  var list = adminTab === 'pending' ? pending : adminTab === 'approved' ? approved : rejected;
+  if(list.length === 0){ content.innerHTML = '<div class="empty-state"><div class="ico">📭</div><h3>Bu kategoride sunucu yok</h3></div>'; return; }
+  content.innerHTML = list.sort(function(a,b){ return (b.createdAt||0) - (a.createdAt||0); }).map(function(s){
+    var actions = adminTab === 'pending'
+      ? '<button class="btn-xs approve" onclick="event.stopPropagation();approveServer(\'' + s.id + '\')">✅ Onayla</button><button class="btn-xs reject" onclick="event.stopPropagation();rejectServer(\'' + s.id + '\')">❌ Reddet</button><button class="btn-xs info" onclick="openServerDetail(\'' + s.id + '\')">👁 Detay</button>'
+      : '<button class="btn-xs info" onclick="openServerDetail(\'' + s.id + '\')">👁 Detay</button><button class="btn-xs reject" onclick="event.stopPropagation();deleteServer(\'' + s.id + '\')">🗑 Sil</button>';
+    return '<div class="req-item"><div class="req-icon">' + escapeHtml((s.name||'S').charAt(0).toUpperCase()) + '</div>' +
+      '<div class="req-body"><div class="req-name">' + escapeHtml(s.name) + '</div>' +
+      '<div class="req-meta">Sahip: <b>' + escapeHtml(s.owner || '-') + '</b> · IP: <b>' + escapeHtml(s.ip) + '</b></div>' +
+      '<div class="req-meta">' + escapeHtml(s.type) + ' · ' + escapeHtml(s.platform) + ' · ' + escapeHtml(s.region) + '</div>' +
+      '<div class="req-meta" style="font-size:11.5px;margin-top:4px">' + escapeHtml(s.createdAtStr || '') + '</div></div>' +
+      '<div class="req-actions">' + actions + '</div></div>';
   }).join('');
 }
 
 function renderUsersAdmin(){
-  const users = Object.values(USERS_CACHE);
-  if(users.length === 0) return `<div class="empty-state"><div class="ico">👥</div><h3>Kullanıcı yok</h3></div>`;
-
-  const myIdx = myRoleIndex();
-
-  const rows = users.sort((a,b) => {
-    const ai = ROLES_LOWER.indexOf((a.role||'üye').toLowerCase());
-    const bi = ROLES_LOWER.indexOf((b.role||'üye').toLowerCase());
+  var users = Object.values(USERS_CACHE);
+  if(users.length === 0) return '<div class="empty-state"><div class="ico">👥</div><h3>Kullanıcı yok</h3></div>';
+  var myIdx = myRoleIndex();
+  var rows = users.sort(function(a,b){
+    var ai = ROLES_LOWER.indexOf((a.role||'üye').toLowerCase());
+    var bi = ROLES_LOWER.indexOf((b.role||'üye').toLowerCase());
     if(ai !== bi) return bi - ai;
     return (a.name||'').localeCompare(b.name||'');
-  }).map(u => {
-    const role = u.role || 'Üye';
-    const roleIdx = ROLES_LOWER.indexOf(role.toLowerCase());
-    const mine = currentUser && u.name.toLowerCase() === currentUser.name.toLowerCase();
-
-    // Kurallar:
-    // 1. Kendi rolünü değiştiremez
-    // 2. Kendi seviyesinden yüksek veya eşit rolü olan birini değiştiremez (kendisi hariç)
-    // 3. Sadece kendi seviyesinden KÜÇÜK rolleri verebilir (yani < myIdx)
-    const canEdit = !mine && roleIdx < myIdx;
-
-    // Verilebilecek roller: kendi seviyesinden küçük olanlar
-    const assignableRoles = ROLES.slice(0, myIdx);
-
-    let controls;
+  }).map(function(u){
+    var role = u.role || 'Üye';
+    var roleIdx = ROLES_LOWER.indexOf(role.toLowerCase());
+    var mine = currentUser && u.name.toLowerCase() === currentUser.name.toLowerCase();
+    var canEdit = !mine && roleIdx < myIdx;
+    var assignable = ROLES.slice(0, myIdx);
+    var controls;
     if(mine){
-      controls = `<span style="color:var(--text-dim);font-size:12px;font-style:italic">Kendin</span>`;
+      controls = '<span style="color:var(--text-dim);font-size:12px;font-style:italic">Kendin</span>';
     } else if(canEdit){
-      const opts = assignableRoles.map(r => `<option value="${r}" ${r===role?'selected':''}>${r}</option>`).join('');
-      controls = `
-        <select class="role-select" onchange="changeUserRole('${escapeHtml(u.name)}', this.value)">
-          ${opts}
-        </select>
-        <button class="btn-xs reject" onclick="removeUser('${escapeHtml(u.name)}')" style="margin-left:6px" title="Kullanıcıyı Sil">🗑</button>
-      `;
+      var opts = assignable.map(function(r){ return '<option value="' + r + '"' + (r===role?' selected':'') + '>' + r + '</option>'; }).join('');
+      controls = '<select class="role-select" onchange="changeUserRole(\'' + escapeHtml(u.name) + '\', this.value)">' + opts + '</select>' +
+        '<button class="btn-xs reject" onclick="removeUser(\'' + escapeHtml(u.name) + '\')" style="margin-left:6px">🗑</button>';
     } else {
-      controls = `<span style="color:var(--text-dim);font-size:12px;font-style:italic">Yetkin yok</span>`;
+      controls = '<span style="color:var(--text-dim);font-size:12px;font-style:italic">Yetkin yok</span>';
     }
-
-    const maskedEmail = maskEmail(u.email);
-    return `<tr>
-      <td class="pd-uname">${escapeHtml(u.name)}</td>
-      <td class="pd-pass">••••••••</td>
-      <td class="pd-email">${escapeHtml(maskedEmail)}</td>
-      <td><span class="role-pill ${rolePillClass(role)}">${escapeHtml(role)}</span></td>
-      <td style="color:var(--text-dim);font-size:11.5px">${escapeHtml(u.kayitTarihi || '-')}</td>
-      <td style="white-space:nowrap">${controls}</td>
-    </tr>`;
+    var maskedEmail = maskEmail(u.email);
+    return '<tr><td class="pd-uname">' + escapeHtml(u.name) + '</td><td class="pd-pass">••••••••</td>' +
+      '<td class="pd-email">' + escapeHtml(maskedEmail) + '</td>' +
+      '<td><span class="role-pill ' + rolePillClass(role) + '">' + escapeHtml(role) + '</span></td>' +
+      '<td style="color:var(--text-dim);font-size:11.5px">' + escapeHtml(u.kayitTarihi || '-') + '</td>' +
+      '<td style="white-space:nowrap">' + controls + '</td></tr>';
   }).join('');
-
-  return `
-    <div style="margin-bottom:12px;padding:10px 14px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.18);border-radius:10px;font-size:12.5px;color:var(--text-muted)">
-      ℹ️ Kurallar: Kendi rolünü değiştiremezsin, kendinle eşit veya üstün birinin rolünü değiştiremezsin. Sadece <b style="color:var(--green)">kendi rolünden küçük</b> rolleri verebilirsin.
-    </div>
-    <div class="pd-wrap">
-      <table class="pd-table">
-        <thead><tr><th>Kullanıcı</th><th>Şifre</th><th>E-posta</th><th>Rol</th><th>Kayıt</th><th>İşlem</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-  `;
+  return '<div style="margin-bottom:12px;padding:10px 14px;background:rgba(74,222,128,0.06);border:1px solid rgba(74,222,128,0.18);border-radius:10px;font-size:12.5px;color:var(--text-muted)">' +
+    'ℹ️ Kendi rolünü değiştiremezsin, kendinle eşit veya üstün birinin rolünü değiştiremezsin. Sadece <b style="color:var(--green)">kendi rolünden küçük</b> rolleri verebilirsin.</div>' +
+    '<div class="pd-wrap"><table class="pd-table"><thead><tr><th>Kullanıcı</th><th>Şifre</th><th>E-posta</th><th>Rol</th><th>Kayıt</th><th>İşlem</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
 }
 
 function maskEmail(email){
   if(!email) return '-';
-  const [local, domain] = email.split('@');
-  if(!domain) return email;
+  var parts = email.split('@');
+  if(parts.length < 2) return email;
+  var local = parts[0]; var domain = parts[1];
   if(local.length <= 4) return local[0] + '***@' + domain;
-  const first = local.substring(0, 2);
-  const last = local.substring(local.length - 1);
-  return first + '*'.repeat(Math.max(3, local.length - 3)) + last + '@' + domain;
+  var first = local.substring(0, 2);
+  var last = local.substring(local.length - 1);
+  var stars = '';
+  for(var i = 0; i < Math.max(3, local.length - 3); i++) stars += '*';
+  return first + stars + last + '@' + domain;
 }
 
 function approveServer(id){ db.ref('servers/' + id + '/status').set('approved'); db.ref('servers/' + id + '/approvedAt').set(Date.now()); showToast('✅ Sunucu onaylandı', 'success'); }
-function rejectServer(id){ const reason = prompt('Red sebebi:') || 'Belirtilmedi'; db.ref('servers/' + id).update({status: 'rejected', rejectReason: reason}); showToast('❌ Sunucu reddedildi'); }
+function rejectServer(id){ var reason = prompt('Red sebebi:') || 'Belirtilmedi'; db.ref('servers/' + id).update({status:'rejected', rejectReason:reason}); showToast('❌ Sunucu reddedildi'); }
 function deleteServer(id){ if(!confirm('Bu sunucuyu silmek istediğine emin misin?')) return; db.ref('servers/' + id).remove(); showToast('🗑️ Sunucu silindi'); }
 
 function changeUserRole(username, newRole){
   if(!currentUser) return;
-  const myIdx = myRoleIndex();
-  const newIdx = ROLES_LOWER.indexOf((newRole||'').toLowerCase());
-  const target = USERS_CACHE[username.toLowerCase()];
+  var myIdx = myRoleIndex();
+  var newIdx = ROLES_LOWER.indexOf((newRole||'').toLowerCase());
+  var target = USERS_CACHE[username.toLowerCase()];
   if(!target){ showToast('❌ Kullanıcı bulunamadı', 'error'); return; }
-  const targetIdx = ROLES_LOWER.indexOf((target.role||'üye').toLowerCase());
-
-  // Kurallar
-  if(username.toLowerCase() === currentUser.name.toLowerCase()){
-    showToast('⛔ Kendi rolünü değiştiremezsin!', 'error'); renderAdmin(); return;
-  }
-  if(newIdx >= myIdx){
-    showToast('⛔ Kendi rolünle eşit veya üstün bir rol veremezsin!', 'error'); renderAdmin(); return;
-  }
-  if(targetIdx >= myIdx){
-    showToast('⛔ Kendinle eşit veya üstün birinin rolünü değiştiremezsin!', 'error'); renderAdmin(); return;
-  }
-
-  db.ref('users/' + username.toLowerCase() + '/role').set(newRole).then(()=>{
-    showToast('✅ ' + username + ' → ' + newRole, 'success');
-  }).catch(err => showToast('❌ ' + err.message, 'error'));
+  var targetIdx = ROLES_LOWER.indexOf((target.role||'üye').toLowerCase());
+  if(username.toLowerCase() === currentUser.name.toLowerCase()){ showToast('⛔ Kendi rolünü değiştiremezsin!', 'error'); renderAdmin(); return; }
+  if(newIdx >= myIdx){ showToast('⛔ Kendi rolünle eşit veya üstün bir rol veremezsin!', 'error'); renderAdmin(); return; }
+  if(targetIdx >= myIdx){ showToast('⛔ Kendinle eşit veya üstün birinin rolünü değiştiremezsin!', 'error'); renderAdmin(); return; }
+  db.ref('users/' + username.toLowerCase() + '/role').set(newRole).then(function(){ showToast('✅ ' + username + ' → ' + newRole, 'success'); }).catch(function(err){ showToast('❌ ' + err.message, 'error'); });
 }
 
 function removeUser(username){
   if(!currentUser) return;
-  const myIdx = myRoleIndex();
-  const target = USERS_CACHE[username.toLowerCase()];
+  var myIdx = myRoleIndex();
+  var target = USERS_CACHE[username.toLowerCase()];
   if(!target){ showToast('❌ Kullanıcı bulunamadı', 'error'); return; }
-  const targetIdx = ROLES_LOWER.indexOf((target.role||'üye').toLowerCase());
-
-  if(username.toLowerCase() === currentUser.name.toLowerCase()){
-    showToast('⛔ Kendini silemezsin!', 'error'); return;
-  }
-  if(targetIdx >= myIdx){
-    showToast('⛔ Kendinle eşit veya üstün birini silemezsin!', 'error'); return;
-  }
+  var targetIdx = ROLES_LOWER.indexOf((target.role||'üye').toLowerCase());
+  if(username.toLowerCase() === currentUser.name.toLowerCase()){ showToast('⛔ Kendini silemezsin!', 'error'); return; }
+  if(targetIdx >= myIdx){ showToast('⛔ Kendinle eşit veya üstün birini silemezsin!', 'error'); return; }
   if(!confirm(username + ' adlı kullanıcıyı silmek istediğine emin misin?')) return;
   db.ref('users/' + username.toLowerCase()).remove();
   showToast('🗑️ Kullanıcı silindi');
 }
 
-document.querySelectorAll('#featureGroup .chk').forEach(chk => {
-  chk.addEventListener('click', e => {
-    e.preventDefault();
-    const inp = chk.querySelector('input');
-    inp.checked = !inp.checked;
-    chk.classList.toggle('on', inp.checked);
-  });
+// ==================== EVENT LISTENERS ====================
+document.getElementById('adminTabs').addEventListener('click', function(e){
+  var tab = e.target.closest('.admin-tab');
+  if(!tab) return;
+  document.querySelectorAll('.admin-tab').forEach(function(t){ t.classList.remove('active'); });
+  tab.classList.add('active');
+  adminTab = tab.dataset.tab;
+  renderAdmin();
 });
 
-document.querySelectorAll('.nav-btn[data-page]').forEach(b => {
-  b.addEventListener('click', () => go(b.dataset.page));
+document.querySelectorAll('.nav-btn[data-page]').forEach(function(b){
+  b.addEventListener('click', function(){ go(b.dataset.page); });
 });
 
-// ==================== INIT ====================
-(async function init(){
-  if(!db){
-    updateConnInfo();
+// ==================== INIT (KRITIK DÜZELTME) ====================
+// Önce UI'yı göster, sonra Firebase işlemlerini yap
+(function(){
+  // Modalı hemen göster (Firebase beklemeden)
+  try {
+    var stored = getUser();
+    if(stored && stored.name){
+      currentUser = stored;
+      document.getElementById('anaIcerik').classList.add('show');
+      renderAuthWidget();
+      updateAdminNav();
+      watchRole();
+      go('home');
+    } else {
+      modalAc('giris');
+    }
+  } catch(e){
+    console.error('UI init hatası:', e);
+    // Fallback: giriş modalını zorla göster
+    try { document.getElementById('girisModal').classList.add('open'); } catch(err){}
+  }
+
+  // Firebase bağlantısı yoksa bilgilendir
+  if(FB_ERROR){
+    showToast('❌ Firebase yüklenemedi: ' + FB_ERROR, 'error');
     return;
   }
-  updateConnInfo();
-  setupListeners();
-  await seedOwner();
-  await seedDemoServers();
-  const stored = getUser();
-  if(stored && stored.name){
-    currentUser = stored;
-    document.getElementById('anaIcerik').classList.add('show');
-    renderAuthWidget();
-    updateAdminNav();
-    watchRole();
-    go('home');
-  } else {
-    modalAc('giris');
+  if(!db){
+    showToast('❌ Veritabanı bağlantısı kurulamadı', 'error');
+    return;
   }
+
+  // Firebase işlemleri (arka planda)
+  (async function firebaseInit(){
+    try {
+      updateConnInfo();
+      setupListeners();
+      await seedOwner();
+      await seedDemoServers();
+      updateConnInfo();
+    } catch(e){
+      console.error('Firebase init hatası:', e);
+      FB_ERROR = e.message;
+      updateConnInfo();
+      showToast('⚠️ ' + e.message, 'error');
+    }
+  })();
+
+  // 8 saniye sonra bağlantı kurulamazsa uyarı
+  setTimeout(function(){
+    if(!FB_READY && !FB_ERROR){
+      showToast('⏳ Bağlantı yavaş — birazdan tekrar dene', 'error');
+    }
+  }, 8000);
 })();
 </script>
 </body>
